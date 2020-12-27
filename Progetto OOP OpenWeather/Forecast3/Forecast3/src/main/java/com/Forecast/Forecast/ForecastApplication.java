@@ -23,28 +23,28 @@ import com.Forecast.Forecast.Model.Data.DataForecast;
 @RestController
 @SpringBootApplication
 /*Main del programma
- * Viene richiamata la Gui situata nel package Model,che permette di inserire una citta
+ *Viene richiamata la Gui situata nel package Model, che permette di inserire una citta e trasmetterla tramite setter
  *Viene assegnata la chiave API tramite setter presente nella classe DataForecast
- *Successivamente viene avviata la SpringApplication,solo dopo aver inserito la citta e assegnato la chiave per le chiamate dell'api.
+ *Viene avviata la SpringApplication.
 */
 public class ForecastApplication {
 	
-	public static void main(String[] args) {
-		
-		
+	public static void main(String[] args) 
+	{
 		Gui gui = new Gui();
-			gui.inizialize();
-			gui.insertInvio();
-			gui.insertCancel();
-			gui.btnGetSelected.addActionListener(new ActionListener() {
-			
+		gui.inizialize();
+		gui.insertInvio();
+		gui.insertCancel();
+		gui.btnGetSelected.addActionListener(new ActionListener() 
+		{
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
-			try
-			{ 
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				try
+				{ 
 					int conferma;
 					do
-						{
+					{
 						conferma = 0;
 						gui.insertSelected();
 						conferma = gui.msg();
@@ -52,14 +52,10 @@ public class ForecastApplication {
 					}while(conferma  == 1);
 					DataForecast.setapiKey("80da379aa6764f47ae8d83559daeb6b4");
 					SpringApplication.run(ForecastApplication.class, args);
-					
-			}catch(Exception e) {
-			
+				}catch(Exception e) 
+				{
+				}
 			}
-			}
-			
 		});
-	
-			
 	}
 }

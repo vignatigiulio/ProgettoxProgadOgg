@@ -1,13 +1,10 @@
 package com.Forecast.Forecast.Model;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
-
-import javax.swing.AbstractButton;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,7 +18,12 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
 import com.Forecast.Forecast.Model.Data.DataForecast;
-
+/*La classe Gui si occupa di dichiarare la parte grafica.
+ *Crea i vari oggetti utilizzati dalla finestra
+ *e richiama le immagini presenti nella cartella ./Resources/immagine
+ *dove è presente l'immagine per il bottone adibito alla ricerca,
+ *uno sfondo e il logo di Openweathermap.
+ */
 public class Gui {
 	
 	public  JFrame frame;
@@ -95,67 +97,77 @@ public class Gui {
 		frame.getContentPane().add(lblNewLabel_5);
 		
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon(".\\Resources\\immagine\\sfonno2.png"));
+		lblNewLabel_4.setIcon(new ImageIcon(".\\Resources\\immagine\\sfondo2.png"));
 		lblNewLabel_4.setBounds(0, 0, 611, 338);
 		frame.getContentPane().add(lblNewLabel_4);
 		
 		frame.setVisible(true);
 	}
 
-	
+	/*Metodo appartentente al bottone "Invio", indicato tramite l'immagine della lente di ricerca.
+	 *Si occupa di ricercare il comune inserito nella textString e 
+	 *restituisce i risultati nella list.
+	 *Se il programma non riesce a trovare la città inserita, verrà visualizzato un messaggio
+	 *di errrore.
+	 *L'utente dovrà inserire nuovamente il comune per una nuova ricerca.
+	 */
 	public void insertInvio()
 	{
-		btnInvio.addActionListener(new ActionListener() {
-			
+		btnInvio.addActionListener(new ActionListener() 
+		{
 			@Override
-	public void actionPerformed(ActionEvent e) {
-					
-						try {
-							city.elenco(textString.getText().toLowerCase());
-							if(city.isEmpty())
-								JOptionPane.showMessageDialog(null,"citta non presente nell'elenco");
-							
-							list.setModel(city.getDLM());
-						
-						} catch (FileNotFoundException e1) {
-							
-							e1.printStackTrace();
-						}
-						
+			public void actionPerformed(ActionEvent e) 
+			{
+				try 
+				{
+					city.elenco(textString.getText().toLowerCase());
+					if(city.isEmpty())
+					{
+						JOptionPane.showMessageDialog(null,"Città non presente nell'elenco");
+						pulisci();
 					}
-			});
-	}
-
-	public void insertCancel()
-	{
-		
-		btnCancel.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
-				pulisci();
-			
+					list.setModel(city.getDLM());
+				} catch (FileNotFoundException e1) 
+					{
+					e1.printStackTrace();
+					}
+						
 			}
 		});
-		
 	}
-
-	public void insertSelected() {
-		
+	/*Metodo appartenente al bottone "Cancel".
+	 *Si occupa di pulire, tramite apposita funzione, la lista e la textString da ogni ricerca precedentemente
+	 *effettuata
+	*/
+	public void insertCancel()
+	{
+		btnCancel.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) {
+			pulisci();
+		}
+		});
+	}
+	/*Metodo appartenente al bottone "Selected".
+	 *Passa al setter "setCitta" il comune scelto dall'utente alla lista.
+	*/
+	public void insertSelected() 
+	{
 		int[] indic = null;	 
-			 indic = list.getSelectedIndices();
-			 DataForecast.setCitta(city.getDLMIndex(indic[0]));
-			
+		 indic = list.getSelectedIndices();
+		 DataForecast.setCitta(city.getDLMIndex(indic[0]));	
 	}
 	
 	public int  msg()
 	{ 	
 		
-		 return JOptionPane.showConfirmDialog(null, "la citta è:" + DataForecast.getCitta(),"OpenWeather", 0, 1, null);
+		 return JOptionPane.showConfirmDialog(null, "la citta è: " + DataForecast.getCitta(),"OpenWeather", 0, 1, null);
 	}
-	
+	/*Metodo che si occupa di rendere vuota la list e di pulire la textString.
+    */
 	public void pulisci()
 	{
-		textString.setText("");
+	textString.setText("");
 	 DefaultListModel model=new DefaultListModel();
 	 model.clear();
 	 list.setModel(model);

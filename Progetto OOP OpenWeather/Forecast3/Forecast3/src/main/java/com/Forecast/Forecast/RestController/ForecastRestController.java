@@ -1,7 +1,5 @@
 package com.Forecast.Forecast.RestController;
-import java.io.FileNotFoundException;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,9 +12,6 @@ import com.Forecast.Forecast.Model.Stats.Stats;
 import com.Forecast.Forecast.Model.Utils.CityForecast;
 import com.Forecast.Forecast.Model.Utils.FilterUtils;
 import com.Forecast.Forecast.Service.ForecastService;
-
-
-
 /** Rappresenta la classe che gestisce tutte le chiamate al Server 
 * 	permesse al Client.
 */

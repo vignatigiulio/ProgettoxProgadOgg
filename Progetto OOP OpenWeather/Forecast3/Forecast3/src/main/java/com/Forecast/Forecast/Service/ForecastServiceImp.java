@@ -7,18 +7,12 @@ import com.Forecast.Forecast.Model.Stats.StatsHistorical;
 import com.Forecast.Forecast.Model.Utils.CityForecast;
 import com.Forecast.Forecast.Model.Utils.FilterUtils;
 import org.springframework.stereotype.Service;
-
 import com.Forecast.Forecast.Model.Weather;
 import com.Forecast.Forecast.Model.Data.DataHistorical;
-
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
-import java.util.Vector;
 @Service
 public class ForecastServiceImp implements ForecastService {
     

@@ -1,0 +1,37 @@
+{"properties": [
+  {
+    "name": "application.key",
+    "type": "java.lang.String",
+    "description": "A description for 'application.key'"
+  },
+  {
+    "name": "apikey",
+    "type": "java.lang.String",
+    "description": "A description for 'apikey'"
+  },
+  {
+    "name": "api.key",
+    "type": "java.lang.String",
+    "description": "A description for 'api.key'"
+  },
+  {
+    "name": "userBucket.path",
+    "type": "java.lang.String",
+    "description": "A description for 'userBucket.path'"
+  },
+  {
+    "name": "userBucket.path",
+    "type": "java.lang.String",
+    "description": "A description for 'userBucket.path'"
+  },
+  {
+    "name": "userBucket.path",
+    "type": "java.lang.String",
+    "description": "A description for 'userBucket.path'"
+  },
+  {
+    "name": "property.key",
+    "type": "java.lang.String",
+    "description": "A description for 'property.key'"
+  }
+]}

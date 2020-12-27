@@ -13,7 +13,7 @@ albenga
 albidona
 albisola superiore
 albissola marina
-alcamo	trapani
+alcamo
 alessano
 alghero
 alì terme
@@ -26,7 +26,7 @@ ameglia
 amendolara
 anacapri
 ancona
-andora	savona
+andora
 andrano
 anzio
 arborea
@@ -113,7 +113,7 @@ carlentini
 carloforte
 caronia
 carovigno
-carrara	toscana
+carrara
 casal velino
 casalbordino
 casamicciola terme
@@ -209,7 +209,7 @@ follonica
 fondi
 forio
 formia
-forte dei marmi	lucca
+forte dei marmi
 forza d'agrò
 fossacesia
 framura
@@ -270,7 +270,7 @@ lamezia terme
 lampedusa e linosa
 lanusei
 lascari
-latina	latina
+latina
 lavagna
 lecce
 leni
@@ -282,7 +282,7 @@ levanto
 licata
 lignano sabbiadoro
 lipari
-livorno	livorno
+livorno
 lizzano
 loano
 loceri
@@ -299,13 +299,11 @@ manduria
 manfredonia
 maracalagonis
 marano lagunare
-maratea	basilicata
-marciana
+maratea
 marciana
 marciana marina
 margherita di savoia
 marina di gioiosa ionica
-marsala
 marsala
 martinsicuro
 maruggio
@@ -322,7 +320,6 @@ melilli
 melissa
 melito di porto salvo
 menfi
-messina
 messina
 meta
 milazzo
@@ -365,7 +362,7 @@ naso
 nettuno
 nicotera
 nizza di sicilia
-nocera terinese	catanzaro
+nocera terinese
 noli
 noto
 nova siri
@@ -381,7 +378,6 @@ ostuni
 otranto
 pace del mela
 pachino
-pachino	siracusa
 palagiano
 palau
 palermo
@@ -406,7 +402,6 @@ pietrasanta
 pieve ligure
 pineto
 piombino
-piombino
 piraino
 pisa
 pisciotta
@@ -430,7 +425,6 @@ porto sant'elpidio
 porto tolle
 porto torres
 porto viro
-portoferraio
 portoferraio
 portofino
 portopalo di capo passero
@@ -462,7 +456,6 @@ ribera
 ricadi
 riccione
 rimini
-rio
 rio
 riola sardo
 riomaggiore
@@ -601,7 +594,7 @@ torrenova
 torretta
 torricella
 tortolì
-tortora	calabria
+tortora
 tortoreto
 trabia
 trani
@@ -637,12 +630,10 @@ vico equense
 vieste
 vietri sul mare
 villa san giovanni
-villa san giovanni
 villafranca tirrena
 villanova monteleone
 villapiana
 villaputzu
-villasimius
 villasimius
 vittoria
 zambrone

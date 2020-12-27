@@ -18,29 +18,27 @@ public class StatsHistorical  extends Stats{
 	}
 	
 	@Override
-	public void ReadFile(String string) {
-		 
-		 citta=string;
-
-		 try {
-			    
-			    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\" + this.citta + "Historical.txt")));
-				
-			    String str = null;
-			    
-			    while(scan.hasNextLine()) 
-			    {	
-			    	str=scan.nextLine();
-			    	str=scan.nextLine();
-			    	str=scan.nextLine();
-			    	temperature.add(Double.parseDouble(str)); //indice i numeri pari indice dispari feels_like
-			    	str="";
-			    	str=scan.nextLine();
-			    	feels_like.add(Double.parseDouble(str));
-			    }
-			    scan.close();
-			
-			} catch (IOException e) {
+	/**Il metodo si occupa di inserire nei vettori le temperature presenti nei file di testo precedentemente creati.
+	 *@Param string il nome della città
+	 */
+	public void ReadFile(String string) 
+	{
+		 try 
+		 {
+			 Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\" + this.citta + "Historical.txt")));
+			 String str = null;
+			while(scan.hasNextLine()) 
+			{	
+			   	str=scan.nextLine();
+			   	str=scan.nextLine();
+			   	str=scan.nextLine();
+			   	temperature.add(Double.parseDouble(str)); //indice i numeri pari indice dispari feels_like
+			   	str="";
+			   	str=scan.nextLine();
+			   	feels_like.add(Double.parseDouble(str));
+			}
+			scan.close();
+		 } catch (IOException e) {
 			    System.out.print(e);
 			} catch (Exception e) {
 			    System.out.print(e);
@@ -48,7 +46,11 @@ public class StatsHistorical  extends Stats{
 	
 		
 	}
-
+	/**Il metodo si occupa di creare la Hashmap contenente i risultati della varianza nei giorni passati.
+	 *@Return la HashMap che verrà visualizzata.
+	 *N.B. Siccome l'indirizzo API non contiene i dati delle temperature massime e minime, sarà visualizzato
+	 *"null".
+	 */
 	public HashMap<String, Float> methodVariance()
 	{
 		variance_temperature.put("temperature:",method.methodVarianceTemperature(temperature));
@@ -57,6 +59,11 @@ public class StatsHistorical  extends Stats{
 		variance_temperature.put("temperature_max:",null);
 		return variance_temperature;
 	}
+	/**Il metodo si occupa di creare la Hashmap contenente i risultati della media nei giorni passati.
+	 *@Return la HashMap che verrà visualizzata.
+	 *N.B. Siccome l'indirizzo API non contiene i dati delle temperature massime e minime, sarà visualizzato
+	 *"null".
+	 */
 	public HashMap<String, Float> methodMedia()
 	{
 		
