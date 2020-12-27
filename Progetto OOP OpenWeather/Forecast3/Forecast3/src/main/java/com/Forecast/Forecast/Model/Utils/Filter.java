@@ -7,22 +7,23 @@ package com.Forecast.Forecast.Model.Utils;
  */
 public interface Filter<E,T> {
     /**
-     * Metodo astratto la cui impementazione andrà a filtrare la collezione di elementi rispettivamente a un filtro deciso dal client
+     * Metodo astratto la cui impementazione andrà a filtrare la Map di elementi rispettivamente a un filtro deciso dal client
      * @param filtro campo che deve essere filtrato
-     * @return una Map degli elementi fltrata mediante i parametri specificati
+     * @return un oggetto FilterUtils,che contiene una Map, degli elementi filtrati mediante i parametri specificati dal client
      */
     abstract FilterUtils filterField(float filter);
     /**
-     * Metodo astratto la cui impementazione andrà a filtrare la collezione di elementi rispettivamente a un filtro deciso dal client
+     * Metodo astratto la cui impementazione andrà a filtrare la Map di elementi rispettivamente a un filtro deciso dal client
      * @param filterMin campo che deve essere filtrato
      * @param filterMax campo che deve essere filtrato
-     * @return una Map degli elementi compresi tra i due filtri,mediante i parametri specificati, imposti 
+     * @return un oggetto FilterUtils,che contiene una Map, degli elementi compresi tra i due filtri,mediante i parametri specificati, 
      */
     abstract FilterUtils filterField(float filterMin, float filterMax);
     /**
-     * Metodo astratto la cui impementazione andrà a filtrare la collezione di elementi rispettivamente a un filtro deciso dal client
+     * Metodo astratto la cui implementazione andrà a filtrare la Map di elementi rispettivamente a un filtro deciso dal client
      * @param city campo che deve essere filtrato
-     * @return una Map della città con la relativa soglia di errore della previsione
+     * @return un oggetto FilterUtils,che contiene una Map, della città con la relativa soglia di errore della previsione effettuata dal server
      */
     abstract CityForecast filterField(String city);
 }
+

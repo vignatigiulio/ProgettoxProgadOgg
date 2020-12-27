@@ -1,5 +1,10 @@
 package com.Forecast.Forecast.Model.Utils;
 
+/**
+ * Classe CityForecast con i relativi set e get dei campi della classe 
+ *@param  city contiene il nome della città passato come filtro
+ *@param  error_threshold contiene l' errore della previsione effettuata dal server
+ */
 public class CityForecast {
     
     private String city;
@@ -30,3 +35,4 @@ public class CityForecast {
     
 
 }
+

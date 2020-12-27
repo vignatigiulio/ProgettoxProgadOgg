@@ -7,49 +7,21 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Map.Entry;
 
+/**
+ * Rappresenta la classe che genera l'oggetto FilterUtils,contenente una Map,utilizzando i filtri imposti dal Client  
+ */
 public class FilterUtils {
     private HashMap<String, Float> Previsioni = new HashMap<>();
+   
+   
     /**
-     * Metodo che determina per ciscun'oggetto della collezione, in base al filtro specificato,
+     * Metodo che determina per ciascun'oggetto della Map, in base al filtro specificato,
      * se deve essere incluso nella risposta
-     * @param value Oggetto che viene considerato nel test
-     * @param operator Condizione del filtro
-     * @param th Oggetti che caratterizzano il filtro
+     * @param String citta che viene considerato nel test
+     * @param filtro Condizione del filtro
      * @return Un booleano che determina se l'oggetto deve essere tenuto o meno
      * @throws FileNotFoundException 
      */
-/*    public static boolean check(Object value, String operator, Object... th) {
-        if (th.length == 1 && th[0] instanceof Number && value instanceof Number) {
-            Double thC = ((Number)th[0]).doubleValue();
-            Double valuec = ((Number)value).doubleValue();
-            if (operator.equals("$eq"))
-                return value.equals(th[0]);
-            else if (operator.equals("$not"))
-                return !value.equals(th[0]);
-            else if (operator.equals("$gt"))
-                return valuec > thC;
-            else if (operator.equals("$lt"))
-                return valuec < thC;
-        } else if(th.length == 1 && th[0] instanceof String && value instanceof String) {
-            if(operator.equals("$eq") || operator.equals("$in")) return value.equals(th[0]);
-            else if(operator.equals("$not") || operator.equals("$nin")) return !value.equals(th[0]);
-        } else if(th.length > 1) {
-            if (operator.equals("$bt")) {
-                if(th.length == 2 && th[0] instanceof Number && th[1] instanceof Number) {
-                    Double min = ((Number)th[0]).doubleValue();
-                    Double max = ((Number)th[1]).doubleValue();
-                    Double valuec = ((Number)value).doubleValue();
-                    return valuec >= min && valuec <= max;
-                }
-            }
-            else if (operator.equals("$in"))
-                return Arrays.asList(th).contains(value);
-            else if (operator.equals("$nin"))
-                return !Arrays.asList(th).contains(value);
-        }
-        return false;
-    } */
-    
     public boolean check(String citta, float filtro) throws FileNotFoundException {
 	
 	CalcErrorThreshold cet = new CalcErrorThreshold();
@@ -59,6 +31,15 @@ public class FilterUtils {
 	    return false;
     }
     
+    /**
+     * Metodo che determina per ciascun'oggetto della Map, in base al filtro specificato,
+     * se deve essere incluso nella risposta
+     * @param String citta che viene considerato nel test
+     * @param filterMin Condizione del filtro
+     * @param filterMax Condizione del filtro
+     * @return Un booleano che determina se l'oggetto deve essere tenuto o meno
+     * @throws FileNotFoundException 
+     */
     public boolean check(String citta, float filterMin, float filterMax) throws FileNotFoundException {
 	
 	CalcErrorThreshold cet = new CalcErrorThreshold();
@@ -69,13 +50,9 @@ public class FilterUtils {
     }
 
     /**
-     * Metodo che riceve l'intera collezione di oggetti ed il filtro e restituisce una collezione parziale con gli
+     * Metodo che riceve il filtro e crea una Map parziale con gli
      * oggetti selezionati
-     * @param src L'intera collezione di oggetti
-     * @param fieldName Campo su cui opera il filtro
-     * @param operator Condizione del filtro
-     * @param value Oggetti che caratterizzano il filtro
-     * @return Collezione risultante
+     * @param filtro Campo su cui opera il filtro
      */
     public void select(float filtro) {
 	HashMap<String, Float> Elenco = new HashMap<>();
@@ -94,7 +71,12 @@ public class FilterUtils {
 	Previsioni = cet.sortHashMapByValues(Elenco);
 	
     }
-    
+    /**
+     * Metodo che riceve il filtro e crea una Map parziale con gli
+     * oggetti selezionati
+     * @param filtroMin Campo su cui opera il filtro
+     * @param filtroMax Campo su cui opera il filtro
+     */
     public void select(float filtroMin, float filtroMax) {
 	HashMap<String, Float> Elenco = new HashMap<>();
 	CalcErrorThreshold cet = new CalcErrorThreshold();
@@ -112,7 +94,10 @@ public class FilterUtils {
 	Previsioni = cet.sortHashMapByValues(Elenco);
 	
     }
-    
+    /**
+     * Metodo che crea una Map  con gli
+     * oggetti selezionati
+     */
     public void select() {
 	
 	HashMap<String, Float> Elenco = new HashMap<>();
@@ -130,7 +115,12 @@ public class FilterUtils {
 	Previsioni = cet.sortHashMapByValues(Elenco);
 	
     }
-    
+    /**
+     * Metodo che crea una Map parziale con gli
+     * oggetti selezionati
+     * @param city Campo su cui opera il filtro
+     * @return un float che andrà a creare l'oggetto FilterUtils filtrato
+     */
     public float searchCity(String city) {
 		city.toLowerCase();
 		 for (Entry<String, Float> entry : Previsioni.entrySet())  
@@ -152,3 +142,4 @@ public class FilterUtils {
     
 
 }
+

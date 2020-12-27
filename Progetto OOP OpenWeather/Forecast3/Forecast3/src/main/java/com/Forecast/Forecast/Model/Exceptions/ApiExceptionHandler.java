@@ -8,9 +8,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+/** Rappresenta la classe in sui vengono gestiti gli errori
+ * generati da eventuali chiamate errate da parte del Client.
+*/
 
 @ControllerAdvice
 public class ApiExceptionHandler {
+	
+	/**
+	 * Risponde quando viene lanciato l'errore ApirequestException
+	 * creando e restituendo un oggetto apiRequestException, con stato NOT_ACCEPTABLE.
+	 * @return ResponseEntity di Object apiException
+	 */
 	@ExceptionHandler(value = {ApiRequestException.class})
    public ResponseEntity<Object> handleApiRequestException(ApiRequestException e)
    {  HttpStatus badRequest = HttpStatus.NOT_ACCEPTABLE;

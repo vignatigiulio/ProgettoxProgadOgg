@@ -3,7 +3,9 @@ package com.Forecast.Forecast.Model.Exceptions;
 import java.time.ZonedDateTime;
 
 import org.springframework.http.HttpStatus;
-
+/** Rappresenta la classe i cui oggetti sono gli eventuali errori 
+ * da restiruire al client.
+*/
 public class ApiException {
   private final String message;
 
@@ -32,3 +34,4 @@ public HttpStatus getHttpstatus() {
   
   
 }
+

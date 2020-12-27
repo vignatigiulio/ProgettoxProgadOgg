@@ -1,9 +1,8 @@
 package com.Forecast.Forecast.Model.Exceptions;
 
 public class ApiRequestException  extends RuntimeException{
-	/**
-     * 
-     */
+	/** Rappresenta un'eccezione personalizzata di tipo RuntimeException.
+	 */
     private static final long serialVersionUID = 1L;
 
 	public ApiRequestException(String message)
@@ -20,3 +19,4 @@ public class ApiRequestException  extends RuntimeException{
 	}
 
 }
+
