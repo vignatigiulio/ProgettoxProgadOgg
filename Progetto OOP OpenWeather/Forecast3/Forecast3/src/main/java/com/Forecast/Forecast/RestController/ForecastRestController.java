@@ -1,0 +1,153 @@
+package com.Forecast.Forecast.RestController;
+import java.io.FileNotFoundException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import com.Forecast.Forecast.Model.Weather;
+import com.Forecast.Forecast.Model.Exceptions.ApiRequestException;
+import com.Forecast.Forecast.Model.Stats.Stats;
+import com.Forecast.Forecast.Model.Utils.CityForecast;
+import com.Forecast.Forecast.Model.Utils.FilterUtils;
+import com.Forecast.Forecast.Service.ForecastService;
+
+
+
+/** Rappresenta la classe che gestisce tutte le chiamate al Server 
+* 	permesse al Client.
+*/
+@RestController
+public class ForecastRestController {
+	
+	@Autowired
+	private ForecastService forecastService;
+	
+	
+	/**
+	 * Eccezione invocata quando non viene trovata l'entità serializzata richiesta
+	 * dall'utente.
+	 *
+	 *
+	*/
+	@ResponseStatus(value = HttpStatus.NOT_FOUND)
+	public class EntityNotFoundException extends RuntimeException {
+	 
+	     private static final long serialVersionUID = 1L;
+	 
+	    public EntityNotFoundException(String message) {
+	        super(message);
+	    }
+	 
+	    public EntityNotFoundException() {
+	        super();
+	    }
+	}
+	 
+	
+	 /**
+		 * Risponde all richiesta GET / Weather 
+		 * @throws EntityNotFoundException Eccezione invocata quando non viene trovata l'entità serializzata richiesta
+		 * @return ArrayList di oggetti Weather
+		 */
+	@GetMapping("/weather") 
+	public List<Weather> getWeathers() throws EntityNotFoundException
+	{
+		return this.forecastService.getWeathers();
+		
+	}
+	
+	/**
+	 * Risponde all richiesta GET / Weather
+	 * @param data è rappresenta il campo date di Weather nel formato (yy-mm-dd hh:mm:ss) sul quale si vuole effettuare la ricerca.
+	 * @throws  ApiRequestException(data) se vengono generati errori di parametro non valido in ingresso al filtro.
+	 *  @throws EntityNotFoundException Eccezione invocata quando non viene trovata l'entità serializzata richiesta
+	 * @return  oggetto Weather relativo
+	 */
+	@GetMapping("/weather/{data}")
+	public Weather getWeather(@PathVariable("data")String data) throws EntityNotFoundException
+	{
+		Weather w =forecastService.getWeather(data);
+		if (w == null) throw new ApiRequestException(data);
+	
+			return w;
+	
+	}
+	
+	
+	/**
+	 * Risponde all richiesta GET / Stats
+	 * @param filter  rappresenta il campo nome della statistica sulla quale si vuole effettuare la ricerca.
+	 * @throws  ApiRequestException(filter) se vengono generati errori di parametro non valido in ingresso al filtro.
+	 * @throws EntityNotFoundException Eccezione invocata quando non viene trovata l'entità serializzata richiesta
+	 * @return  oggetto Stats che contiene le statistiche richieste
+	 */
+	@GetMapping("/stats/{filter}")
+	public Stats getStats(@PathVariable("filter") String filter) throws EntityNotFoundException
+	{
+		if( this.forecastService.statsFilter(filter) == null) throw new ApiRequestException(filter); 
+		
+		
+		return this.forecastService.statsFilter(filter);
+		
+	}
+	/**
+	 * Risponde all richiesta GET / Stats
+	 * @param   error threshold rappresenta il campo filter della classe FilterUtils  che effettua una statistica relativa alle previsioni
+	 *  sulla quale si vuole effettuare la ricerca.
+	 * @throws  ApiRequestException(filter) se vengono generati errori di parametro non valido in ingresso al filtro.
+	 * @throws EntityNotFoundException Eccezione invocata quando non viene trovata l'entità serializzata richiesta
+	 * @return  oggetto FilterUtils contente un hashMap che contiene le statistiche richieste filtrate
+	 */
+	@GetMapping("/statsError/{error threshold}")
+	public FilterUtils getStatsForecast(@PathVariable("error threshold") float filter) throws EntityNotFoundException
+	{
+		if(filter <= 0) throw new ApiRequestException(filter);
+		return this.forecastService.filterField(filter);
+
+    }
+	/**
+	 * Risponde all richiesta GET / Stats
+	 * @param  error min rappresenta il campo filterMin della classe FilterUtils classe che effettua una statistica relativa 
+	 * alle previsioni sulla quale si vuole effettuare la ricerca.
+	 * @param  error max rappresenta il campo filterMax della classe FilterUtils classe  che effettua una statistica relativa 
+	 * alle previsioni sulla quale si vuole effettuare la ricerca. 
+	 * @throws  ApiRequestException(filter) se vengono generati errori di parametro non valido in ingresso al filtro.
+	 * @throws EntityNotFoundException Eccezione invocata quando non viene trovata l'entità serializzata richiesta
+	 * @return  oggetto FilterUtils contente un hashMap che contiene le statistiche richieste filtrate
+	 */
+	
+	@GetMapping("/statsTwoError/{error min}-{error max}") 
+	public FilterUtils getStatsForecast(@PathVariable("error min") float filterMin, @PathVariable("error max") float filterMax)
+			throws EntityNotFoundException
+	{
+		if(filterMin < 0 || filterMax <= 0) throw new ApiRequestException(filterMin, filterMax);
+		return this.forecastService.filterField(filterMin, filterMax);
+
+	}
+	/**
+	 * Risponde all richiesta GET / Stats
+	 * @param city rappresenta il campo city della classe CityForecast classe che eredita la statistica della relativa città data in ingresso dal client  relativa alle previsioni 
+	 * sulla quale si vuole effettuare la ricerca.
+	 * @throws  ApiRequestException(filter) se vengono generati errori di parametro non valido in ingresso al filtro.
+	 * @throws EntityNotFoundException Eccezione invocata quando non viene trovata l'entità serializzata richiesta
+	 * @return  oggetto CityForecast che contiene le statistiche richieste filtrate
+	 */
+	
+	@GetMapping("/statsErrorCity/{city}")
+	public CityForecast getErrorCity(@PathVariable("city") String city) throws EntityNotFoundException
+	{
+		if((this.forecastService.filterField(city)) == null) throw new ApiRequestException(city);
+		else
+			return this.forecastService.filterField(city);
+
+    } 
+	
+}
+
+
+
+

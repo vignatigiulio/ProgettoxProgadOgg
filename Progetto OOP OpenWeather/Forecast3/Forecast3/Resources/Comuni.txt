@@ -1,0 +1,641 @@
+acate
+aci castello
+acireale
+acquappesa
+acquedolci
+africo
+aglientu
+agrigento
+agropoli
+alassio
+alba adriatica
+albenga
+albidona
+albisola superiore
+albissola marina
+alcamo
+alessano
+alghero
+alì terme
+alliste
+altavilla milicia
+altidona
+amalfi
+amantea
+ameglia
+amendolara
+anacapri
+ancona
+andora
+andrano
+anzio
+arborea
+arbus
+ardea
+ardore
+arenzano
+ariano nel polesine
+arzachena
+arzana
+ascea
+atrani
+augusta
+avola
+bacoli
+badesi
+badolato
+bagheria
+bagnara calabra
+balestrate
+barano d'ischia
+barcellona pozzo di gotto
+bari
+bari sardo
+barletta
+battipaglia
+baunei
+belcastro
+bellaria-igea marina
+belmonte calabro
+belvedere marittimo
+bergeggi
+bernalda
+bianco
+bibbona
+bisceglie
+bogliasco
+bonassola
+bonifati
+bordighera
+borghetto santo spirito
+borgia
+borgio verezzi
+bosa
+botricello
+bova marina
+bovalino
+brancaleone
+briatico
+brindisi
+brolo
+bruzzano zeffirio
+budoni
+buggerru
+butera
+cabras
+cagliari
+cagnano varano
+calasetta
+calatabiano
+calopezzati
+camaiore
+camerota
+camini
+camogli
+campo nell'elba
+campobello di mazara
+campofelice di roccella
+campofilone
+campomarino
+caorle
+capaccio paestum
+capaci
+capalbio
+capo d'orlando
+capoliveri
+capoterra
+capraia isola
+capri
+cardedu
+cariati
+carini
+carlentini
+carloforte
+caronia
+carovigno
+carrara
+casal velino
+casalbordino
+casamicciola terme
+casignana
+cassano all'ionio
+castagneto carducci
+castel volturno
+casteldaccia
+castellabate
+castellammare del golfo
+castellammare di stabia
+castellaneta
+castelsardo
+castelvetrano
+castiadas
+castiglione della pescaia
+castrignano del capo
+castro
+catania
+catanzaro
+cattolica
+cattolica eraclea
+caulonia
+cavallino-treporti
+cecina
+cefalù
+celle ligure
+cellole
+centola
+ceriale
+cerveteri
+cervia
+cervo
+cesenatico
+cetara
+cetraro
+chiavari
+chieuti
+chioggia
+cinisi
+cipressa
+cirò
+cirò marina
+città sant'angelo
+civitanova marche
+civitavecchia
+codevigo
+codigoro
+cogoleto
+comacchio
+conca dei marini
+condofuri
+corigliano-rossano
+corsano
+costarainera
+cropani
+crosia
+crotone
+crucoli
+cuglieri
+cupra marittima
+curinga
+custonaci
+cutro
+davoli
+deiva marina
+diamante
+diano marina
+diso
+domus de maria
+dorgali
+duino-aurisina
+eboli
+eraclea
+ercolano
+erice
+falconara albanese
+falconara marittima
+falcone
+falerna
+fano
+fasano
+favignana
+fermo
+ferruzzano
+ficarazzi
+finale ligure
+fiumefreddo bruzio
+fiumefreddo di sicilia
+fiumicino
+fluminimaggiore
+follonica
+fondi
+forio
+formia
+forte dei marmi
+forza d'agrò
+fossacesia
+framura
+francavilla al mare
+furci siculo
+furnari
+furore
+fuscaldo
+gabicce mare
+gaeta
+gagliano del capo
+gairo
+galatone
+gallipoli
+gatteo
+gela
+genova
+giardini naxos
+giba
+ginosa
+gioia tauro
+gioiosa marea
+giovinazzo
+giugliano in campania
+giulianova
+gizzeria
+golfo aranci
+gonnesa
+goro
+grado
+grisolia
+grosseto
+grottammare
+grotteria
+guardavalle
+guardia piemontese
+iglesias
+imperia
+isca sullo ionio
+ischia
+ischitella
+isola del giglio
+isola delle femmine
+isola di capo rizzuto
+isole tremiti
+ispani
+ispica
+itala
+itri
+jesolo
+joppolo
+la maddalena
+la spezia
+lacco ameno
+ladispoli
+laigueglia
+lamezia terme
+lampedusa e linosa
+lanusei
+lascari
+latina
+lavagna
+lecce
+leni
+leporano
+lerici
+lesina
+letojanni
+levanto
+licata
+lignano sabbiadoro
+lipari
+livorno
+lizzano
+loano
+loceri
+locri
+loiri porto san paolo
+longobardi
+lotzorai
+magliano in toscana
+magomadas
+maiori
+malfa
+mandatoriccio
+manduria
+manfredonia
+maracalagonis
+marano lagunare
+maratea
+marciana
+marciana marina
+margherita di savoia
+marina di gioiosa ionica
+marsala
+martinsicuro
+maruggio
+masainas
+mascali
+massa
+massa lubrense
+massafra
+massignano
+mattinata
+mazara del vallo
+melendugno
+melilli
+melissa
+melito di porto salvo
+menfi
+messina
+meta
+milazzo
+minori
+minturno
+misano adriatico
+modica
+mola di bari
+molfetta
+monasterace
+mondolfo
+mondragone
+moneglia
+monfalcone
+monopoli
+montallegro
+montalto di castro
+montauro
+monte argentario
+monte di procida
+monte sant'angelo
+montebello jonico
+montecorice
+montegiordano
+montemarciano
+montenero di bisaccia
+montepaone
+monterosso al mare
+montesilvano
+montignoso
+morciano di leuca
+motta d'affermo
+motta san giovanni
+muggia
+muravera
+napoli
+narbolia
+nardò
+naso
+nettuno
+nicotera
+nizza di sicilia
+nocera terinese
+noli
+noto
+nova siri
+numana
+olbia
+oliveri
+orbetello
+oristano
+orosei
+ortona
+ospedaletti
+ostuni
+otranto
+pace del mela
+pachino
+palagiano
+palau
+palermo
+palizzi
+palma di montechiaro
+palmi
+pantelleria
+paola
+parghelia
+patti
+patù
+pedaso
+pesaro
+pescara
+peschici
+petacciato
+petrosino
+piano di sorrento
+pietra ligure
+pietrapaola
+pietrasanta
+pieve ligure
+pineto
+piombino
+piraino
+pisa
+pisciotta
+pisticci
+pizzo
+policoro
+polignano a mare
+pollica
+pollina
+pomezia
+pontecagnano faiano
+ponza
+portici
+portigliola
+porto azzurro
+porto cesareo
+porto empedocle
+porto recanati
+porto san giorgio
+porto sant'elpidio
+porto tolle
+porto torres
+porto viro
+portoferraio
+portofino
+portopalo di capo passero
+portoscuso
+portovenere
+posada
+positano
+potenza picena
+pozzallo
+pozzuoli
+praia a mare
+praiano
+priolo gargallo
+procida
+pulaì
+pulsano
+quartu sant'elena
+racale
+ragusa
+rapallo
+ravello
+ravenna
+realmonte
+recco
+reggio calabria
+reitano
+riace
+ribera
+ricadi
+riccione
+rimini
+rio
+riola sardo
+riomaggiore
+riposto
+riva ligure
+rocca imperiale
+rocca san giovanni
+roccalumera
+roccella ionica
+rodi garganico
+roma
+rometta
+rosarno
+roseto capo spulico
+roseto degli abruzzi
+rosignano marittimo
+rosolina
+rotondella
+sabaudia
+salerno
+salve
+san bartolomeo al mare
+san benedetto del tronto
+san felice
+san ferdinando
+san filippo del mela
+san giovanni a piro
+san giovanni suergiu
+san giuliano terme
+san lorenzo
+san lorenzo al mare
+san lucido
+san mauro castelverde
+san mauro cilento
+san mauro pascoli
+san michele al tagliamento
+san nicandro garganico
+san nicola arcella
+san pier niceto
+san pietro vernotico
+san remo
+san salvo
+san sostene
+san teodoro
+san vero milis
+san vincenzo
+san vito chietino
+san vito lo capo
+sangineto
+santa caterina dello ionio
+santa cesarea terme
+santa croce camerina
+santa flavia
+santa giusta
+santa margherita ligure
+santa maria del cedro
+santa marina
+santa marina salina
+santa marinella
+santa teresa di riva
+santa teresa gallura
+sant'agata di militello
+sant'agnello
+sant'alessio siculo
+sant'andrea apostolo dello ionio
+sant'anna arresi
+sant'antioco
+sant'ilario dello ionio
+santo stefano al mare
+santo stefano di camastra
+saponara
+sapri
+sarroch
+sarzana
+sassari
+satriano
+savignano sul rubicone
+savona
+scala coeli
+scalea
+scaletta zanclea
+scanzano jonico
+scarlino
+sciacca
+scicli
+scilla
+sellia marina
+seminara
+senigallia
+serracapriola
+serrara fontana
+sessa aurunca
+sestri levante
+siculiana
+siderno
+silvi
+simeri crichi
+siniscola
+sinnai
+siracusa
+sirolo
+sori
+sorrento
+sorso
+soverato
+spadafora
+sperlonga
+spotorno
+squillace
+stalettì
+staranzano
+stignano
+stilo
+stintino
+strongoli
+taggia
+taormina
+taranto
+tarquinia
+taviano
+terme vigliatore
+termini imerese
+termoli
+terracina
+terralba
+terrasini
+tertenia
+teulada
+tiggiano
+torchiarolo
+torino di sangro
+torre annunziata
+torre del greco
+torregrotta
+torrenova
+torretta
+torricella
+tortolì
+tortora
+tortoreto
+trabia
+trani
+trapani
+trappeto
+trebisacce
+tresnuraghes
+tricase
+trieste
+trinità d'agultu e vignola
+tropea
+tusa
+ugento
+ustica
+vado ligure
+valderice
+valdina
+valledoria
+varazze
+vasto
+vecchiano
+venetico
+venezia
+ventimiglia
+ventotene
+vernazza
+vernole
+viareggio
+vibo valentia
+vibonati
+vico del gargano
+vico equense
+vieste
+vietri sul mare
+villa san giovanni
+villafranca tirrena
+villanova monteleone
+villapiana
+villaputzu
+villasimius
+vittoria
+zambrone
+zapponeta
+zoagli
