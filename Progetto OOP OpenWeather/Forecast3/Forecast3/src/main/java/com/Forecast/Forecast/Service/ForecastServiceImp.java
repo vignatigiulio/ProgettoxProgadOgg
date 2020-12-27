@@ -1,5 +1,5 @@
 package com.Forecast.Forecast.Service;
-import com.Forecast.Forecast.Model.Exceptions.clsEccezioni;
+
 
 import com.Forecast.Forecast.Model.Stats.Stats;
 import com.Forecast.Forecast.Model.Stats.StatsForecast;
@@ -13,6 +13,12 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+/** Implementa l'interfaccia ForecastService e contiene i metodi 
+ *  relativi alle rotte specificate in RestController
+ */
+
+
 @Service
 public class ForecastServiceImp implements ForecastService {
     
@@ -22,7 +28,12 @@ public class ForecastServiceImp implements ForecastService {
     FilterUtils filterUtils = null;
     CityForecast prev = null;
   
-    public ForecastServiceImp() throws clsEccezioni {
+    
+    /** Vengono inizializzati i vari oggetti
+     *  Contiene un ciclo for che partendo dal giorno odierno va a ritroso
+     *  di 5 giorni indietro passandoli all'oggeto di tipo DataHistorical
+     */    
+    public ForecastServiceImp()  {
 	    
     	
     	list = new ArrayList<Weather>();
@@ -42,6 +53,11 @@ public class ForecastServiceImp implements ForecastService {
 	
     }
    
+    /** Metodo che, dato un filtro passato come paraetro, crea un oggetto
+     * di tipo Stats relativo al filtro
+     * @param filter stringa utilizzata per filtrare l'oggetto
+     * @return tipo di oggetto Stats opportunamente filtrato
+     */
     
     public Stats statsFilter(String filter) 
     {   

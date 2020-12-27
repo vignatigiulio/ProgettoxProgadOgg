@@ -19,7 +19,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
-import com.Forecast.Forecast.Model.Exceptions.clsEccezioni;
+/** Classe che include i metodi necessari per la lettura e il parsing
+ *  dei dati prelevati dalla API con relativi getters e setters 
+ *  e implementa l'interfaccia Data
+ */
+
  public class DataForecast implements Data{
     
     private Vector<Double> temperature = null;
@@ -34,7 +38,7 @@ import com.Forecast.Forecast.Model.Exceptions.clsEccezioni;
     public static String apiKey;
 
     
-    public DataForecast() throws clsEccezioni {
+    public DataForecast() {
     	
     	temperature = new Vector<Double>();
     	date = new Vector<String>();
@@ -49,8 +53,8 @@ import com.Forecast.Forecast.Model.Exceptions.clsEccezioni;
 	public void callApi() {
 		try {
 			
-		    if (this.citta == null) System.exit(0);	    	
-		    URLConnection openConnection = new URL("http://api.openweathermap.org/data/2.5/forecast?q=" + this.citta +",IT&units=metric&appid="+apiKey).openConnection();
+		    if (DataForecast.citta == null) System.exit(0);	    	
+		    URLConnection openConnection = new URL("http://api.openweathermap.org/data/2.5/forecast?q=" + DataForecast.citta +",IT&units=metric&appid="+apiKey).openConnection();
 		    	
 		    InputStream in = openConnection.getInputStream();
 			
@@ -116,11 +120,11 @@ import com.Forecast.Forecast.Model.Exceptions.clsEccezioni;
 	public void saveFile() {
 		try {
 		    
-	    	PrintWriter file_output = new PrintWriter(new BufferedWriter(new FileWriter(".\\Resources\\"+ this.citta +"Forecast.txt")));
-	    	PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(".\\Resources\\"+ this.citta +"ForecastStats.txt")));
+	    	PrintWriter file_output = new PrintWriter(new BufferedWriter(new FileWriter(".\\Resources\\"+ DataForecast.citta +"Forecast.txt")));
+	    	PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(".\\Resources\\"+ DataForecast.citta +"ForecastStats.txt")));
 				
 	    {
-		file_output.println(this.citta);
+		file_output.println(DataForecast.citta);
 		for(int i = 0; i < temperature.size();i++) {
 		    file_output.println(date.get(i));
 		    file_output.println(weather.get(i));

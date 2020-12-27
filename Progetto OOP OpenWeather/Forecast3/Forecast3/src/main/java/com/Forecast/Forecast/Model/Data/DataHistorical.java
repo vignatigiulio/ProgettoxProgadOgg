@@ -19,7 +19,12 @@ import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 import com.Forecast.Forecast.Model.Temperature;
 import com.Forecast.Forecast.Model.Weather;
-import com.Forecast.Forecast.Model.Exceptions.clsEccezioni;
+
+/** Classe che include i metodi necessari per la lettura e il parsing
+ *  dei dati prelevati dalla API con relativi getters e setters 
+ *  e implementa l'interfaccia Data
+ */
+
 public class DataHistorical implements Data {
     
     private double lat;
@@ -31,14 +36,14 @@ public class DataHistorical implements Data {
     public String chiave;
     
 
-	public DataHistorical() throws clsEccezioni 
+	public DataHistorical() 
 	{
 		
 		DataForecast json = new DataForecast();
 		this.chiave = DataForecast.getApiKey();
 		json.callApi();
 		json.saveFile();
-		this.citta = json.getCitta();
+		this.citta = DataForecast.getCitta();
 		this.lon=json.getLon();
 		this.lat = json.getLat();
 	}

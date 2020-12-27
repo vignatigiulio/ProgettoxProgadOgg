@@ -34,7 +34,7 @@ public class Gui {
 	public JButton btnGetSelected;
 	public JScrollPane scrollPane;
 	public JScrollPane scrollPane_1;
-	public JList list ;
+	public JList<String> list ;
 	DLM city = null;
 	
 	public void inizialize()
@@ -74,7 +74,7 @@ public class Gui {
 		scrollPane_1.setBounds(350, 74, 150, 250);
 		frame.getContentPane().add(scrollPane_1);
 		
-		list = new JList();
+		list = new JList<>();
 		scrollPane_1.setViewportView(list);
 		
 		JLabel lblNewLabel_1 = new JLabel("Cerca per Previsioni per localit\u00E0");
@@ -168,7 +168,7 @@ public class Gui {
 	public void pulisci()
 	{
 	textString.setText("");
-	 DefaultListModel model=new DefaultListModel();
+	 DefaultListModel<String> model=new DefaultListModel<>();
 	 model.clear();
 	 list.setModel(model);
 	}
