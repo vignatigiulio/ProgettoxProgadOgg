@@ -62,11 +62,11 @@ public class ForecastRestController {
 	 *  @throws EntityNotFoundException Eccezione invocata quando non viene trovata l'entità serializzata richiesta
 	 * @return  oggetto Weather relativo
 	 */
-	@GetMapping("/weather/{data}")
-	public Weather getWeather(@PathVariable("data")String data) throws EntityNotFoundException
+	@GetMapping("/weather/{filter}")
+	public Weather getWeather(@PathVariable("data")String filter) throws EntityNotFoundException
 	{
-		Weather w =forecastService.getWeather(data);
-		if (w == null) throw new ApiRequestException(data);
+		Weather w =forecastService.getWeather(filter);
+		if (w == null) throw new ApiRequestException(filter);
 	
 			return w;
 	

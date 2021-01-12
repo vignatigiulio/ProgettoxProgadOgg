@@ -113,7 +113,7 @@ public class ForecastServiceImp implements ForecastService {
 		
 		for(Weather w:list)
 		{
-			if(w.getDate().equals(data))
+			if(w.getDate().equals(data) || w.getWeather().equals(data))
 				return w;
 			
 		}
