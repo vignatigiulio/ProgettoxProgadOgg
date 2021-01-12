@@ -46,7 +46,7 @@ public class CalcErrorThreshold {
 	    	    	    tempC.add(Double.parseDouble(scanC.nextLine()));
 	    	    	    tempC.add(Double.parseDouble(scanC.nextLine()));
 	    	    	    trovato = false;
-	    	    	}
+	    	    	   }
 	    	    }
 	    	    trovato = true;
 	    	    String lettura2;

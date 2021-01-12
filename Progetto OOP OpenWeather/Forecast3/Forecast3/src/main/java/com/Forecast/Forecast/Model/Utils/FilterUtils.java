@@ -13,8 +13,7 @@ import java.util.Map.Entry;
 public class FilterUtils {
     private HashMap<String, Float> Previsioni = new HashMap<>();
    
-   
-    /**
+   /**
      * Metodo che determina per ciascun'oggetto della Map, in base al filtro specificato,
      * se deve essere incluso nella risposta
      * @param String citta che viene considerato nel test

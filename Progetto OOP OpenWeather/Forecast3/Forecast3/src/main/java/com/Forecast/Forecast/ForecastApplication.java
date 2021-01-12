@@ -2,6 +2,8 @@ package com.Forecast.Forecast;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +22,8 @@ public class ForecastApplication {
 	public static void main(String[] args) 
 	{
 		Gui gui = new Gui();
+		File f = new File(".\\Resources\\Data");
+		gui.deleteDirectory(f);
 		gui.inizialize();
 		gui.insertInvio();
 		gui.insertCancel();
@@ -40,6 +44,7 @@ public class ForecastApplication {
 					}while(conferma  == 1);
 					DataForecast.setapiKey("80da379aa6764f47ae8d83559daeb6b4");
 					SpringApplication.run(ForecastApplication.class, args);
+				
 				}catch(Exception e) 
 				{
 				}

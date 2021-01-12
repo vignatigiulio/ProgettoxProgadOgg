@@ -17,6 +17,8 @@ import java.util.Vector;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
+
+import com.Forecast.Forecast.Model.Gui;
 import com.Forecast.Forecast.Model.Temperature;
 import com.Forecast.Forecast.Model.Weather;
 
@@ -96,7 +98,7 @@ public class DataHistorical implements Data {
 
 		  try {
 		    
-		    	PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(".\\Resources\\"+ this.citta +"Historical.txt",true)));
+		    	PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(".\\Resources\\Data\\"+ this.citta +"Historical.txt",true)));
 					
 		    {
 		    	out.println("giorno"+ this.citta);
@@ -118,7 +120,7 @@ public class DataHistorical implements Data {
     	List<Weather> lista = new ArrayList<Weather>();    
     	try {
     	    
-    	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\" + this.citta + "Forecast.txt")));
+    	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\" + this.citta + "Forecast.txt")));
     	    name = scan.nextLine();
     	    
     	    while(scan.hasNext()) {
@@ -141,7 +143,8 @@ public class DataHistorical implements Data {
     		    lista.add(tempo);
     			}
     	    }
-    	    
+    	   // Gui.delete(this.citta + "Forecast.txt");
+    	   
     	 } catch(IOException e) {
     	     System.out.print(e);
     	 } catch(Exception e) {

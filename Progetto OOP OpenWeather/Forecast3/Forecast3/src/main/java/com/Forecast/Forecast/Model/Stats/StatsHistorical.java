@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Vector;
 
+import com.Forecast.Forecast.Model.Gui;
+import com.Forecast.Forecast.Model.Data.DataForecast;
+
 public class StatsHistorical  extends Stats{
 	private   Vector<Double> temperature = new Vector<>();
 	private   Vector<Double> feels_like = new Vector<>();
@@ -25,7 +28,7 @@ public class StatsHistorical  extends Stats{
 	{
 		 try 
 		 {
-			 Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\" + this.citta + "Historical.txt")));
+			 Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\" + getCitta() + "Historical.txt")));
 			 String str = null;
 			while(scan.hasNextLine()) 
 			{	
@@ -38,6 +41,7 @@ public class StatsHistorical  extends Stats{
 			   	feels_like.add(Double.parseDouble(str));
 			}
 			scan.close();
+			
 		 } catch (IOException e) {
 			    System.out.print(e);
 			} catch (Exception e) {

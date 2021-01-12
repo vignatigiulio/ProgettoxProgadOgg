@@ -4,7 +4,10 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Vector;
+
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -172,8 +175,25 @@ public class Gui {
 	 model.clear();
 	 list.setModel(model);
 	}
-
+	public  void deleteDirectory(File folder) {
+		 File[] files = folder.listFiles();
+	       if(files!=null) { //some JVMs return null for empty dirs
+	           for(File f: files) {
+	               
+	                   f.delete();
+	      
+	       }
+	     }
+	}
 }
+
+
+
+
+		
+	  
+
+
 
 	
 	

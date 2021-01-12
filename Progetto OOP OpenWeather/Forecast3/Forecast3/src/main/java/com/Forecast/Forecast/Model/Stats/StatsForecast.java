@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Vector;
+
+import com.Forecast.Forecast.Model.Gui;
 /*La classe si occupa di scrivere nei vettori i valori delle temperature nei vettori
  *Verranno scritti la temperatura, la percepita, la massima e la minima.
  *Al fine di una valutazione più esatta, verranno inserite le temperature previste per ogni 24 ore
@@ -31,7 +33,7 @@ public class StatsForecast extends Stats {
 	String citta=string;
 		try
 		{
-			Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\"+citta+"ForecastStats.txt")));
+			Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\"+ getCitta()+"ForecastStats.txt")));
 			while(scan.hasNextLine())
 			{
 				temperature.addElement((Double.parseDouble(scan.nextLine())));
@@ -39,6 +41,7 @@ public class StatsForecast extends Stats {
 				temp_min.addElement((Double.parseDouble(scan.nextLine())));
 				temp_max.addElement((Double.parseDouble(scan.nextLine())));
 			}
+			
 		}catch(FileNotFoundException e){
 				System.out.print(e);
 		}catch(Exception e){

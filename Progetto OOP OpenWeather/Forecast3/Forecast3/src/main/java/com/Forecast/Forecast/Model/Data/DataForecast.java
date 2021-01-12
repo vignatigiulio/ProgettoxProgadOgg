@@ -120,8 +120,8 @@ import org.json.simple.parser.ParseException;
 	public void saveFile() {
 		try {
 		    
-	    	PrintWriter file_output = new PrintWriter(new BufferedWriter(new FileWriter(".\\Resources\\"+ DataForecast.citta +"Forecast.txt")));
-	    	PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(".\\Resources\\"+ DataForecast.citta +"ForecastStats.txt")));
+	    	PrintWriter file_output = new PrintWriter(new BufferedWriter(new FileWriter(".\\Resources\\Data\\"+ DataForecast.citta +"Forecast.txt")));
+	    	PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(".\\Resources\\Data\\"+ DataForecast.citta +"ForecastStats.txt")));
 				
 	    {
 		file_output.println(DataForecast.citta);

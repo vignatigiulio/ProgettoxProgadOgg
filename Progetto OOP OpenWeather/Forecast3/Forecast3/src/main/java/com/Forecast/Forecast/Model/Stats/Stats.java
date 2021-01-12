@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 
 import java.util.HashMap;
 
+import com.Forecast.Forecast.Model.Data.DataForecast;
+
 /*Classe che si occupa di creare le HashMap che verranno poi visualizzate all'utente.
  *Richiama il metodo ReadFile passando il nome del comune come parametro.
  *Esso si occuperà poi di popolare gli appositi vettori.
@@ -20,6 +22,7 @@ public abstract class Stats {
 	public abstract HashMap<String, Float> methodMedia();
 	
 	public String getCitta() {
+		this.citta=DataForecast.getCitta();
 		return citta;
 	}
 
