@@ -63,7 +63,7 @@ public class ForecastRestController {
 	 * @return  oggetto Weather relativo
 	 */
 	@GetMapping("/weather/{filter}")
-	public Weather getWeather(@PathVariable("data")String filter) throws EntityNotFoundException
+	public Weather getWeather(@PathVariable("filter")String filter) throws EntityNotFoundException
 	{
 		Weather w =forecastService.getWeather(filter);
 		if (w == null) throw new ApiRequestException(filter);

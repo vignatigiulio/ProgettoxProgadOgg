@@ -109,11 +109,11 @@ public class ForecastServiceImp implements ForecastService {
 	}
 
 	@Override
-	public Weather getWeather(String data) {
+	public Weather getWeather(String filter) {
 		
 		for(Weather w:list)
 		{
-			if(w.getDate().equals(data) || w.getWeather().equals(data))
+			if(w.getDate().equals(filter) || w.getWeather().equals(filter))
 				return w;
 			
 		}
