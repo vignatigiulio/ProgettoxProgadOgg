@@ -70,6 +70,10 @@ public class CalcErrorThreshold {
 	    	    float media = (float) (somma/4);
 	    	    return media;
 	    	}
+
+	  
+	
+
 	
 	/**
 	 * Metodo che riordina una Map secondo il campo Float, con l'ausilio di un iteratore

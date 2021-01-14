@@ -1,6 +1,7 @@
 package com.Forecast.Forecast;
 
 import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
 import java.io.File;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Forecast.Forecast.Model.Gui;
 import com.Forecast.Forecast.Model.Data.DataForecast;
+
 @RestController
 @SpringBootApplication
 /*Main del programma
@@ -42,8 +44,9 @@ public class ForecastApplication {
 						conferma = gui.msg();
 						gui.pulisci();
 					}while(conferma  == 1);
-					DataForecast.setapiKey("80da379aa6764f47ae8d83559daeb6b4");
+					DataForecast.setapiKey("b860996c1bf309c8b3f039f21d55d518");
 					SpringApplication.run(ForecastApplication.class, args);
+					
 				
 				}catch(Exception e) 
 				{

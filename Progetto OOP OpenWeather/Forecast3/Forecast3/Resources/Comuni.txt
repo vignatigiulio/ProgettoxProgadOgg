@@ -104,7 +104,6 @@ capalbio
 capo d'orlando
 capoliveri
 capoterra
-capraia isola
 capri
 cardedu
 cariati
@@ -166,7 +165,6 @@ cogoleto
 comacchio
 conca dei marini
 condofuri
-corigliano-rossano
 corsano
 costarainera
 cropani
@@ -439,7 +437,6 @@ praia a mare
 praiano
 priolo gargallo
 procida
-pulaì
 pulsano
 quartu sant'elena
 racale

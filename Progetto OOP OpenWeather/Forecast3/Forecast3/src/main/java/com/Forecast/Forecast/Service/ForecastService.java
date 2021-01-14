@@ -17,6 +17,7 @@ public interface ForecastService extends Filter<Object, Object>,StastInterface {
     
     List<Weather> getWeathers();
     Weather getWeather(String filter);
+    
    
 	
 	

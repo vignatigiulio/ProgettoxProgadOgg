@@ -22,13 +22,13 @@ public class FilterUtils {
      * @throws FileNotFoundException 
      */
     public boolean check(String citta, float filtro) throws FileNotFoundException {
-	
-	CalcErrorThreshold cet = new CalcErrorThreshold();
-	if (cet.Calcolo(citta) < filtro)
-	    return true;
-	else
-	    return false;
-    }
+    	
+    	CalcErrorThreshold cet = new CalcErrorThreshold();
+    	if (cet.Calcolo(citta) < filtro)
+    	    return true;
+    	else
+    	    return false;
+        }
     
     /**
      * Metodo che determina per ciascun'oggetto della Map, in base al filtro specificato,
@@ -54,22 +54,22 @@ public class FilterUtils {
      * @param filtro Campo su cui opera il filtro
      */
     public void select(float filtro) {
-	HashMap<String, Float> Elenco = new HashMap<>();
-	CalcErrorThreshold cet = new CalcErrorThreshold();
-	try {
-	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Comuni.txt")));
-	    while (scan.hasNextLine()) {
-		
-		String citta = scan.nextLine();	 
-		if(check(citta, filtro))
-		    Elenco.put(citta, cet.Calcolo(citta));
-		}
-	} catch(Exception e) {
-	    System.out.print(e);
-	}
-	Previsioni = cet.sortHashMapByValues(Elenco);
-	
-    }
+    	HashMap<String, Float> Elenco = new HashMap<>();
+    	CalcErrorThreshold cet = new CalcErrorThreshold();
+    	try {
+    	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Comuni.txt")));
+    	    while (scan.hasNextLine()) {
+    		
+    		String citta = scan.nextLine();	 
+    		if(check(citta, filtro))
+    		    Elenco.put(citta, cet.Calcolo(citta));
+    		}
+    	} catch(Exception e) {
+    	    System.out.print(e);
+    	}
+    	Previsioni = cet.sortHashMapByValues(Elenco);
+    	
+        }
     /**
      * Metodo che riceve il filtro e crea una Map parziale con gli
      * oggetti selezionati
@@ -114,6 +114,7 @@ public class FilterUtils {
 	Previsioni = cet.sortHashMapByValues(Elenco);
 	
     }
+  
     /**
      * Metodo che crea una Map parziale con gli
      * oggetti selezionati
@@ -129,6 +130,7 @@ public class FilterUtils {
 	        	}
 	     return -1;   	
 	}
+
 
     public HashMap<String, Float> getPrevisioni() {
         return Previsioni;
