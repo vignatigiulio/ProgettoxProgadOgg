@@ -25,6 +25,7 @@ public interface Filter<E,T> {
      * @return un oggetto FilterUtils,che contiene una Map, della città con la relativa soglia di errore della previsione effettuata dal server
      */
     abstract CityForecast filterField(String city);
+
     /*
      * 
      */

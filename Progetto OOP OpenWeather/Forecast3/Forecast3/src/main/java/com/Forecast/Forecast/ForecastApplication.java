@@ -1,6 +1,7 @@
 package com.Forecast.Forecast;
 
 import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
 import java.io.File;
 
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Forecast.Forecast.Model.Gui;
 import com.Forecast.Forecast.Model.Data.DataForecast;
+
 @RestController
 @SpringBootApplication
 /*Main del programma
@@ -44,6 +46,7 @@ public class ForecastApplication {
 					}while(conferma  == 1);
 					DataForecast.setapiKey("8a4ee3b7f356511b37b0082bbd8580e2");
 					SpringApplication.run(ForecastApplication.class, args);
+					
 				
 				}catch(Exception e) 
 				{

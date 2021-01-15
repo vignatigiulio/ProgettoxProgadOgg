@@ -2,6 +2,7 @@ package com.Forecast.Forecast.Service;
 
 
 import com.Forecast.Forecast.Model.Stats.Stats;
+
 import com.Forecast.Forecast.Model.Stats.StatsForecast;
 import com.Forecast.Forecast.Model.Stats.StatsHistorical;
 import com.Forecast.Forecast.Model.Utils.CityForecast;
@@ -150,4 +151,9 @@ public class ForecastServiceImp implements ForecastService {
 	    return filterUtils;
 	}
 
+	
 }
+
+
+
+
