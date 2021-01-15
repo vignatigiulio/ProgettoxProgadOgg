@@ -61,7 +61,9 @@ public class ForecastServiceImp implements ForecastService {
      */
     
     public Stats statsFilter(String filter) 
-    {   
+    {
+    if(weatherHistorical.getCitta()!= null)
+    {
 	filter = filter.toLowerCase();
     	if(filter.equals("historical"))
 			try {
@@ -96,6 +98,8 @@ public class ForecastServiceImp implements ForecastService {
       	}
 		return null;
 	}
+    return null;
+    }
     
     @Override
     public List<Weather> getWeathers() {
@@ -111,13 +115,16 @@ public class ForecastServiceImp implements ForecastService {
 
 	@Override
 	public Weather getWeather(String filter) {
-		
+		if(list != null)
+		{
 		for(Weather w:list)
 		{
-			if(w.getDate().equals(filter) || w.getWeather().equals(filter))
+			if(w.getDate().equals(filter))
 				return w;
 			
 		}
+		return null;
+	}
 		return null;
 	}
 
@@ -134,21 +141,21 @@ public class ForecastServiceImp implements ForecastService {
 	}
 	
 	@Override
-	public CityForecast filterField(String city) {
-	    city = city.toLowerCase();
-	    filterUtils.select();
-		if(filterUtils.searchCity(city) != -1)
+	public FilterUtils getTempMin(float filter) {
+	    filterUtils.tempMin(filter);
+	    return filterUtils;
+	}
+
+	@Override
+	public CityForecast filterField(String city) throws FileNotFoundException {
+		float c = filterUtils.ricerca(city);
+		if(c != -1)
 		{
-			prev = new CityForecast(city,filterUtils.searchCity(city));
+			prev = new CityForecast(city, c);
 			return prev;
 		}
 		else
 			return null;
-	}
-	@Override
-	public FilterUtils getTempMin(float filter) {
-	    filterUtils.tempMin(filter);
-	    return filterUtils;
 	}
 
 	

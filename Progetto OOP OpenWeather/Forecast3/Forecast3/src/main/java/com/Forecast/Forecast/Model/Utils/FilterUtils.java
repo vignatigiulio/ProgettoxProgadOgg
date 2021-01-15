@@ -140,16 +140,12 @@ public class FilterUtils {
      * @param city Campo su cui opera il filtro
      * @return un float che andrà a creare l'oggetto FilterUtils filtrato
      */
-    public float searchCity(String city) {
-		city.toLowerCase();
-		 for (Entry<String, Float> entry : Previsioni.entrySet())  
-	        	if(entry.getKey().equals(city))
-	        	{
-	        		return entry.getValue();
-	        	}
-	     return -1;   	
-	}
 
+    public float ricerca(String citta) throws FileNotFoundException
+    {
+    	CalcErrorThreshold cet = new CalcErrorThreshold();
+    	return cet.Calcolo(citta);
+    }
 
     public HashMap<String, Float> getPrevisioni() {
         return Previsioni;

@@ -1,5 +1,7 @@
 package com.Forecast.Forecast.Model.Utils;
 
+import java.io.FileNotFoundException;
+
 /**
  * Intefaccia che mette a disposizione la dichiarazione del metodo per filtrare i dati di una classe
  * @param <E> Tipo dell'oggetto che verrà filtrato
@@ -24,11 +26,13 @@ public interface Filter<E,T> {
      * @param city campo che deve essere filtrato
      * @return un oggetto FilterUtils,che contiene una Map, della città con la relativa soglia di errore della previsione effettuata dal server
      */
-    abstract CityForecast filterField(String city);
+    abstract CityForecast filterField(String city) throws FileNotFoundException;
 
     /*
      * 
      */
     abstract FilterUtils getTempMin(float temp);
+    
+    
 }
 

@@ -53,7 +53,8 @@ import org.json.simple.parser.ParseException;
 	public void callApi() {
 		try {
 			
-		    if (DataForecast.citta == null) System.exit(0);
+		    if (DataForecast.citta != null)
+		    {
 		    URLConnection openConnection = new URL("http://api.openweathermap.org/data/2.5/forecast?q=" + DataForecast.citta +",IT&units=metric&appid="+apiKey).openConnection();
 		    	
 		    InputStream in = openConnection.getInputStream();
@@ -76,16 +77,19 @@ import org.json.simple.parser.ParseException;
 			    
 		    JSONObject obj = (JSONObject) JSONValue.parseWithException(data);
 		    JsonObject(obj);
-		   
+		    }
 		} catch (IOException | ParseException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
     }
 	
     public void JsonObject(JSONObject obj)
     {
+    	if(DataForecast.citta!=null)
+		{
     	JSONArray jsonObject = (JSONArray) obj.get("list");
 	    JSONObject org = (JSONObject) obj.get("city");
 	    JSONObject cord = (JSONObject) org.get("coord");
@@ -112,14 +116,15 @@ import org.json.simple.parser.ParseException;
 	    	this.feels_like.add (Double.parseDouble(String.valueOf(json.get("feels_like"))));
 	    	this.temp_min.add(Double.parseDouble(String.valueOf(json.get("temp_min"))));
 	    	this.temp_max.add(Double.parseDouble(String.valueOf(json.get("temp_max"))));
-    	
+	    }
 	    }
     }
 
 	@Override
 	public void saveFile() {
 		try {
-		    
+			if(DataForecast.citta!=null)
+			{
 	    	PrintWriter file_output = new PrintWriter(new BufferedWriter(new FileWriter(".\\Resources\\Data\\"+ DataForecast.citta +"Forecast.txt")));
 	    	PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(".\\Resources\\Data\\"+ DataForecast.citta +"ForecastStats.txt")));
 				
@@ -147,7 +152,7 @@ import org.json.simple.parser.ParseException;
 		
 	    System.out.println("File salvato!");
 	    System.out.println("File stats salvato!");
-
+			}
 	} catch (IOException e) {
 	    e.printStackTrace();
 	} catch (Exception e) {

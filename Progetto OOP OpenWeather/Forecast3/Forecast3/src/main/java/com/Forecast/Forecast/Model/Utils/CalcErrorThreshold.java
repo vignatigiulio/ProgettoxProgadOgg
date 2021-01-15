@@ -63,18 +63,17 @@ public class CalcErrorThreshold {
 			    }
 		    	    scanF.close();
 	    	    }
-	    	    Vector<Double> errori = new Vector<>();
+	    	    if(trovato) return -1;
 	    	    double differenza, somma = 0;
 	    	    for (int i = 0; i < tempC.size(); i++) {
 	    		differenza = tempC.get(i) - tempF.get(i);
-	    		errori.add(Math.abs(differenza));
 	    		somma += (Math.abs(differenza));
 	    	    }
 	    	    float media = (float) (somma/tempC.size());
 	    	    return media;
 	    	}
 
-	  
+  
 	
 
 	

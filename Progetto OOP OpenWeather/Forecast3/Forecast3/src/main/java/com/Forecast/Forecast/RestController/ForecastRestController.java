@@ -1,4 +1,5 @@
 package com.Forecast.Forecast.RestController;
+import java.io.FileNotFoundException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,8 +52,9 @@ public class ForecastRestController {
 	@GetMapping("/weather") 
 	public List<Weather> getWeathers() throws EntityNotFoundException
 	{
-		return this.forecastService.getWeathers();
-		
+		List<Weather> c = forecastService.getWeathers();
+		if(c == null) throw new ApiRequestException("Il server è stato avviato senza città. Riavviare.");
+		return c;
 	}
 	
 	/**
@@ -66,8 +68,7 @@ public class ForecastRestController {
 	public Weather getWeather(@PathVariable("filter")String filter) throws EntityNotFoundException
 	{
 		Weather w =forecastService.getWeather(filter);
-		if (w == null) throw new ApiRequestException(filter);
-	
+		if (w == null) throw new ApiRequestException("Data non supportata o server avviato senza città. Riprovare.");
 			return w;
 	
 	}
@@ -83,7 +84,7 @@ public class ForecastRestController {
 	@GetMapping("/stats/{filter}")
 	public Stats getStats(@PathVariable("filter") String filter) throws EntityNotFoundException
 	{
-		if( this.forecastService.statsFilter(filter) == null) throw new ApiRequestException(filter); 
+		if( this.forecastService.statsFilter(filter) == null) throw new ApiRequestException("Il server è stato avviato senza città. Riavviare."); 
 		
 		
 		return this.forecastService.statsFilter(filter);
@@ -131,9 +132,8 @@ public class ForecastRestController {
 	 * @throws EntityNotFoundException Eccezione invocata quando non viene trovata l'entità serializzata richiesta
 	 * @return  oggetto CityForecast che contiene le statistiche richieste filtrate
 	 */
-	
 	@GetMapping("/statsErrorCity/{city}")
-	public CityForecast getErrorCity(@PathVariable("city") String city) throws EntityNotFoundException
+	public CityForecast getErrorCity2(@PathVariable("city") String city) throws EntityNotFoundException, FileNotFoundException
 	{
 		if((this.forecastService.filterField(city)) == null) throw new ApiRequestException(city);
 		else
@@ -149,6 +149,7 @@ public class ForecastRestController {
 		return this.forecastService.getTempMin(temp);
 
     }
+	
 	
 
 }

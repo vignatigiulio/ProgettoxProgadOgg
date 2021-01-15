@@ -26,22 +26,26 @@ public class StatsForecast extends Stats {
 	}
 	@Override
 	/**Il metodo si occupa di inserire nei vettori le temperature presenti nei file di testo precedentemente creati.
-	 *@Param string il nome della città
+	 *@Param citta il nome della città
 	 */
-	public void ReadFile(String string)  
+	public void ReadFile(String citta)  
 	{ 
-	String citta=string;
 		try
 		{
-			Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\"+ getCitta()+"ForecastStats.txt")));
-			while(scan.hasNextLine())
-			{
-				temperature.addElement((Double.parseDouble(scan.nextLine())));
-				feels_like.addElement((Double.parseDouble(scan.nextLine())));
-				temp_min.addElement((Double.parseDouble(scan.nextLine())));
-				temp_max.addElement((Double.parseDouble(scan.nextLine())));
-			}
-			
+			Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\"+ citta+"ForecastStats.txt")));
+				for(int i = 0; scan.hasNextLine(); i++)
+				{
+					if(i == 0 || i%8 == 0)
+					{
+						temperature.addElement((Double.parseDouble(scan.nextLine())));
+						feels_like.addElement((Double.parseDouble(scan.nextLine())));
+						temp_min.addElement((Double.parseDouble(scan.nextLine())));
+						temp_max.addElement((Double.parseDouble(scan.nextLine())));
+					}
+					else 
+						for(int j = 0; j < 4; j++) 
+							scan.nextLine();
+				}
 		}catch(FileNotFoundException e){
 				System.out.print(e);
 		}catch(Exception e){

@@ -40,12 +40,11 @@ public class DataHistorical implements Data {
 
 	public DataHistorical() 
 	{
-		
+		this.citta = DataForecast.getCitta();
 		DataForecast json = new DataForecast();
 		this.chiave = DataForecast.getApiKey();
 		json.callApi();
 		json.saveFile();
-		this.citta = DataForecast.getCitta();
 		this.lon=json.getLon();
 		this.lat = json.getLat();
 	}
@@ -53,6 +52,8 @@ public class DataHistorical implements Data {
  public void callApi()
  {
    try {
+	   if(this.citta != null)
+	   {
 	       URLConnection openConnection = new URL("https://api.openweathermap.org/data/2.5/onecall/timemachine?lat="+ lat 
        +"&lon="+ lon +"&dt="+ this.dt + "&appid="+this.chiave+"&units=metric").openConnection();
 	    
@@ -78,12 +79,13 @@ public class DataHistorical implements Data {
 
 	    		JSONObject obj = (JSONObject) JSONValue.parseWithException(data);
 	    		JsonObject(obj);
-	    		
+	   }
 	} catch (IOException | ParseException e) {
 		e.printStackTrace();
 	} catch (Exception e) {
 		e.printStackTrace();
 	}	 
+   
  }
  	public void JsonObject(JSONObject obj)
  		{
@@ -95,7 +97,8 @@ public class DataHistorical implements Data {
 	public void saveFile()
 	{
 	
-
+		if(this.citta != null)
+		{
 		  try {
 		    
 		    	PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(".\\Resources\\Data\\"+ this.citta +"Historical.txt",true)));
@@ -112,10 +115,12 @@ public class DataHistorical implements Data {
 		  }catch(IOException e) {
 			  System.out.println(e);
 		  }
-		  
+		}
 	}
 	public List<Weather> fillList()
 	{
+		if(this.citta != null)
+		{
     	String lettura = null;
     	String name;
     	List<Weather> lista = new ArrayList<Weather>();    
@@ -145,7 +150,7 @@ public class DataHistorical implements Data {
     			}
     	    }
     	   // Gui.delete(this.citta + "Forecast.txt");
-    	   
+    	
     	 } catch(IOException e) {
     	     System.out.print(e);
     	 } catch(Exception e) {
@@ -153,7 +158,8 @@ public class DataHistorical implements Data {
     	 }
 		return lista;
     }
-
+		return null;
+	}
 	public String getCitta() {
 		return citta;
 	}

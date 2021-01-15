@@ -60,12 +60,12 @@ public class Gui {
 		frame.getContentPane().add(btnCancel);
 		
 		textString = new JTextField();
-		textString.setToolTipText("Cerca per Previsioni per localit\u00E0");
+		textString.setToolTipText("Puoi inserire anche una sottostringa!");
 		textString.setBounds(108, 66, 150, 26);
 		frame.getContentPane().add(textString);
 		textString.setColumns(10);
 		
-		btnGetSelected = new JButton("Selected");
+		btnGetSelected = new JButton("Select");
 		btnGetSelected.setBounds(108, 98, 84, 20);
 		frame.getContentPane().add(btnGetSelected);
 		scrollPane = new JScrollPane();
@@ -81,7 +81,7 @@ public class Gui {
 		scrollPane_1.setViewportView(list);
 		
 		JLabel lblNewLabel_1 = new JLabel("Cerca per Previsioni per localit\u00E0");
-		lblNewLabel_1.setBounds(108, 49, 168, 20);
+		lblNewLabel_1.setBounds(108, 49, 190, 20);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JComponent lblNewLabel_2 = new JLabel("Localit\u00E0 trovate");
@@ -158,7 +158,8 @@ public class Gui {
 	{
 		int[] indic = null;	 
 		 indic = list.getSelectedIndices();
-		 DataForecast.setCitta(city.getDLMIndex(indic[0]));	
+		 //DataForecast.setCitta(city.getDLMIndex(indic[0]));	
+		 DataForecast.setCitta(null);
 	}
 	
 	public int msg()
