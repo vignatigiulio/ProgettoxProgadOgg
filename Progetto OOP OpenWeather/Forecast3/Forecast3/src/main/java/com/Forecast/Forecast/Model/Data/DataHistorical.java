@@ -101,7 +101,8 @@ public class DataHistorical implements Data {
 		    	PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(".\\Resources\\Data\\"+ this.citta +"Historical.txt",true)));
 					
 		    {
-		    	out.println("giorno"+ this.citta);
+		    	int i = 1;
+		    	out.println("giorno "+i+++" "+this.citta);
 		    	out.println(this.dt);
 		    	out.println(this.temp);
 		    	out.println(this.feels_like);
