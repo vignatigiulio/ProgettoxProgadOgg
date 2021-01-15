@@ -70,6 +70,25 @@ public class FilterUtils {
 	Previsioni = cet.sortHashMapByValues(Elenco);
 	
     }
+    /*
+     * 
+     */
+    public void tempMin(float filtro) {
+    	HashMap<String, Float> Elenco = new HashMap<>();
+    	CalcErrorThreshold cet = new CalcErrorThreshold();
+    	try {
+    	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Comuni.txt")));
+    	    while (scan.hasNextLine()) {
+    		String citta = scan.nextLine();	 
+    		if(filtro < cet.tempMin(citta))
+    		    Elenco.put(citta, cet.tempMin(citta));
+    		}
+    	} catch(Exception e) {
+    	    System.out.print(e);
+    	}
+    	Previsioni = cet.sortHashMapByValues(Elenco);
+    	
+        }
     /**
      * Metodo che riceve il filtro e crea una Map parziale con gli
      * oggetti selezionati

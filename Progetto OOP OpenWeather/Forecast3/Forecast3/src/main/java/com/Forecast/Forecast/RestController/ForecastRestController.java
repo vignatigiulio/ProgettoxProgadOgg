@@ -139,7 +139,16 @@ public class ForecastRestController {
 		else
 			return this.forecastService.filterField(city);
 
-    } 
+    }
+	/*
+	 * 
+	 */
+	@GetMapping("/tempMin/{temp}")
+	public FilterUtils getTempMin(@PathVariable("temp") float temp) throws EntityNotFoundException
+	{
+		return this.forecastService.getTempMin(temp);
+
+    }
 	
 }
 

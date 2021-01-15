@@ -144,6 +144,10 @@ public class ForecastServiceImp implements ForecastService {
 		else
 			return null;
 	}
-
+	@Override
+	public FilterUtils getTempMin(float filter) {
+	    filterUtils.tempMin(filter);
+	    return filterUtils;
+	}
 
 }

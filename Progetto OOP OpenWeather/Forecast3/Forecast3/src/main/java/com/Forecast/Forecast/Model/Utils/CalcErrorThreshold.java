@@ -26,18 +26,13 @@ public class CalcErrorThreshold {
 	 */
 	
 	public float Calcolo (String citta) throws FileNotFoundException {
-	    	    Scanner scanC = null;
-	    	    for (int i = 1; i <= 5; i++)
-	    	    scanC = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\WeatherCurrentDay"+i+".txt"))); 
-	    	   
-	    	    Scanner scanF = null;
-	    	    for (int i = 1; i <= 5; i++)
-	    	    	scanF = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\ForecastGiorno"+i+".txt")));
-	    	    
 	    	    Vector<Double> tempC = new Vector<>();
 	    	    Vector<Double> tempF = new Vector<>();
-	    	    String lettura;
 	    	    Boolean trovato = true;
+	    	    for (int i = 1; i <= 4; i++)//5
+	    	    {
+    	    	Scanner scanC = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\WeatherCurrentDay"+i+".txt"))); 
+	    	    String lettura;
 	    	    while (scanC.hasNextLine() && trovato) {
 	    	    	lettura = scanC.nextLine();
 	    	    	while (lettura.equalsIgnoreCase(citta) && trovato) {    	    	    
@@ -48,18 +43,26 @@ public class CalcErrorThreshold {
 	    	    	    trovato = false;
 	    	    	   }
 	    	    }
-	    	    trovato = true;
-	    	    String lettura2;
-	    	    while (scanF.hasNextLine() && trovato) {
-		    	lettura2 = scanF.nextLine();
-		    	while (lettura2.equalsIgnoreCase(citta) && trovato) {
-		    	    tempF.add(Double.parseDouble(scanF.nextLine()));
-		    	    tempF.add(Double.parseDouble(scanF.nextLine()));
-		    	    tempF.add(Double.parseDouble(scanF.nextLine()));
-		    	    tempF.add(Double.parseDouble(scanF.nextLine()));
-		    	    trovato = false;
-		    	}
-		    }
+	    	    scanC.close();
+	    	    }
+	    	    for (int i = 1; i <= 4; i++)//5
+	    	    {
+	    	    	Scanner scanF = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\ForecastGiorno"+i+"full.txt")));
+	    	    	trovato = true;
+		    	    String lettura2;
+		    	    while (scanF.hasNextLine() && trovato) {
+			    	lettura2 = scanF.nextLine();
+			    	while (lettura2.equalsIgnoreCase(citta) && trovato) {
+			    	    tempF.add(Double.parseDouble(scanF.nextLine()));//uguali
+			    	    tempF.add(Double.parseDouble(scanF.nextLine()));
+			    	    tempF.add(Double.parseDouble(scanF.nextLine()));//uguali
+			    	    tempF.add(Double.parseDouble(scanF.nextLine()));//uguali
+			    	    trovato = false;
+			    	    
+			    	}
+			    }
+		    	    scanF.close();
+	    	    }
 	    	    Vector<Double> errori = new Vector<>();
 	    	    double differenza, somma = 0;
 	    	    for (int i = 0; i < tempC.size(); i++) {
@@ -67,7 +70,7 @@ public class CalcErrorThreshold {
 	    		errori.add(Math.abs(differenza));
 	    		somma += (Math.abs(differenza));
 	    	    }
-	    	    float media = (float) (somma/4);
+	    	    float media = (float) (somma/tempC.size());
 	    	    return media;
 	    	}
 	
@@ -104,6 +107,34 @@ public class CalcErrorThreshold {
 	    	    }
 	    	    return sortedMap;
 	    	}
+	/*
+	 * 
+	 */
+	public float tempMin(String citta) throws FileNotFoundException
+	{
+		Vector<Double> tempF = new Vector<>();
+		for (int i = 1; i <= 4; i++)//5
+	    {
+	    	Scanner scanF = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\ForecastGiorno"+i+"full.txt")));
+	    	Boolean trovato = true;
+    	    String lettura2;
+    	    while (scanF.hasNextLine() && trovato) {
+	    	lettura2 = scanF.nextLine();
+	    	while (lettura2.equalsIgnoreCase(citta) && trovato) {
+	    	    tempF.add(Double.parseDouble(scanF.nextLine()));
+	    	    trovato = false;
+	    	}
+	    }
+    	//scanF.close();
+	    }
+		float somma = 0;
+		for(int i = 0; i < tempF.size(); i++)
+		{
+			somma += tempF.elementAt(i);
+		}
+		float media = somma / tempF.size();
+		return (float) (Math.floor(media*100)/100);
+	}
 
 	}
 

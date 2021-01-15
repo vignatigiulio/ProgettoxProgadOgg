@@ -53,7 +53,7 @@ import org.json.simple.parser.ParseException;
 	public void callApi() {
 		try {
 			
-		    if (DataForecast.citta == null) System.exit(0);	    	
+		    if (DataForecast.citta == null) System.exit(0);
 		    URLConnection openConnection = new URL("http://api.openweathermap.org/data/2.5/forecast?q=" + DataForecast.citta +",IT&units=metric&appid="+apiKey).openConnection();
 		    	
 		    InputStream in = openConnection.getInputStream();
@@ -76,7 +76,7 @@ import org.json.simple.parser.ParseException;
 			    
 		    JSONObject obj = (JSONObject) JSONValue.parseWithException(data);
 		    JsonObject(obj);
-		
+		   
 		} catch (IOException | ParseException e) {
 			e.printStackTrace();
 		} catch (Exception e) {

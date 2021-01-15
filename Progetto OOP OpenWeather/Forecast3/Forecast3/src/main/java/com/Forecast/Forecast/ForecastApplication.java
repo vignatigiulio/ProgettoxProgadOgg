@@ -42,7 +42,7 @@ public class ForecastApplication {
 						conferma = gui.msg();
 						gui.pulisci();
 					}while(conferma  == 1);
-					DataForecast.setapiKey("80da379aa6764f47ae8d83559daeb6b4");
+					DataForecast.setapiKey("8a4ee3b7f356511b37b0082bbd8580e2");
 					SpringApplication.run(ForecastApplication.class, args);
 				
 				}catch(Exception e) 

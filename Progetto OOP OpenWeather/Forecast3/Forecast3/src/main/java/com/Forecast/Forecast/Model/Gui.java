@@ -161,7 +161,7 @@ public class Gui {
 		 DataForecast.setCitta(city.getDLMIndex(indic[0]));	
 	}
 	
-	public int  msg()
+	public int msg()
 	{ 	
 		
 		 return JOptionPane.showConfirmDialog(null, "la citta è: " + DataForecast.getCitta(),"OpenWeather", 0, 1, null);
@@ -175,15 +175,14 @@ public class Gui {
 	 model.clear();
 	 list.setModel(model);
 	}
+	/*
+	 * 
+	 */
 	public  void deleteDirectory(File folder) {
 		 File[] files = folder.listFiles();
-	       if(files!=null) { //some JVMs return null for empty dirs
-	           for(File f: files) {
-	               
-	                   f.delete();
-	      
-	       }
-	     }
+	       if(files!=null) 
+	    	   for(File f: files) 
+	    		   f.delete();
 	}
 }
 
