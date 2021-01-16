@@ -23,12 +23,14 @@ public class ForecastApplication {
 	
 	public static void main(String[] args) 
 	{
+		DataForecast.setCitta("1");
 		Gui gui = new Gui();
 		File f = new File(".\\Resources\\Data");
 		gui.deleteDirectory(f);
 		gui.inizialize();
 		gui.insertInvio();
 		gui.insertCancel();
+		gui.insertNull();
 		gui.btnGetSelected.addActionListener(new ActionListener() 
 		{
 			@Override
@@ -41,13 +43,13 @@ public class ForecastApplication {
 					{
 						conferma = 0;
 						gui.insertSelected();
-						conferma = gui.msg();
+						conferma = gui.msg("Hai selezionato ");
+						System.out.println(conferma);
 						gui.pulisci();
-					}while(conferma  == 1);
+					}while(conferma != 0 || DataForecast.getCitta().equalsIgnoreCase("1"));
 					DataForecast.setapiKey("8a4ee3b7f356511b37b0082bbd8580e2");
 					SpringApplication.run(ForecastApplication.class, args);
-					
-				
+
 				}catch(Exception e) 
 				{
 				}

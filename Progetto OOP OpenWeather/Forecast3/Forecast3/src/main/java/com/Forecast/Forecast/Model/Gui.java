@@ -32,6 +32,7 @@ public class Gui {
 	public  JFrame frame;
 	public  JButton btnInvio;
 	public  JButton btnCancel;
+	public  JButton btnNull;
 	public JTextField textString;
 	public JLabel lblAdd1;
 	public JButton btnGetSelected;
@@ -55,9 +56,13 @@ public class Gui {
 		btnInvio.setBounds(264, 66, 39, 26);
 		frame.getContentPane().add(btnInvio);
 		
-		btnCancel = new JButton("Cancel");
-		btnCancel.setBounds(108, 120, 84, 20);
+		btnCancel = new JButton("Cancella");
+		btnCancel.setBounds(108, 120, 95, 20);
 		frame.getContentPane().add(btnCancel);
+		
+		btnNull = new JButton("Avvia il server senza comune");
+		btnNull.setBounds(108, 142, 200, 20);
+		frame.getContentPane().add(btnNull);
 		
 		textString = new JTextField();
 		textString.setToolTipText("Puoi inserire anche una sottostringa!");
@@ -65,8 +70,8 @@ public class Gui {
 		frame.getContentPane().add(textString);
 		textString.setColumns(10);
 		
-		btnGetSelected = new JButton("Select");
-		btnGetSelected.setBounds(108, 98, 84, 20);
+		btnGetSelected = new JButton("Seleziona");
+		btnGetSelected.setBounds(108, 98, 95, 20);
 		frame.getContentPane().add(btnGetSelected);
 		scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -156,16 +161,16 @@ public class Gui {
 	*/
 	public void insertSelected() 
 	{
-		int[] indic = null;	 
+		
+		 int[] indic = null;	 
 		 indic = list.getSelectedIndices();
-		 //DataForecast.setCitta(city.getDLMIndex(indic[0]));	
-		 DataForecast.setCitta(null);
+		 DataForecast.setCitta(city.getDLMIndex(indic[0]));	
 	}
 	
-	public int msg()
+	public int msg(String testo)
 	{ 	
 		
-		 return JOptionPane.showConfirmDialog(null, "la citta è: " + DataForecast.getCitta(),"OpenWeather", 0, 1, null);
+		 return JOptionPane.showConfirmDialog(null, testo+" "+ DataForecast.getCitta(),"OpenWeather", 0, 1, null);
 	}
 	/*Metodo che si occupa di rendere vuota la list e di pulire la textString.
     */
@@ -184,6 +189,19 @@ public class Gui {
 	       if(files!=null) 
 	    	   for(File f: files) 
 	    		   f.delete();
+	}
+	public void insertNull()
+	{
+		btnNull.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) {
+				if(JOptionPane.showConfirmDialog(null, "Sei sicuro di voler proseguire senza inserire alcun comune?", "OpenWeather", 0, 1, null)==0)
+				{
+					DataForecast.setCitta(null);
+				}
+				
+		}
+		});
 	}
 }
 
