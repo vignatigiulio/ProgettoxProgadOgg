@@ -4,19 +4,25 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
 import javax.swing.DefaultListModel;
-/*classe che verifica se la citta inserita nella gui è presente nel file .txt comuni, situato nella 
+/**classe che verifica se la citta inserita nella gui è presente nel file .txt comuni, situato nella 
  *cartella Resources.
  *I risultati saranno poi salvati nella lista DLM, resa visibite tramite getter.
+ *
  */
 public class DLM {
   private DefaultListModel<String> DLM = new DefaultListModel<String>();
- 
+ /**
+  * 
+  * @param citta nome da cercare. Se la stringa è nulla vengono inseriti tutti i comuni
+  * @throws FileNotFoundException
+  */
   public  void elenco(String citta) throws FileNotFoundException
   {
-	  
-	 this.DLM.clear();
+	  this.DLM.clear();
 	  Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Comuni.txt")));
 	  String paese = null;
+	  if(citta != null)
+	  {
 	  while(scan.hasNext()) 
 	  {
 		  	paese = scan.nextLine();
@@ -35,9 +41,14 @@ public class DLM {
 					//Aggiungo alla lista dei risultati il comune contenuto in "paese"
 	  }
   }
-
+	  else
+	  {
+		  while(scan.hasNextLine()) this.DLM.addElement(scan.nextLine());
+	  }
+  }
   public String getDLMIndex(int indice) {
 	return DLM.get(indice);
+	
   }
 
   public void setDLM(DefaultListModel<String> dLM) {
