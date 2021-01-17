@@ -1,11 +1,8 @@
 package com.Forecast.Forecast;
 
-import java.awt.event.ActionEvent;
 
-import java.awt.event.ActionListener;
 import java.io.File;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,30 +27,9 @@ public class ForecastApplication {
 		gui.inizialize();
 		gui.insertInvio();
 		gui.insertCancel();
+		gui.insertSelected();
 		gui.insertNull();
-		gui.btnGetSelected.addActionListener(new ActionListener() 
-		{
-			@Override
-			public void actionPerformed(ActionEvent arg0) 
-			{
-				try
-				{ 
-					int conferma;
-					do
-					{
-						conferma = 0;
-						gui.insertSelected();
-						conferma = gui.msg("Hai selezionato ");
-						System.out.println(conferma);
-						gui.pulisci();
-					}while(conferma != 0 || DataForecast.getCitta().equalsIgnoreCase("1"));
-					DataForecast.setapiKey("8a4ee3b7f356511b37b0082bbd8580e2");
-					SpringApplication.run(ForecastApplication.class, args);
-
-				}catch(Exception e) 
-				{
-				}
-			}
-		});
+		//DataForecast.setapiKey("8a4ee3b7f356511b37b0082bbd8580e2");
+		//SpringApplication.run(ForecastApplication.class, args);
 	}
 }

@@ -126,20 +126,22 @@ public class Gui {
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				try 
+				if(!textString.getText().isEmpty())
 				{
-					city.elenco(textString.getText().toLowerCase());
-					if(city.isEmpty())
+					try 
 					{
-						JOptionPane.showMessageDialog(null,"Città non presente nell'elenco");
-						pulisci();
-					}
-					list.setModel(city.getDLM());
-				} catch (FileNotFoundException e1) 
-					{
-					e1.printStackTrace();
-					}
-						
+						city.elenco(textString.getText().toLowerCase());
+						if(city.isEmpty())
+						{
+							JOptionPane.showMessageDialog(null,"Città non presente nell'elenco");
+							pulisci();
+							return;
+						}
+						list.setModel(city.getDLM());
+					} catch (FileNotFoundException e1) {	
+						e1.printStackTrace();
+						}
+				}	
 			}
 		});
 	}
@@ -161,18 +163,45 @@ public class Gui {
 	*/
 	public void insertSelected() 
 	{
-		
-		 int[] indic = null;	 
-		 indic = list.getSelectedIndices();
-		 DataForecast.setCitta(city.getDLMIndex(indic[0]));	
+		btnGetSelected.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				if(!textString.getText().isEmpty())
+				 {
+					Boolean condizione = false;
+					if(DataForecast.getCitta().equalsIgnoreCase("1")) condizione = true;
+					while(condizione)
+					{
+						insertNull();
+						int indic;	 
+						indic = list.getSelectedIndex();
+						System.out.println(indic);
+						DataForecast.setCitta(city.getDLMIndex(indic));	
+						if(msg("Hai selezionato "+DataForecast.getCitta())!=0)
+						{
+							DataForecast.setCitta("1");
+							pulisci();
+							return;
+						}
+						pulisci();
+						System.out.println(DataForecast.getCitta());
+						condizione = false;
+					}
+					 
+				 }
+			}
+	});
 	}
 	
 	public int msg(String testo)
 	{ 	
 		
-		 return JOptionPane.showConfirmDialog(null, testo+" "+ DataForecast.getCitta(),"OpenWeather", 0, 1, null);
+		 return JOptionPane.showConfirmDialog(null, testo,"OpenWeather", 0, 1, null);
 	}
-	/*Metodo che si occupa di rendere vuota la list e di pulire la textString.
+	/**Metodo che si occupa di rendere vuota la list, la textString 
+	 * e selezionare quest'ultima
     */
 	public void pulisci()
 	{
@@ -180,6 +209,7 @@ public class Gui {
 	 DefaultListModel<String> model=new DefaultListModel<>();
 	 model.clear();
 	 list.setModel(model);
+	 textString.requestFocus();
 	}
 	/*
 	 * 
@@ -195,12 +225,16 @@ public class Gui {
 		btnNull.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) {
-				if(JOptionPane.showConfirmDialog(null, "Sei sicuro di voler proseguire senza inserire alcun comune?", "OpenWeather", 0, 1, null)==0)
+				if(DataForecast.getCitta() != null && !DataForecast.getCitta().isEmpty())
+				{
+				if(msg("Sei sicuro di voler avviare il server senza un comune?")==0)
 				{
 					DataForecast.setCitta(null);
 				}
-				
+				else DataForecast.setCitta("1");
+				System.out.println(DataForecast.getCitta());
 		}
+			}
 		});
 	}
 }
