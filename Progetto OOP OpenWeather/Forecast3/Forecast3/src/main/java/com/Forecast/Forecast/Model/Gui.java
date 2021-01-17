@@ -20,6 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 
+import com.Forecast.Forecast.ForecastApplication;
 import com.Forecast.Forecast.Model.Data.DataForecast;
 /*La classe Gui si occupa di dichiarare la parte grafica.
  *Crea i vari oggetti utilizzati dalla finestra
@@ -28,7 +29,6 @@ import com.Forecast.Forecast.Model.Data.DataForecast;
  *uno sfondo e il logo di Openweathermap.
  */
 public class Gui {
-	
 	public  JFrame frame;
 	public  JButton btnInvio;
 	public  JButton btnCancel;
@@ -112,7 +112,7 @@ public class Gui {
 		frame.setVisible(true);
 	}
 
-	/*Metodo appartentente al bottone "Invio", indicato tramite l'immagine della lente di ricerca.
+	/**Metodo appartentente al bottone "Invio", indicato tramite l'immagine della lente di ricerca.
 	 *Si occupa di ricercare il comune inserito nella textString e 
 	 *restituisce i risultati nella list.
 	 *Se il programma non riesce a trovare la città inserita, verrà visualizzato un messaggio
@@ -145,7 +145,7 @@ public class Gui {
 			}
 		});
 	}
-	/*Metodo appartenente al bottone "Cancel".
+	/**Metodo appartenente al bottone "Cancel".
 	 *Si occupa di pulire, tramite apposita funzione, la lista e la textString da ogni ricerca precedentemente
 	 *effettuata
 	*/
@@ -158,7 +158,7 @@ public class Gui {
 		}
 		});
 	}
-	/*Metodo appartenente al bottone "Selected".
+	/**Metodo appartenente al bottone "Selected".
 	 *Passa al setter "setCitta" il comune scelto dall'utente alla lista.
 	*/
 	public void insertSelected() 
@@ -174,10 +174,9 @@ public class Gui {
 					if(DataForecast.getCitta().equalsIgnoreCase("1")) condizione = true;
 					while(condizione)
 					{
-						insertNull();
+						//insertNull();
 						int indic;	 
 						indic = list.getSelectedIndex();
-						System.out.println(indic);
 						DataForecast.setCitta(city.getDLMIndex(indic));	
 						if(msg("Hai selezionato "+DataForecast.getCitta())!=0)
 						{
@@ -194,7 +193,11 @@ public class Gui {
 			}
 	});
 	}
-	
+	/**
+	 * 
+	 * @param testo Messaggio da far comparire all'utente
+	 * @return Scelta espressa 
+	 */
 	public int msg(String testo)
 	{ 	
 		
@@ -211,8 +214,8 @@ public class Gui {
 	 list.setModel(model);
 	 textString.requestFocus();
 	}
-	/*
-	 * 
+	/**
+	 * @param folder Percorso da svuotare
 	 */
 	public  void deleteDirectory(File folder) {
 		 File[] files = folder.listFiles();
@@ -220,6 +223,9 @@ public class Gui {
 	    	   for(File f: files) 
 	    		   f.delete();
 	}
+	/**Metodo appartenente al bottone "Avvia il server senza comune".
+	 *Passa al setter "setCitta" il valore null
+	*/
 	public void insertNull()
 	{
 		btnNull.addActionListener(new ActionListener() 
@@ -230,9 +236,11 @@ public class Gui {
 				if(msg("Sei sicuro di voler avviare il server senza un comune?")==0)
 				{
 					DataForecast.setCitta(null);
+
 				}
 				else DataForecast.setCitta("1");
 				System.out.println(DataForecast.getCitta());
+				
 		}
 			}
 		});

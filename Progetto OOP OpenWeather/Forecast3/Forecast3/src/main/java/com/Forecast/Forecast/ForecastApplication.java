@@ -3,6 +3,7 @@ package com.Forecast.Forecast;
 
 import java.io.File;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,7 +30,8 @@ public class ForecastApplication {
 		gui.insertCancel();
 		gui.insertSelected();
 		gui.insertNull();
-		//DataForecast.setapiKey("8a4ee3b7f356511b37b0082bbd8580e2");
+		DataForecast.setapiKey("8a4ee3b7f356511b37b0082bbd8580e2");
 		//SpringApplication.run(ForecastApplication.class, args);
 	}
+	
 }
