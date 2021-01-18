@@ -7,7 +7,7 @@ public class ApiRequestException  extends RuntimeException{
 
 	public ApiRequestException(String message)
 	{
-		super("not conformed. " + message);
+		super("not conformed " + message);
 	}
 
 	public ApiRequestException(float error_threshold) {

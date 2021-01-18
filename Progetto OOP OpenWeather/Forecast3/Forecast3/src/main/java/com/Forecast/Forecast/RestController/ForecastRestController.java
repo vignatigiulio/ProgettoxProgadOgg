@@ -70,7 +70,7 @@ public class ForecastRestController {
 	public List<Weather> getWeather(@PathVariable("filter")String filter) throws EntityNotFoundException
 	{
 		List<Weather> w= forecastService.getWeather(filter);
-		if (w == null) throw new ApiRequestException("Data non supportata o server avviato senza città. Riprovare.");
+		if (w.isEmpty()) throw new ApiRequestException("parametro non supportato o server avviato senza città. Riprovare.");
 			return w;
 	
 	}

@@ -1,6 +1,7 @@
 package com.Forecast.Forecast.Model.Data;
 
 import java.io.BufferedReader;
+
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -17,8 +18,6 @@ import java.util.Vector;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
-
-import com.Forecast.Forecast.Model.Gui;
 import com.Forecast.Forecast.Model.Temperature;
 import com.Forecast.Forecast.Model.Weather;
 

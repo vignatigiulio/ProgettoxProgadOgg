@@ -2,13 +2,13 @@ package com.Forecast.Forecast.Model.Stats;
 
 import java.io.BufferedReader;
 
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Vector;
 
-import com.Forecast.Forecast.Model.Gui;
 import com.Forecast.Forecast.Model.Data.DataForecast;
 
 public class StatsHistorical  extends Stats{
