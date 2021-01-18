@@ -1,5 +1,6 @@
 package com.Forecast.Forecast.RestController;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -64,15 +65,15 @@ public class ForecastRestController {
 	 *  @throws EntityNotFoundException Eccezione invocata quando non viene trovata l'entità serializzata richiesta
 	 * @return  oggetto Weather relativo
 	 */
+	
 	@GetMapping("/weather/{filter}")
-	public Weather getWeather(@PathVariable("filter")String filter) throws EntityNotFoundException
+	public List<Weather> getWeather(@PathVariable("filter")String filter) throws EntityNotFoundException
 	{
-		Weather w =forecastService.getWeather(filter);
+		List<Weather> w= forecastService.getWeather(filter);
 		if (w == null) throw new ApiRequestException("Data non supportata o server avviato senza città. Riprovare.");
 			return w;
 	
 	}
-	
 	
 	/**
 	 * Risponde all richiesta GET / Stats
