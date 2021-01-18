@@ -141,13 +141,26 @@ public class ForecastRestController {
 			return this.forecastService.filterField(city);
 
     }
-	/*
-	 * 
+	/**
+	 * Risponde all richiesta GET / TempMin
+	 * @param filter rappresenta il campo filter usato per filtrare la ricerca di una certa temperatura
+	 * @param temp rappresenta il campo temperatura per filtrare la ricerca 
+	 * @throws  ApiRequestException(filter) se vengono generati errori di parametro non valido in ingresso al filtro.
+	 * @return  oggetto FilterUtils t che contiene le temperature medie richieste filtrate
 	 */
-	@GetMapping("/tempMin/{temp}")
-	public FilterUtils getTempMin(@PathVariable("temp") float temp) throws EntityNotFoundException
+	@GetMapping("/temp/{filter}/{temp}")
+	public FilterUtils getTempMin(@PathVariable("filter") String filter,@PathVariable("temp") float temp) throws EntityNotFoundException
 	{
-		return this.forecastService.getTempMin(temp);
+		filter=filter.toLowerCase();
+		boolean verifica = false;
+		if(filter.equals(">"))
+			verifica=true;
+		else if(filter.equals("<"))
+			verifica = false;
+		else
+			throw new ApiRequestException(filter);
+		
+		return this.forecastService.getTempMin(temp,verifica);
 
     }
 	

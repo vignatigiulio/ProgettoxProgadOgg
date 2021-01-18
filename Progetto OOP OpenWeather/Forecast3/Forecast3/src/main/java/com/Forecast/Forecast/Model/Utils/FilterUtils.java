@@ -73,16 +73,23 @@ public class FilterUtils {
     /*
      * 
      */
-    public void tempMin(float filtro) {
+    public void tempMin(float filtro,boolean verifica) {
     	HashMap<String, Float> Elenco = new HashMap<>();
     	CalcErrorThreshold cet = new CalcErrorThreshold();
     	try {
     	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Comuni.txt")));
     	    while (scan.hasNextLine()) {
     		String citta = scan.nextLine();	 
-    		if(filtro < cet.tempMin(citta))
+    		if(verifica)
+    		{
+    			if(filtro < cet.tempMin(citta))
     		    Elenco.put(citta, cet.tempMin(citta));
-    		}
+    			
+    	    }
+    	    else
+    	    	if(filtro > cet.tempMin(citta))
+        		    Elenco.put(citta, cet.tempMin(citta));
+    	    }	
     	} catch(Exception e) {
     	    System.out.print(e);
     	}
