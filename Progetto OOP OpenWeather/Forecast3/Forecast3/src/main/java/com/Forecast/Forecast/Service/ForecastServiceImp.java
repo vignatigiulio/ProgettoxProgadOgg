@@ -144,6 +144,7 @@ public class ForecastServiceImp implements ForecastService {
 	
 	@Override
 	public FilterUtils getTemp(float filter, Boolean choice) {
+	    filterUtils.temp(filter, choice);
 	    return filterUtils;
 	}
 

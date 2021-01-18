@@ -137,7 +137,7 @@ public class ForecastRestController {
 	 * 
 	 */
 	@GetMapping("/temp/{temp}-{choice}")
-	public FilterUtils getTempMin(@PathVariable("temp") float temp, @PathVariable("choice") String choice) throws EntityNotFoundException
+	public FilterUtils getTemp(@PathVariable("temp") float temp, @PathVariable("choice") String choice) throws EntityNotFoundException
 	{
 	    if (choice.equalsIgnoreCase(choice1))
 		return this.forecastService.getTemp(temp, true);
@@ -145,13 +145,7 @@ public class ForecastRestController {
 		return this.forecastService.getTemp(temp, false);
 	    else
 		throw new ApiRequestException(choice);
-	}
-	
-	@GetMapping("/hello")
-	public int hello() {
-	    return 1;
-	}
-	
+	}	
 
 }
 
