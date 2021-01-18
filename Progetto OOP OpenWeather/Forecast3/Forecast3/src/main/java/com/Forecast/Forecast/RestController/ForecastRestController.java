@@ -21,7 +21,8 @@ public class ForecastRestController {
 	
 	@Autowired
 	private ForecastService forecastService;
-	
+	private static final String choice1 = "over";
+	private static final String choice2 = "under";
 	
 	/**
 	 * Eccezione invocata quando non viene trovata l'entità serializzata richiesta
@@ -143,13 +144,21 @@ public class ForecastRestController {
 	/*
 	 * 
 	 */
-	@GetMapping("/tempMin/{temp}")
-	public FilterUtils getTempMin(@PathVariable("temp") float temp) throws EntityNotFoundException
+	@GetMapping("/temp/{temp}-{choice}")
+	public FilterUtils getTempMin(@PathVariable("temp") float temp, @PathVariable("choice") String choice) throws EntityNotFoundException
 	{
-		return this.forecastService.getTempMin(temp);
-
-    }
+	    if (choice.equalsIgnoreCase(choice1))
+		return this.forecastService.getTemp(temp, true);
+	    else if (choice.equalsIgnoreCase(choice2)) 
+		return this.forecastService.getTemp(temp, false);
+	    else
+		throw new ApiRequestException(choice);
+	}
 	
+	@GetMapping("/hello")
+	public int hello() {
+	    return 1;
+	}
 	
 
 }

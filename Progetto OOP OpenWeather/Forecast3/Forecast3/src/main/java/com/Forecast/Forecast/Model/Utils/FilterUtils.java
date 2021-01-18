@@ -5,14 +5,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.Map.Entry;
 
 /**
  * Rappresenta la classe che genera l'oggetto FilterUtils,contenente una Map,utilizzando i filtri imposti dal Client  
  */
 public class FilterUtils {
     private HashMap<String, Float> Previsioni = new HashMap<>();
-   
+/*    private static String choice1 = "over";
+    private static String choice2 = "under";*/
    /**
      * Metodo che determina per ciascun'oggetto della Map, in base al filtro specificato,
      * se deve essere incluso nella risposta
@@ -73,22 +73,27 @@ public class FilterUtils {
     /*
      * 
      */
-    public void tempMin(float filtro) {
+    public void temp(float filtro, Boolean choice) {
     	HashMap<String, Float> Elenco = new HashMap<>();
     	CalcErrorThreshold cet = new CalcErrorThreshold();
     	try {
     	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Comuni.txt")));
     	    while (scan.hasNextLine()) {
-    		String citta = scan.nextLine();	 
-    		if(filtro < cet.tempMin(citta))
-    		    Elenco.put(citta, cet.tempMin(citta));
+    		String citta = scan.nextLine();	
+    		if (choice) {
+    		    if(filtro < cet.tempMin(citta))
+    			Elenco.put(citta, cet.tempMin(citta));
     		}
+    		else {
+    		    if(filtro > cet.tempMin(citta))
+			Elenco.put(citta, cet.tempMin(citta));
+    		}    
+    	    }
     	} catch(Exception e) {
     	    System.out.print(e);
     	}
-    	Previsioni = cet.sortHashMapByValues(Elenco);
-    	
-        }
+    	Previsioni = cet.sortHashMapByValues(Elenco);   	
+    }
     /**
      * Metodo che riceve il filtro e crea una Map parziale con gli
      * oggetti selezionati

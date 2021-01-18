@@ -1,14 +1,12 @@
 package com.Forecast.Forecast.Model.Stats;
 
 import java.io.BufferedReader;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Vector;
 
-import com.Forecast.Forecast.Model.Gui;
 /*La classe si occupa di scrivere nei vettori i valori delle temperature nei vettori
  *Verranno scritti la temperatura, la percepita, la massima e la minima.
  *Al fine di una valutazione più esatta, verranno inserite le temperature previste per ogni 24 ore
@@ -75,6 +73,11 @@ public class StatsForecast extends Stats {
 		arithmetic_average_temperature.put("temperature_max:",method.methodArithmetic_averageTemperature(temp_max));
 		return arithmetic_average_temperature;
 	}
+	public Vector<Double> getTemperature() {
+	    return temperature;
+	}
+	
+	
 
 }
 

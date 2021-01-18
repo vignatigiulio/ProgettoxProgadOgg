@@ -31,8 +31,7 @@ public interface Filter<E,T> {
     /*
      * 
      */
-    abstract FilterUtils getTempMin(float temp);
-    
+    abstract FilterUtils getTemp(float temp, Boolean choice);
     
 }
 

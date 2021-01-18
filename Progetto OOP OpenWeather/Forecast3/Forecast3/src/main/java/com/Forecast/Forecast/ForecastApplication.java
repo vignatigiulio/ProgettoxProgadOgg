@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
-
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,6 +23,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
 import com.Forecast.Forecast.Model.DLM;
 import com.Forecast.Forecast.Model.Data.DataForecast;
+import com.Forecast.Forecast.Model.Exceptions.ApiRequestException;
 
 @RestController
 @SpringBootApplication
@@ -115,11 +115,6 @@ public class ForecastApplication {
 		lblNewLabel_5.setBounds(62, 170, 241, 192);
 		frame.getContentPane().add(lblNewLabel_5);
 		
-		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon(".\\Resources\\immagine\\sfondo2.png"));
-		lblNewLabel_4.setBounds(0, 0, 611, 338);
-		frame.getContentPane().add(lblNewLabel_4);
-		
 		frame.setVisible(true);
 		
 		frame.getRootPane().setDefaultButton(btnInvio);
@@ -172,8 +167,9 @@ public class ForecastApplication {
 						}
 						list.setModel(city.getDLM());
 					} catch (FileNotFoundException e1) {	
-						e1.printStackTrace();//ECCEZIONE
-						}
+					
+					    throw new ApiRequestException();
+					} 
 				}
 				else
 				{
@@ -196,8 +192,8 @@ public class ForecastApplication {
 					city.elenco(null);
 					list.setModel(city.getDLM());
 				} catch (FileNotFoundException e1) {
-					e1.printStackTrace(); //ECCEZIONE
-				}
+				    throw new ApiRequestException();
+				} 
 			}
 		});
 		

@@ -29,4 +29,5 @@ public class StatsMethod
 		return (float) (Math.floor(arr*100)/100);
 	}
 
+	
 }
