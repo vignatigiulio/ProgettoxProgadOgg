@@ -65,7 +65,14 @@ public class ForecastRestController {
 	 *  @throws EntityNotFoundException Eccezione invocata quando non viene trovata l'entità serializzata richiesta
 	 * @return  oggetto Weather relativo
 	 */
+	@GetMapping("/weather/{filter}")
+	public List<Weather> getWeather(@PathVariable("filter")String filter) throws EntityNotFoundException
+	{
+		List<Weather> w= forecastService.getWeather(filter);
+		if (w.isEmpty()) throw new ApiRequestException("parametro non supportato o server avviato senza città. Riprovare.");
+			return w;
 	
+	}
 	
 	/**
 	 * Risponde all richiesta GET / Stats
