@@ -28,7 +28,7 @@ public class DLM {
 		  	paese = scan.nextLine();
 			if(paese.equalsIgnoreCase(citta)) //Controllo se si ottiene una corrispondenza completa
 			{
-				this.DLM.addElement(paese);
+				inserisciM(paese);
 				break; //Evito la ricerca di sottostringhe in quanto ho una corrispondenza univoca
 			}
 			else
@@ -37,13 +37,13 @@ public class DLM {
 					/*Una lettera non è uguale o non ho una corrispondenza completa:
 					*non è il comune che sto cercando.
 					*/
-					else if(i == citta.length()-1) this.DLM.addElement(paese);
+					else if(i == citta.length()-1) inserisciM(paese);
 					//Aggiungo alla lista dei risultati il comune contenuto in "paese"
 	  }
   }
 	  else
 	  {
-		  while(scan.hasNextLine()) this.DLM.addElement(scan.nextLine());
+		  while(scan.hasNextLine()) inserisciM(scan.nextLine());
 	  }
   }
   public String getDLMIndex(int indice) {
@@ -64,7 +64,18 @@ public class DLM {
 	
 	return false;
   }
-
+  public void inserisciM(String comune)
+  {
+	  char[] charArray = comune.toCharArray();
+	  charArray[0] = Character.toUpperCase(charArray[0]);
+	  for(int i = 1; i < charArray.length-1; i++)
+	  {
+		  if(!Character.isLetter(charArray[i]) && Character.isLetter(charArray[i+1]))
+			  charArray[i+1] = Character.toUpperCase(charArray[i+1]);
+	  }
+	  String citta = new String(charArray);
+	  this.DLM.addElement(citta);
+  }
 }
 
 
