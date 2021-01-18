@@ -16,7 +16,7 @@ import com.Forecast.Forecast.Model.Utils.*;
 public interface ForecastService extends Filter<Object, Object>,StastInterface {
     
     List<Weather> getWeathers();
-    Weather getWeather(String filter);
+    List<Weather> getWeather(String filter);
     
    
 	

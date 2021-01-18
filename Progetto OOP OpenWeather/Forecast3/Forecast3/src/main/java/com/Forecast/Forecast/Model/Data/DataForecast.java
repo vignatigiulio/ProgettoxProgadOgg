@@ -150,8 +150,6 @@ import org.json.simple.parser.ParseException;
 	    file_output.close();
 	    output.close();
 		
-	    System.out.println("File salvato!");
-	    System.out.println("File stats salvato!");
 			}
 	} catch (IOException e) {
 	    e.printStackTrace();

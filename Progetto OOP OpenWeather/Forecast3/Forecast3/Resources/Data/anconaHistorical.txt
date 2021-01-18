@@ -1,0 +1,20 @@
+giorno 1 ancona
+1610901490
+3.05
+0.12
+giorno 1 ancona
+1610815090
+3.48
+-0.15
+giorno 1 ancona
+1610728690
+6.06
+4.21
+giorno 1 ancona
+1610642290
+6.26
+3.96
+giorno 1 ancona
+1610555890
+4.01
+1.25

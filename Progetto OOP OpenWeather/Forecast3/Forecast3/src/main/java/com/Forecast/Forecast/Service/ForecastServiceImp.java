@@ -113,26 +113,19 @@ public class ForecastServiceImp implements ForecastService {
 	}
 
 	@Override
-	public Weather getWeather(String filter) {
-//	    List<Weather> list2 = new ArrayList<Weather>();
+	public List<Weather> getWeather(String filter) {
+		List<Weather> c = new ArrayList<Weather>();
+
 		if(list != null)
 		{
-		for(Weather w:list)
-		{
-		    if(w.getDate().equals(filter))
-			return w;
-		    
-/*		    if (w.getWeather().equalsIgnoreCase(filter)) {
-			list2.add(w);
-		    } */
-	
-		}
-/*		if (list2.isEmpty())
-		    return null;
-		else
-		    return list2;		
-	} */
-		return null;
+		    for(Weather w:list)
+		    {
+			if(w.getDate().equals(filter) || w.getWeather().equals(filter))
+			{
+				c.add(w);
+			}
+		    }
+		    return c;
 		}
 		return null;
 	}
@@ -151,7 +144,6 @@ public class ForecastServiceImp implements ForecastService {
 	
 	@Override
 	public FilterUtils getTemp(float filter, Boolean choice) {
-	    filterUtils.temp(filter, choice);
 	    return filterUtils;
 	}
 
@@ -166,6 +158,8 @@ public class ForecastServiceImp implements ForecastService {
 		else
 			return null;
 	}
+
+
 
 	
 }

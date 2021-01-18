@@ -1,6 +1,5 @@
 package com.Forecast.Forecast.Model.Stats;
 
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
