@@ -1,4 +1,4 @@
-# OpenWeather Web Service
+# Web Service
  <div align="center">
  <p align = "center">  OPENWEATHER WEB SERVICE </p>
   <br><br>
@@ -9,7 +9,6 @@
     <a href="#intro">Introduzione</a>&nbsp•
     <a href="#inizio">Come iniziare</a>&nbsp•
     <a href="#richieste">Eseguire richieste</a>&nbsp•
-    <a href="chiama">Chiamate</a>&nbsp•
     <a href="#riconoscimenti">Autori</a> 
   </p>
 </div><br><br>
@@ -26,7 +25,9 @@ La nostra applicazione permette di richiedere mediante API REST (GET o POST) con
 </br>*Restituzione delle statistiche sui dati di uno specifico campo filtrato. 
 </br>*Restituzione dei dati,formato JSON,circa la soglia di errore delle previsioni effettuate. 
 note: come effettuare richieste.
-<img src="https://i.postimg.cc/dV6DkjmQ/Open-Weather-Map.png" alt="Currency_logo" width="260" height=”69” border="0"></img>
+<img src="https://i.postimg.cc/Nj1ScPRs/uml1.png" width="250"></img>
+<img src="https://i.postimg.cc/mktKWLyJ/uml2.png" width="600"></img>
+<img src="https://i.postimg.cc/9fCSFtBG/uml3.png" width="600"></img>
 ## Come iniziare <a name="inizio"></a>
 
 ### Download 
@@ -85,7 +86,7 @@ Per eseguire le richieste GET o POST si può installare un API testing, (ad esem
 * **Package com.Forecast.Forecast**
 <img src="https://i.postimg.cc/RVwWbj6s/main.png" width="150"/>
 
-### Chiamate <a name="chiama"></a>
+### Chiamate 
 * **Chiamata <code>GET /weather</code>**
 il RestController esegue una chiamata tramite il metodo `getWeather`,restituisce le informazioni attuali del meteo quali:
 *Nome del comune;
