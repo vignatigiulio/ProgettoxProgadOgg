@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Vector;
 
+import com.Forecast.Forecast.Model.Exceptions.ApiRequestException;
+
 
 public class StatsHistorical  extends Stats{
 	private   Vector<Double> temperature = new Vector<>();
@@ -21,6 +23,7 @@ public class StatsHistorical  extends Stats{
 	/**Il metodo si occupa di inserire nei vettori le temperature presenti nei file di testo precedentemente creati.
 	 *@Param string il nome della città
 	 */
+	
 	public void ReadFile(String string) 
 	{
 		 try 

@@ -19,6 +19,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
+import com.Forecast.Forecast.Model.Exceptions.ApiRequestException;
+
 /** Classe che include i metodi necessari per la lettura e il parsing
  *  dei dati prelevati dalla API con relativi getters e setters 
  *  e implementa l'interfaccia Data
@@ -47,13 +49,12 @@ import org.json.simple.parser.ParseException;
     	temp_max = new Vector<Double>();
     	weather = new Vector<String>();
     }
-   
-   
+  
     @Override
 	public void callApi() {
 		try {
 			
-		    if (DataForecast.citta != null)
+		    if (DataForecast.citta != null) 
 		    {
 		    URLConnection openConnection = new URL("http://api.openweathermap.org/data/2.5/forecast?q=" + DataForecast.citta +",IT&units=metric&appid="+apiKey).openConnection();
 		    	

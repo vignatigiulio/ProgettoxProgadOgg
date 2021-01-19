@@ -14,6 +14,7 @@ import com.Forecast.Forecast.Model.Data.DataForecast;
  */
 public abstract class Stats {
 
+	
 	protected String citta;
 	protected HashMap<String,Float> variance_temperature = new HashMap<String,Float>();
 	protected HashMap<String,Float> arithmetic_average_temperature = new HashMap<String,Float>();
