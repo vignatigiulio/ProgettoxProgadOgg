@@ -43,7 +43,7 @@ Per eseguire le richieste GET o POST si può installare un API testing, (ad esem
 |GET             |/statsErrorCity/{city}                         |restituisce la soglia di errore del relativo comune passato dal client nella rotta                                                               |
 |GET             |/temp/{temp}-{choice}                          |restituisce solamente la temperatura media di tutti i comuni compresi nel filtro                                                                 |
 
-##SVILUPPO  
+##Sviluppo
 
 ### Package
 <img src="https://i.postimg.cc/wjYXbXWz/packages.png" width="800"/>
@@ -75,37 +75,66 @@ Per eseguire le richieste GET o POST si può installare un API testing, (ad esem
 
 ### Chiamate
 * **Chiamata <code>GET /weather</code>**
-ControllerClass esegue una chiamata tramite il metodo `getArrayMetadata`, il quale inizializza un ArrayList di metadata e lo restituisce. ControllerClass trasforma quest ultimo in Json e lo ritorna al client.
+il RestController esegue una chiamata tramite il metodo `getWeather`,restituisce le informazioni attuali del meteo quali:
+*Nome del comune;
+*Data di riferimento e fascia oraria di riferimento;
+*Breve descrizione del cielo;
+*Temperatura (gradi Celsius);
+*Temperatura percepita (gradi Celsius);
+*Temperatura minima (gradi Celsius);
+*Temperatura massima (gradi Celsius);
+Le previsioni coprono un massimo di 4 giorni e 21 ore per via della versione free della API. Tramite la rotta
+successiva ` GET /weather/{filter}`, il programma potrà restituire risultati più capillari della precedente rotta.
 <img src="https://i.postimg.cc/wM16J4nd/weather.png" width="1000"/>
 
 * **Chiamata <code>GET /weather/{filter}</code>**
-ControllerClass esegue una chiamata tramite il metodo `getRecords`, il quale restituisce l'intero ArrayList di Record. ControllerClass trasforma quest ultimo in Json e lo ritorna al client.
+La variabile filter è una variabile di tipo stringa nella quale posso inserire una data specifica della quale
+voglio le previsioni o la descrizione del cielo.
+Inserendo una data del formato “yyyy-MM-dd hh:mm:ss” verrà restituita la previsione riguardante quel
+periodo gia effettuata nella rotta precedente ` GET /weather` . Inserendo invece la descrizione del cielo (es. clear sky) vengono restituite tutte le previsioni di
+“clear sky” della città precedentemente selezionata nel massimo lasso di tempo concesso dalla API. In caso
+di un inserimento errato da parte dell’utente, verrà lanciata un’eccezione.
 <img src="https://i.postimg.cc/5y0xLBsL/weather-filter.png" width="1000"/>
 
 * **Chiamata <code>GET /stats/{filter}</code>**
-ControllerClass esegue una chiamata tramite `jsonParserColumn` alla classe JsonParser, che insieme a `jsonParserOperator` effetueranno il parsing del body ricevuto in modo ciclico. Estrapolate le informazioni relative al filtraggio richiesto, verranno utilizzate da `instanceFilter` per istanziare nuovi oggetti filtro prendedoli della classi contenute nel package com.esame.util.filter. A questo punto tramite `runFilter` si potrà eseguire il filtraggio e restituire a ControllerClass l'Arraylist di Record filtrato da consegnare al Client in formato Json. 
+il RestController tramite la chiamata ` getStats`,restituisce una statistica.
+Prevede una variabile di tipo stringa “filter” che conterrà o “historical” o “forecast”. La stringa forecast
+prevede di calcolare la varianza e la media aritmetica dei dati riguardanti la temperatura (temperatura
+attuale, percepita, minima e massima) dei 5 giorni successivi (tutti alla stessa ora, onde evitare sbalzi
+esagerati) della città scelta in precedenza. Scrivendo invece historical, il programma riprodurrà gli stessi dati
+di prima ma lasciando nulli i campi di temperatura minima e massima, in quanto questi dati non sono
+fornidi dall’` API`.
 <img src="https://i.postimg.cc/FRFmXb58/stats-filter.png" width="1000"/>
 
 * **Chiamata <code>GET /statsError/{filter}</code>**
-L'arrayList di Record sul quale fare il calcolo delle statisctiche viene ottenuto nel modo spiegato nella richiesta *GET /data*.
-Viene passato il nome del campo su cui si desidera effettuare la statistica a `instanceStatsCalculator`, il quale instanzia l'oggetto `StasCalculator` corretto dalle classi contenute nel package com.esame.util.statistics.
-Quest'ultimo tramite il metodo `run` eseguirà il calocolo statistico che verrà incapsulato come oggetto stats, e restituito in formato Json al client
+Contiene la variabile ` error threshold` di tipo float. Il programma costruirà un’Hashmap contenente i nomi
+dei comuni e la soglia di errore delle previsioni. Quest’ultima è calcolata sulla media della differenza tra le
+temperature previste e le temperature poi effettive di quei comuni, già precedentemente salvati in un
+totale di dieci file di testo presenti in .\Resources\ErrorThreshold. I dati hanno una profondità di cinque
+giorni. Il server restituirà solamente quei comuni, insieme alla rispettiva soglia, i quali hanno una media di
+errore minore del numero immesso dall’utente. Genererà eccezione se non si immette un numero o si
+immette un numero troppo basso o negativo.
 <img src="https://i.postimg.cc/v8NyC6P2/stats-Error.png" width="1000"/>
 
 * **Chiamata <code>GET /statsTwoError/{filterMin}-{filterMax}</code>**
-L'arrayList di Record sul quale fare il calcolo delle statisctiche viene ottenuto nel modo spiegato nella richiesta *GET /data*.
-Viene passato il nome del campo su cui si desidera effettuare la statistica a `instanceStatsCalculator`, il quale instanzia l'oggetto `StasCalculator` corretto dalle classi contenute nel package com.esame.util.statistics.
-Quest'ultimo tramite il metodo `run` eseguirà il calocolo statistico che verrà incapsulato come oggetto stats, e restituito in formato Json al client
+Contiene le due variabili di tipo float {error min} e {error max}. L’utente dovrà inserire due cifre separate da
+un trattino, ed il programma,come effettuato nella rotta precendente ` GET /statsError/{filter}` , restituirà solamente i comuni i
+quali hanno una soglia di errore compresa tra i due valori.
 <img src="https://i.postimg.cc/rFrBbZRz/stats-Two-Error.png" width="1000"/>
 
 * **Chiamata <code>GET /statsErrorCity/{city}</code>**
-L'arrayList di Record sul quale calcolare le statisctiche viene ottenuto nel modo spiegato nella richiesta *POST /data*.
-Il calcolo statistico viene eseguito come spiegato nella richiesta *GET /stats?field="nome"*
+Contiene la variabile di tipo stringa ` city` con il nome di un comune scelto dall’utente. La rotta restituirà la
+soglia di errore del comune scelto. Se il comune non esiste, verrà generata un’eccezione.
 <img src="https://i.postimg.cc/kXWn8gcj/stats-Error-City.png" width="1000"/>
 
 * **Chiamata <code>GET /temp/{temp}-{choice}</code>**
-L'arrayList di Record sul quale calcolare le statisctiche viene ottenuto nel modo spiegato nella richiesta *POST /data*.
-Il calcolo statistico viene eseguito come spiegato nella richiesta *GET /stats?field="nome"*
+Contiene la variabile ` temp` di tipo float e la variabile ` choice` di tipo stringa. L’utente dovrà inserire una
+temperatura e, dopo il trattino, la parola “under” o “over”. Queste si riferiscono al valore in float: la parola
+“under” intende i valori minori del numero precedentemente inserito; invece “over” andrà a filtrare le
+temperature medie maggiori di ` temp`.
+</br>Il programma calcolerà la media della temperatura dei 5 giorni
+precedenti di tutti i comuni. Successivamente, restituirà comuni e rispettivi valori i quali soddisfano la
+condizione dettata dal cliente.
 <img src="https://i.postimg.cc/3r1pZk6S/temp.png" width="1000"/>
 
 ## Softwere utilizzati
