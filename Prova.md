@@ -25,8 +25,9 @@ La nostra applicazione permette di richiedere mediante API REST (GET o POST) con
 </br>*Restituzione delle statistiche sui dati di uno specifico campo filtrato. 
 </br>*Restituzione dei dati,formato JSON,circa la soglia di errore delle previsioni effettuate. 
 note: come effettuare richieste.
+## Diagramma casi d'uso
 <img src="https://i.postimg.cc/Nj1ScPRs/uml1.png" width="250"></img>
-<img src="https://i.postimg.cc/mktKWLyJ/uml2.png" width="600"></img>
+</br><img src="https://i.postimg.cc/mktKWLyJ/uml2.png" width="600"></img>
 <img src="https://i.postimg.cc/9fCSFtBG/uml3.png" width="600"></img>
 ## Come iniziare <a name="inizio"></a>
 
