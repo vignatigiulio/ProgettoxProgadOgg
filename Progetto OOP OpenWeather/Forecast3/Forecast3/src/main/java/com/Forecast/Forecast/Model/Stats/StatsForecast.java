@@ -73,12 +73,8 @@ public class StatsForecast extends Stats {
 		arithmetic_average_temperature.put("temperature_max:",method.methodArithmetic_averageTemperature(temp_max));
 		return arithmetic_average_temperature;
 	}
-	public Vector<Double> getTemperature() {
-	    return temperature;
-	}
-	
-	
 
+	
 }
 
 	

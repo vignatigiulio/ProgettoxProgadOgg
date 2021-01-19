@@ -162,6 +162,12 @@ public class FilterUtils {
     public void setPrevisioni(HashMap<String, Float> previsioni) {
         Previsioni = previsioni;
     }
+    public boolean isEmpty()
+    {
+    	if(Previsioni.isEmpty())return true;
+    	
+    	return false;
+    }
     
     
 

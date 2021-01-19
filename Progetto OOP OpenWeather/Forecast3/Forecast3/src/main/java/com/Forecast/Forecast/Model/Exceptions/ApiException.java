@@ -7,9 +7,9 @@ import org.springframework.http.HttpStatus;
  * da restiruire al client.
 */
 public class ApiException {
-  private final String message;
-
-  private final HttpStatus   httpstatus;
+  
+	private final String message;
+	private final HttpStatus   httpstatus;
   private ZonedDateTime timestamp;
   public ApiException(String message, HttpStatus httpstatus, ZonedDateTime timestamp) {
 	super();

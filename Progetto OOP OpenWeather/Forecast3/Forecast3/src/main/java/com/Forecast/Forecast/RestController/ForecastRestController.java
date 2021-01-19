@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.Forecast.Forecast.Model.Weather;
 import com.Forecast.Forecast.Model.Exceptions.ApiRequestException;
+import com.Forecast.Forecast.Model.Exceptions.FilterIllegalArgumentException;
 import com.Forecast.Forecast.Model.Stats.Stats;
 import com.Forecast.Forecast.Model.Utils.CityForecast;
 import com.Forecast.Forecast.Model.Utils.FilterUtils;
@@ -27,16 +28,14 @@ public class ForecastRestController {
 	/**
 	 * Eccezione invocata quando non viene trovata l'entità serializzata richiesta
 	 * dall'utente.
-	 *
-	 *
 	*/
 	@ResponseStatus(value = HttpStatus.NOT_FOUND)
 	public class EntityNotFoundException extends RuntimeException {
 	 
 	     private static final long serialVersionUID = 1L;
 	 
-	    public EntityNotFoundException(String message) {
-	        super(message);
+	    public EntityNotFoundException(String msg) {
+	        super(msg);
 	    }
 	 
 	    public EntityNotFoundException() {
@@ -99,9 +98,10 @@ public class ForecastRestController {
 	 * @return  oggetto FilterUtils contente un hashMap che contiene le statistiche richieste filtrate
 	 */
 	@GetMapping("/statsError/{error threshold}")
-	public FilterUtils getStatsForecast(@PathVariable("error threshold") float filter) throws EntityNotFoundException
+	public FilterUtils getStatsForecast(@PathVariable("error threshold") float filter) 
 	{
 		if(filter <= 0) throw new ApiRequestException(filter);
+		if(this.forecastService.filterField(filter).isEmpty()) throw new FilterIllegalArgumentException("soglia di errore troppo piccola");
 		return this.forecastService.filterField(filter);
 
     }
@@ -121,6 +121,7 @@ public class ForecastRestController {
 			throws EntityNotFoundException
 	{
 		if(filterMin < 0 || filterMax <= 0) throw new ApiRequestException(filterMin, filterMax);
+		if(this.forecastService.filterField(filterMin, filterMax).isEmpty()) throw new FilterIllegalArgumentException("soglia di errore troppo piccola"); 
 		return this.forecastService.filterField(filterMin, filterMax);
 
 	}
