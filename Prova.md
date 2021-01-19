@@ -1,5 +1,6 @@
-# Spring boot Web Service
-
+# OpenWeather Web Service
+ <img src="https://i.postimg.cc/dV6DkjmQ/Open-Weather-Map.png" alt="Currency_logo" width="260" height=”69” border="0"></img>
+ 
 Un Web Service è un sistema software in grado di mettersi al servizio di un Client (applicazione, sito web, Postman), comunicando tramite il protocollo HTTP. </br> Un Web service consente quindi agli utenti che vi si collegano di usufruire delle funzioni che mette a disposizione. Con Spring Boot, è stato possibile creare questo software che lancia l'intera applicazione web, compreso il web server integrato.
 
 ## Introduzione <a name="intro"></a>
@@ -22,7 +23,8 @@ Usando l'ide eclipse si possono seguire i seguenti passi:
 - aprire eclipse, nella Show view premere il pulsante "clone a Git Repository".
 - nella finestra che appare, incollare URL di questa repository nella casella URI e procedere.
 - recarsi nel clone della repository che apparirà, tasto destro quindi Import Project (verificare che sia importato come progetto Maven) e procedere.
-- a questo punto potete provare ad eseguire il codice, selezionando "nome_Progetto" tasto destro, "Run as" e quindi "Sprign boot App".
+- a questo punto potete provare ad eseguire il codice, selezionando "Forecast_3" tasto destro, "Run as" e quindi "Spring boot App".
+- all'avvio del programma apparirà un interfaccia che vi permetterà di scegliere il comune su cui effettuare le previsioni. 
 
 Ora l'aplicazione Web Service sarà attiva e in ascolto alla porta http://localhost:8080.
 
