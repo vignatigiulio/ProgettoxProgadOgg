@@ -1,5 +1,6 @@
 # OpenWeather Web Service
  <div align="center">
+ <p align = "center">  OPENWEATHER WEB SERVICE </p>
   <br><br>
   <img src="https://i.postimg.cc/dV6DkjmQ/Open-Weather-Map.png" alt="Currency_logo" width="260" height=”69” ></img>
   <br>
@@ -8,7 +9,7 @@
     <a href="#intro">Introduzione</a>&nbsp•
     <a href="#inizio">Come iniziare</a>&nbsp•
     <a href="#richieste">Eseguire richieste</a>&nbsp•
-    <a href="chiamate">Chiamate</a>&nbsp•
+    <a href="chiama">Chiamate</a>&nbsp•
     <a href="#riconoscimenti">Autori</a> 
   </p>
 </div><br><br>
@@ -84,7 +85,7 @@ Per eseguire le richieste GET o POST si può installare un API testing, (ad esem
 * **Package com.Forecast.Forecast**
 <img src="https://i.postimg.cc/RVwWbj6s/main.png" width="150"/>
 
-### Chiamate <a name="chiamate"></a>
+### Chiamate <a name="chiama"></a>
 * **Chiamata <code>GET /weather</code>**
 il RestController esegue una chiamata tramite il metodo `getWeather`,restituisce le informazioni attuali del meteo quali:
 *Nome del comune;
