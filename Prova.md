@@ -34,15 +34,7 @@ Per eseguire le richieste GET o POST si può installare un API testing, (ad esem
 |    TIPO        |rotta                                          |descrizione                                                                                                                                      |
 |----------------|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 |GET             |/weather                                       |restituisce le previsioni meteo del comune scelto dal cliente.                                                                                   |
-|GET             |/weather/{filter}                              |restituisce le previsioni meteo del comune scelto dal cliente filtrate.
-
-
-
-
-
-
-
-|
+|GET             |/weather/{filter}                              |restituisce le previsioni meteo del comune scelto dal cliente filtrate.                                                                          |
 |GET             |/stats/{filter}                                |restituisce una statistica sulla varianza di temperatura e media della temperatura prevista e passata.                                           |
 |GET             |/statsError/{filter}                           |restituisce i comuni con la relativa soglia di errore,data dalla differenza tra la temperatura prevista e quella corrente,che rientra nel filtro.|                        
 |GET             |/statsTwoError/{filtermin}-{filtermax}         |restitursce i comuni con la relativa soglia di errore compresa tra i due filtri                                                                  |
@@ -80,36 +72,36 @@ Per eseguire le richieste GET o POST si può installare un API testing, (ad esem
 <img src="https://i.postimg.cc/RVwWbj6s/main.png" width="150"/>
 
 ### Chiamate
-* **Chiamata GET /weather**
+* **Chiamata <code>GET /weather</code>**
 ControllerClass esegue una chiamata tramite il metodo `getArrayMetadata`, il quale inizializza un ArrayList di metadata e lo restituisce. ControllerClass trasforma quest ultimo in Json e lo ritorna al client.
 <img src="https://i.postimg.cc/wM16J4nd/weather.png" width="1000"/>
 
-* **Chiamata GET /weather/{filter}**
+* **Chiamata <code>GET /weather/{filter}</code>**
 ControllerClass esegue una chiamata tramite il metodo `getRecords`, il quale restituisce l'intero ArrayList di Record. ControllerClass trasforma quest ultimo in Json e lo ritorna al client.
 <img src="https://i.postimg.cc/5y0xLBsL/weather-filter.png" width="1000"/>
 
-* **Chiamata * **<code>GET /stats/{filter}</code>**
+* **Chiamata <code>GET /stats/{filter}</code>**
 ControllerClass esegue una chiamata tramite `jsonParserColumn` alla classe JsonParser, che insieme a `jsonParserOperator` effetueranno il parsing del body ricevuto in modo ciclico. Estrapolate le informazioni relative al filtraggio richiesto, verranno utilizzate da `instanceFilter` per istanziare nuovi oggetti filtro prendedoli della classi contenute nel package com.esame.util.filter. A questo punto tramite `runFilter` si potrà eseguire il filtraggio e restituire a ControllerClass l'Arraylist di Record filtrato da consegnare al Client in formato Json. 
 <img src="https://i.postimg.cc/FRFmXb58/stats-filter.png" width="1000"/>
 
-* **Chiamata GET /statsError/{filter}"**
+* **Chiamata <code>GET /statsError/{filter}</code>**
 L'arrayList di Record sul quale fare il calcolo delle statisctiche viene ottenuto nel modo spiegato nella richiesta *GET /data*.
 Viene passato il nome del campo su cui si desidera effettuare la statistica a `instanceStatsCalculator`, il quale instanzia l'oggetto `StasCalculator` corretto dalle classi contenute nel package com.esame.util.statistics.
 Quest'ultimo tramite il metodo `run` eseguirà il calocolo statistico che verrà incapsulato come oggetto stats, e restituito in formato Json al client
 <img src="https://i.postimg.cc/v8NyC6P2/stats-Error.png" width="1000"/>
 
-* **Chiamata GET /statsTwoError/{filterMin}-{filterMax}"**
+* **Chiamata <code>GET /statsTwoError/{filterMin}-{filterMax}</code>**
 L'arrayList di Record sul quale fare il calcolo delle statisctiche viene ottenuto nel modo spiegato nella richiesta *GET /data*.
 Viene passato il nome del campo su cui si desidera effettuare la statistica a `instanceStatsCalculator`, il quale instanzia l'oggetto `StasCalculator` corretto dalle classi contenute nel package com.esame.util.statistics.
 Quest'ultimo tramite il metodo `run` eseguirà il calocolo statistico che verrà incapsulato come oggetto stats, e restituito in formato Json al client
 <img src="https://i.postimg.cc/rFrBbZRz/stats-Two-Error.png" width="1000"/>
 
-* **Chiamata GET /statsErrorCity/{city}**
+* **Chiamata <code>GET /statsErrorCity/{city}</code>**
 L'arrayList di Record sul quale calcolare le statisctiche viene ottenuto nel modo spiegato nella richiesta *POST /data*.
 Il calcolo statistico viene eseguito come spiegato nella richiesta *GET /stats?field="nome"*
 <img src="https://i.postimg.cc/kXWn8gcj/stats-Error-City.png" width="1000"/>
 
-* **Chiamata GET /temp/{temp}-{choice}**
+* **Chiamata <code>GET /temp/{temp}-{choice}</code>**
 L'arrayList di Record sul quale calcolare le statisctiche viene ottenuto nel modo spiegato nella richiesta *POST /data*.
 Il calcolo statistico viene eseguito come spiegato nella richiesta *GET /stats?field="nome"*
 <img src="https://i.postimg.cc/3r1pZk6S/temp.png" width="1000"/>
