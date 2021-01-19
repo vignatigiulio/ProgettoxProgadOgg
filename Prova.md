@@ -43,7 +43,7 @@ Per eseguire le richieste GET o POST si può installare un API testing, (ad esem
 |GET             |/statsErrorCity/{city}                         |restituisce la soglia di errore del relativo comune passato dal client nella rotta                                                               |
 |GET             |/temp/{temp}-{choice}                          |restituisce solamente la temperatura media di tutti i comuni compresi nel filtro                                                                 |
 
-##Sviluppo
+## Sviluppo
 
 ### Package
 <img src="https://i.postimg.cc/wjYXbXWz/packages.png" width="800"/>
