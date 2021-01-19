@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.Forecast.Forecast.Model.Weather;
 import com.Forecast.Forecast.Model.Exceptions.ApiRequestException;
-import com.Forecast.Forecast.Model.Exceptions.FilterIllegalArgumentException;
 import com.Forecast.Forecast.Model.Stats.Stats;
 import com.Forecast.Forecast.Model.Utils.CityForecast;
 import com.Forecast.Forecast.Model.Utils.FilterUtils;
@@ -101,7 +100,7 @@ public class ForecastRestController {
 	public FilterUtils getStatsForecast(@PathVariable("error threshold") float filter) 
 	{
 		if(filter <= 0) throw new ApiRequestException(filter);
-		if(this.forecastService.filterField(filter).isEmpty()) throw new FilterIllegalArgumentException("soglia di errore troppo piccola");
+		if(this.forecastService.filterField(filter).isEmpty()) throw new ApiRequestException("soglia di errore troppo piccola");
 		return this.forecastService.filterField(filter);
 
     }
@@ -121,7 +120,7 @@ public class ForecastRestController {
 			throws EntityNotFoundException
 	{
 		if(filterMin < 0 || filterMax <= 0) throw new ApiRequestException(filterMin, filterMax);
-		if(this.forecastService.filterField(filterMin, filterMax).isEmpty()) throw new FilterIllegalArgumentException("soglia di errore troppo piccola"); 
+		if(this.forecastService.filterField(filterMin, filterMax).isEmpty()) throw new ApiRequestException("soglia di errore troppo piccola"); 
 		return this.forecastService.filterField(filterMin, filterMax);
 
 	}
