@@ -6,10 +6,10 @@
   <h4>Versione attuale: 1.1.3</h4><br>
   <p>
     <a href="#intro">Introduzione</a>&nbsp•
-    <a href="#inizio">Realizzazione</a>&nbsp•
-    <a href="#richieste">Guida per l'uso</a>&nbsp•
-    <a href="chiamate">Javadoc</a>&nbsp•
-    <a href="#riconoscimenti">Riconoscimenti</a> 
+    <a href="#inizio">Come iniziare</a>&nbsp•
+    <a href="#richieste">Eseguire richieste</a>&nbsp•
+    <a href="chiamate">Chiamate</a>&nbsp•
+    <a href="#riconoscimenti">Autori</a> 
   </p>
 </div><br><br>
 Un Web Service è un sistema software in grado di mettersi al servizio di un Client (applicazione, sito web, Postman), comunicando tramite il protocollo HTTP. </br> Un Web service consente quindi agli utenti che vi si collegano di usufruire delle funzioni che mette a disposizione. Con Spring Boot, è stato possibile creare questo software che lancia l'intera applicazione web, compreso il web server integrato.
