@@ -86,17 +86,28 @@ ControllerClass esegue una chiamata tramite il metodo `getArrayMetadata`, il qua
 
 * **Chiamata GET /weather/{filter}**
 ControllerClass esegue una chiamata tramite il metodo `getRecords`, il quale restituisce l'intero ArrayList di Record. ControllerClass trasforma quest ultimo in Json e lo ritorna al client.
-<img src="" width="1000"/>
+<img src="https://i.postimg.cc/5y0xLBsL/weather-filter.png" width="1000"/>
 
 * **Chiamata GET /stats/{filter}**
 ControllerClass esegue una chiamata tramite `jsonParserColumn` alla classe JsonParser, che insieme a `jsonParserOperator` effetueranno il parsing del body ricevuto in modo ciclico. Estrapolate le informazioni relative al filtraggio richiesto, verranno utilizzate da `instanceFilter` per istanziare nuovi oggetti filtro prendedoli della classi contenute nel package com.esame.util.filter. A questo punto tramite `runFilter` si potrà eseguire il filtraggio e restituire a ControllerClass l'Arraylist di Record filtrato da consegnare al Client in formato Json. 
-<img src="https://aaoddw.db.files.1drv.com/y4mwkin2INnRgju0sxyVK0HJtkbNBEyC8jhb4p7mCstWce3Nn1WqeWR2I73_GYlyMYxx2Ke5jsURAdKonsHU6TR4iIvoIB2tPFIhQTFDhdikZcTkT6HYKx47yAsDzPujeiUFo-LbRxwpyNlQ9zNz3H7iqM9MfTEZTNRt6fcRPzCABahPQzkr0gcv8RQd4f7p-jA?width=1920&height=644&cropmode=none" width="1000"/>
+<img src="https://i.postimg.cc/FRFmXb58/stats-filter.png" width="1000"/>
 
-* **Chiamata GET /stats?field="nome"**
+* **Chiamata GET /statsError/{filter}"**
 L'arrayList di Record sul quale fare il calcolo delle statisctiche viene ottenuto nel modo spiegato nella richiesta *GET /data*.
 Viene passato il nome del campo su cui si desidera effettuare la statistica a `instanceStatsCalculator`, il quale instanzia l'oggetto `StasCalculator` corretto dalle classi contenute nel package com.esame.util.statistics.
 Quest'ultimo tramite il metodo `run` eseguirà il calocolo statistico che verrà incapsulato come oggetto stats, e restituito in formato Json al client
-<img src="https://rpq8cg.db.files.1drv.com/y4mqN_XoixpKzN2XSjgqCpET4UC0nZyeijxp7cN1ECPoJZJcNMsKXh1_uanj2Q_oTSN_cSiY0KmlYp51ltFvw5et3g7Bo1sQOKHagwd7odz0amXwz9_ghYZGr7xYyViC1CnqEdkOetP4RZHAntaWdpG5BfpIYBksOrWFsHE7W-ner0NZ8cyUWz2Vj6Ffc79Ajza?width=1902&height=587&cropmode=none" width="1000"/>
+<img src="https://i.postimg.cc/v8NyC6P2/stats-Error.png" width="1000"/>
+
+* **Chiamata GET /statsTwoError/{filterMin}-{filterMax}"**
+L'arrayList di Record sul quale fare il calcolo delle statisctiche viene ottenuto nel modo spiegato nella richiesta *GET /data*.
+Viene passato il nome del campo su cui si desidera effettuare la statistica a `instanceStatsCalculator`, il quale instanzia l'oggetto `StasCalculator` corretto dalle classi contenute nel package com.esame.util.statistics.
+Quest'ultimo tramite il metodo `run` eseguirà il calocolo statistico che verrà incapsulato come oggetto stats, e restituito in formato Json al client
+<img src="https://i.postimg.cc/rFrBbZRz/stats-Two-Error.png" width="1000"/>
+
+* **Chiamata GET /statsErrorCity/{city}**
+L'arrayList di Record sul quale calcolare le statisctiche viene ottenuto nel modo spiegato nella richiesta *POST /data*.
+Il calcolo statistico viene eseguito come spiegato nella richiesta *GET /stats?field="nome"*
+<img src="https://i.postimg.cc/kXWn8gcj/stats-Error-City.png" width="1000"/>
 
 * **Chiamata GET /temp/{temp}-{choice}**
 L'arrayList di Record sul quale calcolare le statisctiche viene ottenuto nel modo spiegato nella richiesta *POST /data*.
