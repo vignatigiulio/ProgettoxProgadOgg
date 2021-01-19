@@ -12,7 +12,7 @@ La nostra applicazione permette di richiedere mediante API REST (GET o POST) con
 *Restituzione dei metadati, formato JSON, delle previsioni meteo del comune selezionato dopo essere stato filtrato. 
 *Restituzione delle statistiche sui dati di uno specifico campo filtrato. 
 *Restituzione dei dati,formato JSON,circa la soglia di errore delle previsioni effettuate. 
-note: come effettuare richieste..
+note: come effettuare richieste.
 
 ## Come iniziare 
 
@@ -24,8 +24,6 @@ Usando l'ide eclipse si possono seguire i seguenti passi:
 - recarsi nel clone della repository che apparirà, tasto destro quindi Import Project (verificare che sia importato come progetto Maven) e procedere.
 - a questo punto potete provare ad eseguire il codice, selezionando "nome_Progetto" tasto destro, "Run as" e quindi "Sprign boot App".
 
-In alternativa su linux senza l'utilizzo del ide eclipse si puo scaricare il file Zip ed estrarlo, da terminale recarsi nella directory, digitare il comando `mvn clean install` se il BUILD avrà suceccesso, all'interno del progetto nella directory target si troveranno i file compilati. Per eseguire il programma `java -jar target/nomeProgettoCompilato.jar` (oppure `mvn spring-boot:run`).
-
 Ora l'aplicazione Web Service sarà attiva e in ascolto alla porta http://localhost:8080.
 
 ### Eseguire richieste
@@ -33,7 +31,6 @@ Ora l'aplicazione Web Service sarà attiva e in ascolto alla porta http://localh
 Per eseguire le richieste GET o POST si può installare un API testing, (ad esempio: Postman). 
 La seguente tabella mostra le richieste possibili. 
 
-##TIPO rotta descrizione 
 |    TIPO        |rotta                                          |descrizione                                                                                                                                      |
 |----------------|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 |GET             |/weather                                       |restituisce le previsioni meteo del comune scelto dal cliente.                                                                                   |
@@ -43,4 +40,6 @@ La seguente tabella mostra le richieste possibili.
 |GET             |/statsTwoError/{filtermin}-{filtermax}         |restitursce i comuni con la relativa soglia di errore compresa tra i due filtri                                                                  |
 |GET             |/statsErrorCity/{city}                         |restituisce la soglia di errore del relativo comune passato dal client nella rotta                                                               |
 |GET             |/temp/{temp}-{choice}                          |restituisce solamente la temperatura media di tutti i comuni compresi nel filtro                                                                 |
+
+##SVILUPPO                               |
 
