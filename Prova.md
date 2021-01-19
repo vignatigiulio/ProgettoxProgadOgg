@@ -1,6 +1,17 @@
-<center># OpenWeather Web Service </center>
- <center><img src="https://i.postimg.cc/dV6DkjmQ/Open-Weather-Map.png" alt="Currency_logo" width="260" height=”69” ></img></center>
- 
+# OpenWeather Web Service
+ <div align="center">
+  <br><br>
+  <img src="https://i.postimg.cc/dV6DkjmQ/Open-Weather-Map.png" alt="Currency_logo" width="260" height=”69” ></img>
+  <br>
+  <h4>Versione attuale: 1.1.3</h4><br>
+  <p>
+    <a href="#intro">Introduzione</a>&nbsp•
+    <a href="#inizio">Realizzazione</a>&nbsp•
+    <a href="#richieste">Guida per l'uso</a>&nbsp•
+    <a href="chiamate">Javadoc</a>&nbsp•
+    <a href="#riconoscimenti">Riconoscimenti</a> 
+  </p>
+</div><br><br>
 Un Web Service è un sistema software in grado di mettersi al servizio di un Client (applicazione, sito web, Postman), comunicando tramite il protocollo HTTP. </br> Un Web service consente quindi agli utenti che vi si collegano di usufruire delle funzioni che mette a disposizione. Con Spring Boot, è stato possibile creare questo software che lancia l'intera applicazione web, compreso il web server integrato.
 
 ## Introduzione <a name="intro"></a>
@@ -15,7 +26,7 @@ La nostra applicazione permette di richiedere mediante API REST (GET o POST) con
 </br>*Restituzione dei dati,formato JSON,circa la soglia di errore delle previsioni effettuate. 
 note: come effettuare richieste.
 <img src="https://i.postimg.cc/dV6DkjmQ/Open-Weather-Map.png" alt="Currency_logo" width="260" height=”69” border="0"></img>
-## Come iniziare 
+## Come iniziare <a name="inizio"></a>
 
 ### Download 
 
@@ -28,7 +39,7 @@ Usando l'ide eclipse si possono seguire i seguenti passi:
 
 Ora l'aplicazione Web Service sarà attiva e in ascolto alla porta http://localhost:8080.
 
-### Eseguire richieste
+### Eseguire richieste <a name="richieste"></a>
 
 Per eseguire le richieste GET o POST si può installare un API testing, (ad esempio: Postman). 
 </br>La seguente tabella mostra le richieste possibili. 
@@ -73,7 +84,7 @@ Per eseguire le richieste GET o POST si può installare un API testing, (ad esem
 * **Package com.Forecast.Forecast**
 <img src="https://i.postimg.cc/RVwWbj6s/main.png" width="150"/>
 
-### Chiamate
+### Chiamate <a name="chiamate"></a>
 * **Chiamata <code>GET /weather</code>**
 il RestController esegue una chiamata tramite il metodo `getWeather`,restituisce le informazioni attuali del meteo quali:
 *Nome del comune;
@@ -143,7 +154,7 @@ condizione dettata dal cliente.
 * [Spring Boot](https://spring.io/projects/spring-boot) - framework per  sviluppo applicazioni Java
 * [Maven](https://maven.apache.org/) - strumento di gestione di progetti
 
-## Autori
+## Autori <a name="riconoscimenti"></a>
 
 * **Matteo Losa** - [GitHub](https://github.com/losamatteo)
 * **Giulio Vignati** - [GitHub](https://github.com/vignatigiulio)
