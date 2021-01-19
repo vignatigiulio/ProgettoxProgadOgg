@@ -1,5 +1,5 @@
-# OpenWeather Web Service
- <img src="https://i.postimg.cc/dV6DkjmQ/Open-Weather-Map.png" alt="Currency_logo" width="260" height=”69” border="0"></img>
+<center># OpenWeather Web Service </center>
+ <center><img src="https://i.postimg.cc/dV6DkjmQ/Open-Weather-Map.png" alt="Currency_logo" width="260" height=”69” ></img></center>
  
 Un Web Service è un sistema software in grado di mettersi al servizio di un Client (applicazione, sito web, Postman), comunicando tramite il protocollo HTTP. </br> Un Web service consente quindi agli utenti che vi si collegano di usufruire delle funzioni che mette a disposizione. Con Spring Boot, è stato possibile creare questo software che lancia l'intera applicazione web, compreso il web server integrato.
 
@@ -14,7 +14,7 @@ La nostra applicazione permette di richiedere mediante API REST (GET o POST) con
 </br>*Restituzione delle statistiche sui dati di uno specifico campo filtrato. 
 </br>*Restituzione dei dati,formato JSON,circa la soglia di errore delle previsioni effettuate. 
 note: come effettuare richieste.
-
+<img src="https://i.postimg.cc/dV6DkjmQ/Open-Weather-Map.png" alt="Currency_logo" width="260" height=”69” border="0"></img>
 ## Come iniziare 
 
 ### Download 
