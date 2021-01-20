@@ -8,8 +8,10 @@
   <p>
     <a href="#intro">Introduzione</a>&nbsp•
     <a href="#inizio">Come iniziare</a>&nbsp•
-   <a href="#diagram">Diagramma casi d'uso</a>&nbsp•
+    <a href="#diagram">Diagramma casi d'uso</a>&nbsp•
     <a href="#richieste">Eseguire richieste</a>&nbsp•
+    <a href="#sviluppo">Sviluppo </a>&nbsp•
+    <a href="#chiamate">Chiamate </a>&nbsp•
     <a href="#riconoscimenti">Autori</a> 
   </p>
 </div><br><br>
@@ -58,7 +60,7 @@ Per eseguire le richieste GET o POST si può installare un API testing, (ad esem
 |GET             |/statsErrorCity/{city}                         |restituisce la soglia di errore del relativo comune passato dal client nella rotta                                                               |
 |GET             |/temp/{temp}-{choice}                          |restituisce solamente la temperatura media di tutti i comuni compresi nel filtro                                                                 |
 
-## Sviluppo
+## Sviluppo <a name="sviluppo"></a>
 
 ### Package
 <img src="https://i.postimg.cc/wjYXbXWz/packages.png" width="800"/>
@@ -88,7 +90,7 @@ Per eseguire le richieste GET o POST si può installare un API testing, (ad esem
 * **Package com.Forecast.Forecast**
 <img src="https://i.postimg.cc/RVwWbj6s/main.png" width="150"/>
 
-### Chiamate 
+### Chiamate <a name="chiamate"></a>
 * **Chiamata <code>GET /weather</code>**
 il RestController esegue una chiamata tramite il metodo `getWeather`,restituisce le informazioni attuali del meteo quali:
 *Nome del comune;
