@@ -19,7 +19,7 @@ public class DLM {
   public  void elenco(String citta) throws FileNotFoundException
   {
 	  this.DLM.clear();
-	  Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Comuni.txt")));
+	  Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\Comuni.txt")));
 	  String paese = null;
 	  if(citta != null)
 	  {

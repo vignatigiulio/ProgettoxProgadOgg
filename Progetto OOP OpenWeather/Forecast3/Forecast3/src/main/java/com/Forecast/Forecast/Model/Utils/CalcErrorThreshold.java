@@ -29,9 +29,10 @@ public class CalcErrorThreshold {
 	    	    Vector<Double> tempC = new Vector<>();
 	    	    Vector<Double> tempF = new Vector<>();
 	    	    Boolean trovato = true;
-	    	    for (int i = 1; i <= 4; i++)//5
+	    	    for (int i = 1; i <= 5; i++)
 	    	    {
-    	    	Scanner scanC = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\WeatherCurrentDay"+i+".txt"))); 
+	    	    trovato = true;
+    	    	Scanner scanC = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\WeatherCurrent"+i+".txt"))); 
 	    	    String lettura;
 	    	    while (scanC.hasNextLine() && trovato) {
 	    	    	lettura = scanC.nextLine();
@@ -45,23 +46,23 @@ public class CalcErrorThreshold {
 	    	    }
 	    	    scanC.close();
 	    	    }
-	    	    for (int i = 1; i <= 4; i++)//5
+	    	    for (int i = 1; i <= 5; i++)
 	    	    {
-	    	    	Scanner scanF = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\ForecastGiorno"+i+"full.txt")));
+	    	    	Scanner scanF = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\ForecastGiorno"+i+".txt")));
 	    	    	trovato = true;
 		    	    String lettura2;
 		    	    while (scanF.hasNextLine() && trovato) {
 			    	lettura2 = scanF.nextLine();
 			    	while (lettura2.equalsIgnoreCase(citta) && trovato) {
-			    	    tempF.add(Double.parseDouble(scanF.nextLine()));//uguali
 			    	    tempF.add(Double.parseDouble(scanF.nextLine()));
-			    	    tempF.add(Double.parseDouble(scanF.nextLine()));//uguali
-			    	    tempF.add(Double.parseDouble(scanF.nextLine()));//uguali
+			    	    tempF.add(Double.parseDouble(scanF.nextLine()));
+			    	    tempF.add(Double.parseDouble(scanF.nextLine()));
+			    	    tempF.add(Double.parseDouble(scanF.nextLine()));
 			    	    trovato = false;
 			    	    
 			    	}
 			    }
-		    	    scanF.close();
+		    	    //scanF.close();
 	    	    }
 	    	    if(trovato) return -1;
 	    	    double differenza, somma = 0;
@@ -116,9 +117,9 @@ public class CalcErrorThreshold {
 	public float tempMin(String citta) throws FileNotFoundException
 	{
 		Vector<Double> tempF = new Vector<>();
-		for (int i = 1; i <= 4; i++)//5
+		for (int i = 1; i <= 5; i++)
 	    {
-	    	Scanner scanF = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\ForecastGiorno"+i+"full.txt")));
+	    	Scanner scanF = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\ForecastGiorno"+i+".txt")));
 	    	Boolean trovato = true;
     	    String lettura2;
     	    while (scanF.hasNextLine() && trovato) {

@@ -57,7 +57,7 @@ public class FilterUtils {
 	HashMap<String, Float> Elenco = new HashMap<>();
 	CalcErrorThreshold cet = new CalcErrorThreshold();
 	try {
-	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Comuni.txt")));
+	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\Comuni.txt")));
 	    while (scan.hasNextLine()) {
 		
 		String citta = scan.nextLine();	 
@@ -79,7 +79,7 @@ public class FilterUtils {
     	HashMap<String, Float> Elenco = new HashMap<>();
     	CalcErrorThreshold cet = new CalcErrorThreshold();
     	try {
-    	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Comuni.txt")));
+    	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\Comuni.txt")));
     	    while (scan.hasNextLine()) {
 
     		String citta = scan.nextLine();	
@@ -107,7 +107,7 @@ public class FilterUtils {
 	HashMap<String, Float> Elenco = new HashMap<>();
 	CalcErrorThreshold cet = new CalcErrorThreshold();
 	try {
-	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Comuni.txt")));
+	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\Comuni.txt")));
 	    while (scan.hasNextLine()) {
 		
 		String citta = scan.nextLine();	 
@@ -129,7 +129,7 @@ public class FilterUtils {
 	HashMap<String, Float> Elenco = new HashMap<>();
 	CalcErrorThreshold cet = new CalcErrorThreshold();
 	try {
-	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Comuni.txt")));
+	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\Comuni.txt")));
 	    while (scan.hasNextLine()) {
 		
 		String citta = scan.nextLine();	 

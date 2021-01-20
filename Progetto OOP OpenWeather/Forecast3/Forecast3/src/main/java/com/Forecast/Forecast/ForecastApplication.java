@@ -139,7 +139,7 @@ public class ForecastApplication {
 		File[] files = f.listFiles();
 	    if(files!=null) 
 	       for(File path: files) 
-	    	   if(path.getName()!="..txt") path.delete();
+	    	   if(!path.getName().toString().equalsIgnoreCase("comuni.txt")) path.delete();
 	}
 	
 	public static void main(String[] args) 
