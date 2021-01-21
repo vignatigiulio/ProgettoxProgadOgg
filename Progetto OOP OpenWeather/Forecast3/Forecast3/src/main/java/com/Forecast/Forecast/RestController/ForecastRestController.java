@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.Forecast.Forecast.Model.Weather;
 import com.Forecast.Forecast.Model.Exceptions.ApiRequestException;
+import com.Forecast.Forecast.Model.Exceptions.FilterIllegalArgumentException;
 import com.Forecast.Forecast.Model.Stats.Stats;
 import com.Forecast.Forecast.Model.Utils.CityForecast;
 import com.Forecast.Forecast.Model.Utils.FilterUtils;
@@ -100,7 +101,8 @@ public class ForecastRestController {
 	public FilterUtils getStatsForecast(@PathVariable("error threshold") float filter) 
 	{
 		if(filter <= 0) throw new ApiRequestException(filter);
-		if(this.forecastService.filterField(filter).isEmpty()) throw new ApiRequestException("soglia di errore troppo piccola");
+		if(this.forecastService.filterField(filter)==null) throw new FilterIllegalArgumentException("soglia di errore troppo piccola");
+		else
 		return this.forecastService.filterField(filter);
 
     }
@@ -119,13 +121,21 @@ public class ForecastRestController {
 	public FilterUtils getStatsForecast(@PathVariable("error min") float filterMin, @PathVariable("error max") float filterMax)
 			throws EntityNotFoundException
 	{
+		
 		if(filterMin < 0 || filterMax <= 0) throw new ApiRequestException(filterMin, filterMax);
-		if(this.forecastService.filterField(filterMin, filterMax).isEmpty()) throw new ApiRequestException("soglia di errore troppo piccola"); 
+		if(filterMin > filterMax)
+		{
+			float appoggio=filterMax;
+			filterMax=filterMin;
+			filterMin=appoggio;
+		}
+		if(this.forecastService.filterField(filterMin, filterMax) == null) throw new FilterIllegalArgumentException("soglia di errore troppo piccola"); 
+		else
 		return this.forecastService.filterField(filterMin, filterMax);
 
 	}
 	/**
-	 * Risponde all richiesta GET /statsErrorCity
+	 * Risponde all richiesta GET / Stats
 	 * @param city rappresenta il campo city della classe CityForecast classe che eredita la statistica della relativa città data in ingresso dal client  relativa alle previsioni 
 	 * sulla quale si vuole effettuare la ricerca.
 	 * @throws  ApiRequestException(filter) se vengono generati errori di parametro non valido in ingresso al filtro.
@@ -135,6 +145,7 @@ public class ForecastRestController {
 	@GetMapping("/statsErrorCity/{city}")
 	public CityForecast getErrorCity2(@PathVariable("city") String city) throws EntityNotFoundException, FileNotFoundException
 	{
+		city=city.trim().replaceAll("\\s{2,}", " ");//toglie i spazi in una stringa 
 		if((this.forecastService.filterField(city)) == null) throw new ApiRequestException(city);
 		else
 			return this.forecastService.filterField(city);
@@ -151,14 +162,26 @@ public class ForecastRestController {
 	public FilterUtils getTemp(@PathVariable("temp") float temp, @PathVariable("choice") String choice) throws EntityNotFoundException
 	{
 	    if (choice.equalsIgnoreCase(choice1))
-		return this.forecastService.getTemp(temp, true);
+		 {
+	    	if(this.forecastService.getTemp(temp, true)== null) throw new FilterIllegalArgumentException("temperatura troppo grande"); 
+	    	else
+	    		return this.forecastService.getTemp(temp, true);
+		 }
+	    
 	    else if (choice.equalsIgnoreCase(choice2)) 
-		return this.forecastService.getTemp(temp, false);
-	    else
+	    {
+	    	if(this.forecastService.getTemp(temp, false) == null) throw new FilterIllegalArgumentException("temperatura troppo piccola"); 
+	    return this.forecastService.getTemp(temp, false);
+	    }
+		else
 		throw new ApiRequestException(choice);
 	}	
 
 }
+
+
+
+
 
 
 

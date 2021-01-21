@@ -69,8 +69,8 @@ public class ForecastServiceImp implements ForecastService {
 				{  	
 				     stats = new StatsHistorical();
 				     stats.ReadFile(weatherHistorical.getCitta());
-				    stats.methodVariance();
-				    stats.methodMedia();
+				     stats.methodVariance();
+				     stats.methodMedia();
 				    return stats;
 				      
 				}
@@ -106,21 +106,10 @@ public class ForecastServiceImp implements ForecastService {
     	return list;
     }
 
-	@Override
-	public Stats getStats() {
-		
-		return stats;
-	}
-	
-	
-	/**Metodo per la ricerca da rotta /weather/{filter}
-	 *@param filter stringa di testo da cercare (data o descrizione del cielo)
-	 *@return lista di weather contenente i risultati trovati o null 
-	 */
+
 	@Override
 	public List<Weather> getWeather(String filter) {
 		List<Weather> c = new ArrayList<Weather>();
-
 		if(list != null)
 		{
 		    for(Weather w:list)
@@ -137,26 +126,25 @@ public class ForecastServiceImp implements ForecastService {
 
 	@Override
 	public FilterUtils filterField(float filter) {
-	    filterUtils.select(filter);
+		if(filterUtils.select(filter)) return null;
+	    else
 	    return filterUtils;
 	}
 
 	@Override
 	public FilterUtils filterField(float filterMin, float filterMax) {
-	    filterUtils.select(filterMin, filterMax);
+	    if(filterUtils.select(filterMin, filterMax)) return null;
+	    else
 	    return filterUtils;
 	}
 	
 	@Override
 	public FilterUtils getTemp(float filter, Boolean choice) {
-	    filterUtils.temp(filter, choice);
+		if(filterUtils.temp(filter, choice)) return null;
+	    else
 	    return filterUtils;
 	}
 
-	/** metodo
-	 * @param city città selezionata
-	 * @return
-	 */
 	@Override
 	public CityForecast filterField(String city) throws FileNotFoundException {
 		float c = filterUtils.ricerca(city);

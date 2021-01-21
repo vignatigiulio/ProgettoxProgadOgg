@@ -11,8 +11,7 @@ import java.util.Scanner;
  */
 public class FilterUtils {
     private HashMap<String, Float> Previsioni = new HashMap<>();
-/*    private static String choice1 = "over";
-    private static String choice2 = "under";*/
+
    /**
      * Metodo che determina per ciascun'oggetto della Map, in base al filtro specificato,
      * se deve essere incluso nella risposta
@@ -53,7 +52,7 @@ public class FilterUtils {
      * oggetti selezionati
      * @param filtro Campo su cui opera il filtro
      */
-    public void select(float filtro) {
+    public boolean select(float filtro) {
 	HashMap<String, Float> Elenco = new HashMap<>();
 	CalcErrorThreshold cet = new CalcErrorThreshold();
 	try {
@@ -68,15 +67,16 @@ public class FilterUtils {
 	    System.out.print(e);
 	}
 	Previsioni = cet.sortHashMapByValues(Elenco);
+	if(Previsioni.isEmpty()) return true;
+	
+	return false;
 	
     }
-    
-    /**
-     * Metodo per inserire nella HashMap i dati opportunamente filtrati
-     * @param filtro temperatura di riferimento
-     * @param choice true se cerco le temperature maggiori, false se cerco quelle minori
+    /*
+     * 
      */
-    public void temp(float filtro, Boolean choice) {
+
+    public boolean temp(float filtro, Boolean choice) {
 
     	HashMap<String, Float> Elenco = new HashMap<>();
     	CalcErrorThreshold cet = new CalcErrorThreshold();
@@ -97,7 +97,10 @@ public class FilterUtils {
     	} catch(Exception e) {
     	    System.out.print(e);
     	}
-    	Previsioni = cet.sortHashMapByValues(Elenco);   	
+    	Previsioni = cet.sortHashMapByValues(Elenco);  
+    	if(Previsioni.isEmpty()) return true;
+    	
+    	return false;
     }
     /**
      * Metodo che riceve il filtro e crea una Map parziale con gli
@@ -105,7 +108,7 @@ public class FilterUtils {
      * @param filtroMin Campo su cui opera il filtro
      * @param filtroMax Campo su cui opera il filtro
      */
-    public void select(float filtroMin, float filtroMax) {
+    public boolean select(float filtroMin, float filtroMax) {
 	HashMap<String, Float> Elenco = new HashMap<>();
 	CalcErrorThreshold cet = new CalcErrorThreshold();
 	try {
@@ -120,7 +123,9 @@ public class FilterUtils {
 	    System.out.print(e);
 	}
 	Previsioni = cet.sortHashMapByValues(Elenco);
+	if(Previsioni.isEmpty()) return true;
 	
+	return false;
     }
     /**
      * Metodo che crea una Map  con gli
@@ -164,14 +169,6 @@ public class FilterUtils {
     public void setPrevisioni(HashMap<String, Float> previsioni) {
         Previsioni = previsioni;
     }
-    public boolean isEmpty()
-    {
-    	if(Previsioni.isEmpty())return true;
-    	
-    	return false;
-    }
-    
-    
-
+   
 }
 
