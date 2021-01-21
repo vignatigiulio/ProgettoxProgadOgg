@@ -109,6 +109,28 @@ public class ForecastServiceImp implements ForecastService {
 
 	@Override
 	public List<Weather> getWeather(String filter) {
+		boolean data = true;
+		try {
+			Integer.parseInt(filter.substring(0, 1));
+			} catch (Exception e) {
+
+			data = false;
+			}
+		if(data)
+		{
+		String orario = filter.substring(11);
+		String elemData = filter.substring(0, 10);
+		System.out.println(data);
+		String[] parts = orario.split(":");
+		int ora = Integer.parseInt(parts[0]);
+		int minuti = Integer.parseInt(parts[1]);
+		if(minuti >= 30) ora++;
+		if(ora % 3 == 1) ora--;
+		else if(ora % 3 == 2) ora++;
+		String nuovo = ora+":00:00";
+		if(ora<10) nuovo = "0"+nuovo;
+		filter = elemData+" "+nuovo;
+		}
 		List<Weather> c = new ArrayList<Weather>();
 		if(list != null)
 		{
