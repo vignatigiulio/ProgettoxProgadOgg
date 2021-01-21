@@ -50,7 +50,7 @@ Usando l'ide eclipse si possono seguire i seguenti passi:
 - nella finestra che appare, incollare URL di questa repository nella casella URI e procedere.
 - recarsi nel clone della repository che apparirà, tasto destro quindi Import Project (verificare che sia importato come progetto Maven) e procedere.
 - a questo punto potete provare ad eseguire il codice, selezionando "Progetto OOP OpenWeather" tasto destro, "Run as" e quindi "Spring boot App".
--per utlizzare correttamente occorre aggiungere alla classpath la libreria json-simple-1.1.1.jar nel link https://code.google.com/archive/p/json-simple/downloads
+- per utlizzare correttamente occorre aggiungere alla classpath la libreria json-simple-1.1.1.jar nel link https://code.google.com/archive/p/json-simple/downloads
 - all'avvio del programma apparirà un interfaccia che vi permetterà di scegliere il comune su cui effettuare le previsioni. 
 
 Ora l'applicazione Web Service sarà attiva e in ascolto alla porta http://localhost:8080.
