@@ -141,14 +141,14 @@ totale di dieci file di testo presenti in .\Resources\ErrorThreshold. I dati han
 giorni. Il server restituirà solamente quei comuni, insieme alla rispettiva soglia, i quali hanno una media di
 errore minore del numero immesso dall’utente. Genererà eccezione se non si immette un numero o si
 immette un numero troppo basso o negativo.
-`la rotta potrebbe impiegare abbastanza tempo poichè deve effettuare operazioni su oltre 600 comuni italiani`
+`la rotta potrebbe impiegare abbastanza tempo poichè deve effettuare operazioni su oltre 600 comuni italiani,tuttavia eliminando qualche comune il server impiegherà molto meno tempo,ma non sarà completa di tutti i comuni`
 <img src="https://i.postimg.cc/6pHV3RYs/stats-Error.png" width="1000"/>
 
 * **Chiamata <code>GET /statsTwoError/{filterMin}-{filterMax}</code>**
 Contiene le due variabili di tipo float {error min} e {error max}. L’utente dovrà inserire due cifre separate da
 un trattino, ed il programma,come effettuato nella rotta precendente ` GET /statsError/{filter}` , restituirà solamente i comuni i
 quali hanno una soglia di errore compresa tra i due valori.
-`la rotta potrebbe impiegare abbastanza tempo poichè deve effettuare operazioni su oltre 600 comuni italiani`
+`la rotta potrebbe impiegare abbastanza tempo poichè deve effettuare operazioni su oltre 600 comuni italiani,tuttavia eliminando qualche comune il server impiegherà molto meno tempo,ma non sarà completa di tutti i comuni`
 <img src="https://i.postimg.cc/L4B15L8y/stats-Two-Errors.png" width="1000"/>
 
 * **Chiamata <code>GET /statsErrorCity/{city}</code>**
@@ -164,7 +164,7 @@ temperature medie maggiori di ` temp`.
 </br>Il programma calcolerà la media della temperatura dei 5 giorni
 precedenti di tutti i comuni. Successivamente, restituirà comuni e rispettivi valori i quali soddisfano la
 condizione dettata dal cliente.
-`la rotta potrebbe impiegare abbastanza tempo poichè deve effettuare operazioni su oltre 600 comuni italiani`
+`la rotta potrebbe impiegare abbastanza tempo poichè deve effettuare operazioni su oltre 600 comuni italiani,tuttavia eliminando qualche comune il server impiegherà molto meno tempo,ma non sarà completa di tutti i comuni`
 <img src="https://i.postimg.cc/tgQqFvrF/temp.png" width="1000"/>
 
 ## Softwere utilizzati
