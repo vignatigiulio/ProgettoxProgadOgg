@@ -23,8 +23,8 @@ public class DLM {
 	  String paese = null;
 	  if(citta != null)
 	  {
-	  while(scan.hasNext()) 
-	  {
+	      while(scan.hasNext()) 
+	      {
 		  	paese = scan.nextLine();
 			if(paese.equalsIgnoreCase(citta)) //Controllo se si ottiene una corrispondenza completa
 			{
@@ -39,8 +39,8 @@ public class DLM {
 					*/
 					else if(i == citta.length()-1) inserisciM(paese);
 					//Aggiungo alla lista dei risultati il comune contenuto in "paese"
+	      }
 	  }
-  }
 	  else
 	  {
 		  while(scan.hasNextLine()) inserisciM(scan.nextLine());

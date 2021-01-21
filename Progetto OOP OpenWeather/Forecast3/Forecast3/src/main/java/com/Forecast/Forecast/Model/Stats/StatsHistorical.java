@@ -11,8 +11,8 @@ import java.util.Vector;
 
 
 public class StatsHistorical  extends Stats{
-	private   Vector<Double> temperature = new Vector<>();
-	private   Vector<Double> feels_like = new Vector<>();
+	private Vector<Double> temperature = new Vector<>();
+	private Vector<Double> feels_like = new Vector<>();
 	private StatsMethod method = null;
 	public StatsHistorical()
 	{

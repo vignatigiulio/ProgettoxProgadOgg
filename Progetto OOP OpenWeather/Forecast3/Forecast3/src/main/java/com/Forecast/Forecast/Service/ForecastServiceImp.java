@@ -41,7 +41,7 @@ public class ForecastServiceImp implements ForecastService {
     	filterUtils = new FilterUtils();
     	
     	 Date date = new Date();
-	    Long epochFormat = (date.getTime())/1000;
+	 Long epochFormat = (date.getTime())/1000;
 	    for(int i = 1; i <= 5;i++)
 	    {
 	    	epochFormat-=86400;
@@ -195,7 +195,7 @@ public class ForecastServiceImp implements ForecastService {
         try {
             Integer.parseInt(filter.substring(0, 1));
             } catch (Exception e) {
-           return filter;
+        	return filter;
             }
     
         

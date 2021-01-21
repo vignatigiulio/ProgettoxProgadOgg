@@ -17,13 +17,13 @@ public interface Data {
     /** Metodo che crea un nuovo file e stampa i valori
 	 * registrati nei vettori riempiti
 	 */
-    	void saveFile();
+    void saveFile();
     	
     	/** Metodo che preleva i dati di interesse dall'API ed
     	 *  effettua il parsing jn Json dei dati prelevati dall'API
     	 * @param obj è il JSONObject dove viene effettuato il parsing
     	 */
-    	void JsonObject(JSONObject obj);
+    void JsonObject(JSONObject obj);
    }
 
 

@@ -89,8 +89,8 @@ import org.json.simple.parser.ParseException;
     public void JsonObject(JSONObject obj)
     {
     	if(DataForecast.citta!=null)
-		{
-    	JSONArray jsonObject = (JSONArray) obj.get("list");
+	{
+    	    JSONArray jsonObject = (JSONArray) obj.get("list");
 	    JSONObject org = (JSONObject) obj.get("city");
 	    JSONObject cord = (JSONObject) org.get("coord");
 	    this.lat = (double) cord.get("lat");
@@ -117,18 +117,17 @@ import org.json.simple.parser.ParseException;
 	    	this.temp_min.add(Double.parseDouble(String.valueOf(json.get("temp_min"))));
 	    	this.temp_max.add(Double.parseDouble(String.valueOf(json.get("temp_max"))));
 	    }
-	    }
+	}
     }
 
-	@Override
-	public void saveFile() {
-		try {
-			if(DataForecast.citta!=null)
-			{
+    @Override
+    public void saveFile() {
+	try {
+	    if(DataForecast.citta!=null)
+	    {
 	    	PrintWriter file_output = new PrintWriter(new BufferedWriter(new FileWriter(".\\Resources\\Data\\"+ DataForecast.citta +"Forecast.txt")));
 	    	PrintWriter output = new PrintWriter(new BufferedWriter(new FileWriter(".\\Resources\\Data\\"+ DataForecast.citta +"ForecastStats.txt")));
 				
-	    {
 		file_output.println(DataForecast.citta);
 		for(int i = 0; i < temperature.size();i++) {
 		    file_output.println(date.get(i));
@@ -144,13 +143,12 @@ import org.json.simple.parser.ParseException;
 		    
 		   
 		}
-	    }
 			
 			
-	    file_output.close();
-	    output.close();
+		file_output.close();
+		output.close();
 		
-			}
+	    }
 	} catch (IOException e) {
 	    e.printStackTrace();
 	} catch (Exception e) {

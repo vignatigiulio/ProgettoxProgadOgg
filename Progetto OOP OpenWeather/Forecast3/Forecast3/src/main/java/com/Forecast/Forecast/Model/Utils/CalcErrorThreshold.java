@@ -17,6 +17,31 @@ import java.util.Vector;
  */
 public class CalcErrorThreshold {
 	private final int profondita_dati = 5;
+
+	/**
+	 * metodo per la lettura delle temperature 
+	 * @param scan file da leggere
+	 * @param citta comune da studiare
+	 * @param vector vettore dove vengono inserite le temperature
+	 */
+
+	
+	private void fileReading(Scanner scan, String citta, Vector<Double> vector) {	    
+	    String comune;
+	    Boolean finelettura = true;
+	    while (scan.hasNextLine() && finelettura) {
+		comune = scan.nextLine();
+		while (comune.equalsIgnoreCase(citta) && finelettura) {    	    	    
+		    vector.add(Double.parseDouble(scan.nextLine()));
+		    vector.add(Double.parseDouble(scan.nextLine()));
+		    vector.add(Double.parseDouble(scan.nextLine()));
+		    vector.add(Double.parseDouble(scan.nextLine()));
+		    finelettura = false;
+		}
+	    }
+	    scan.close();
+	}
+	
 	/**
 	 * metodo che implementa il calcolo della soglia d'errore,tramite la lettura di file contenenti i valori delle temperature registrate dal server,
 	 * che popolano i vettori su cui viene calcolata la soglia di errore
@@ -28,43 +53,17 @@ public class CalcErrorThreshold {
 	public double Calcolo (String citta) throws FileNotFoundException {
 	    	    Vector<Double> tempC = new Vector<>();
 	    	    Vector<Double> tempF = new Vector<>();
-	    	    Boolean trovato = true;
 	    	    for (int i = 1; i <= profondita_dati; i++)
 	    	    {
-	    	    trovato = true;
-    	    	Scanner scanC = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\WeatherCurrent"+i+".txt"))); 
-	    	    String lettura;
-	    	    while (scanC.hasNextLine() && trovato) {
-	    	    	lettura = scanC.nextLine();
-	    	    	while (lettura.equalsIgnoreCase(citta) && trovato) {    	    	    
-	    	    	    tempC.add(Double.parseDouble(scanC.nextLine()));
-	    	    	    tempC.add(Double.parseDouble(scanC.nextLine()));
-	    	    	    tempC.add(Double.parseDouble(scanC.nextLine()));
-	    	    	    tempC.add(Double.parseDouble(scanC.nextLine()));
-	    	    	    trovato = false;
-	    	    	   }
-	    	    }
-	    	    scanC.close();
+	    		Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\WeatherCurrent"+i+".txt"))); 
+	    		fileReading(scan, citta, tempC);
 	    	    }
 	    	    for (int i = 1; i <= profondita_dati; i++)
 	    	    {
-	    	    	Scanner scanF = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\ForecastGiorno"+i+".txt")));
-	    	    	trovato = true;
-		    	    String lettura2;
-		    	    while (scanF.hasNextLine() && trovato) {
-			    	lettura2 = scanF.nextLine();
-			    	while (lettura2.equalsIgnoreCase(citta) && trovato) {
-			    	    tempF.add(Double.parseDouble(scanF.nextLine()));
-			    	    tempF.add(Double.parseDouble(scanF.nextLine()));
-			    	    tempF.add(Double.parseDouble(scanF.nextLine()));
-			    	    tempF.add(Double.parseDouble(scanF.nextLine()));
-			    	    trovato = false;
-			    	    
-			    	}
-			    }
-		    	    scanF.close();
+	    	    	Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\ForecastGiorno"+i+".txt")));
+	    	    	fileReading(scan, citta, tempF);
 	    	    }
-	    	    if(trovato) return -1;
+		    if(tempC.isEmpty()) return -1;
 	    	    double differenza, somma = 0;
 	    	    for (int i = 0; i < tempC.size(); i++) {
 	    		differenza = tempC.get(i) - tempF.get(i);
@@ -73,9 +72,6 @@ public class CalcErrorThreshold {
 	    	    double media = (somma/tempC.size());
 	    	    return (Math.floor(media*100)/100);
 	    	}
-
-  
-	
 
 	
 	/**
@@ -117,31 +113,31 @@ public class CalcErrorThreshold {
 	 * @return media della temperatura nei 5 giorni precedenti
 	 * @throws FileNotFoundException
 	 */
-	public double tempMin(String citta) throws FileNotFoundException
+	public double tempAvg(String citta) throws FileNotFoundException
 	{
-		Vector<Double> tempF = new Vector<>();
-		for (int i = 1; i <= profondita_dati; i++)
+	    Vector<Double> tempF = new Vector<>();
+	    for (int i = 1; i <= profondita_dati; i++)
 	    {
 	    	Scanner scanF = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\ForecastGiorno"+i+".txt")));
-	    	Boolean trovato = true;
-    	    String lettura2;
-    	    while (scanF.hasNextLine() && trovato) {
-	    	lettura2 = scanF.nextLine();
-	    	while (lettura2.equalsIgnoreCase(citta) && trovato) {
-	    	    tempF.add(Double.parseDouble(scanF.nextLine()));
-	    	    trovato = false;
+	    	Boolean finelettura = true;
+	    	String comune;
+	    	while (scanF.hasNextLine() && finelettura) {
+	    	    comune = scanF.nextLine();
+	    	    while (comune.equalsIgnoreCase(citta) && finelettura) {
+	    		tempF.add(Double.parseDouble(scanF.nextLine()));
+	    		finelettura = false;
 	    	}
 	    }
-    	scanF.close();
+    	    scanF.close();
 	    }
 		double somma = 0, media;
 		for(int i = 0; i < tempF.size(); i++)
 		{
-			somma += tempF.elementAt(i);
+		    somma += tempF.elementAt(i);
 		}
 		media = somma / tempF.size();
 		return (Math.floor(media*100)/100);
 	}
 
-	}
+}
 

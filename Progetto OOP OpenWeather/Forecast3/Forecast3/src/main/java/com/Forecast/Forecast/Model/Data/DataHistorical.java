@@ -29,16 +29,16 @@ import com.Forecast.Forecast.Model.Weather;
 public class DataHistorical implements Data {
     
     private double lat;
-	private double lon;
-	private double temp;
-	private double feels_like;
-	private String citta;
+    private double lon;
+    private double temp;
+    private double feels_like;
+    private String citta;
     private long dt;
     public String chiave;
     
 
-	public DataHistorical() 
-	{
+    public DataHistorical() 
+    {
 		this.citta = DataForecast.getCitta();
 		DataForecast json = new DataForecast();
 		this.chiave = DataForecast.getApiKey();
@@ -46,7 +46,7 @@ public class DataHistorical implements Data {
 		json.saveFile();
 		this.lon=json.getLon();
 		this.lat = json.getLat();
-	}
+    }
 	
  public void callApi()
  {
@@ -118,36 +118,36 @@ public class DataHistorical implements Data {
 	}
 	public List<Weather> fillList()
 	{
-		if(this.citta != null)
-		{
-    	String lettura = null;
-    	String name;
-    	List<Weather> lista = new ArrayList<Weather>();    
-    	try {
+	    if(this.citta != null)
+	    {
+		String lettura = null;
+		String name;
+		List<Weather> lista = new ArrayList<Weather>();    
+		try {
     	    
-    	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\" + this.citta + "Forecast.txt")));
-    	    name = scan.nextLine();
+		    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\" + this.citta + "Forecast.txt")));
+		    name = scan.nextLine();
     	    
-    	    while(scan.hasNext()) {
+		    while(scan.hasNext()) {
     		
-    		String date = null;
-    		String weather = null;
-    		Vector<Double> temperature = new Vector<Double>();
-    		date = scan.nextLine();
-    		weather = scan.nextLine();
-    		Temperature temp = null;
-    		for(int i = 0; i < 4; i++, lettura = "") {
+			String date = null;
+			String weather = null;
+			Vector<Double> temperature = new Vector<Double>();
+			date = scan.nextLine();
+			weather = scan.nextLine();
+			Temperature temp = null;
+			for(int i = 0; i < 4; i++, lettura = "") {
     		    
-    		    lettura = scan.nextLine();
-    		    temperature.add(Double.parseDouble(lettura));
-    		}
+			    lettura = scan.nextLine();
+			    temperature.add(Double.parseDouble(lettura));
+			}
     		
-    		for (int j = 0; j < temperature.size(); j += 4) {		    
-    		    temp = new Temperature(temperature.get(j), temperature.get(j+1), temperature.get(j+2), temperature.get(j+3));
-    		    Weather tempo = new Weather(name, date, weather, temp);
-    		    lista.add(tempo);
+			for (int j = 0; j < temperature.size(); j += 4) {		    
+			    temp = new Temperature(temperature.get(j), temperature.get(j+1), temperature.get(j+2), temperature.get(j+3));
+			    Weather tempo = new Weather(name, date, weather, temp);
+			    lista.add(tempo);
     			}
-    	    }
+		    }
     	   // Gui.delete(this.citta + "Forecast.txt");
     	
     	 } catch(IOException e) {

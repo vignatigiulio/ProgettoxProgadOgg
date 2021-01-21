@@ -22,8 +22,8 @@ public class ForecastRestController {
 	
 	@Autowired
 	private ForecastService forecastService;
-	private static final String choice1 = "over";
-	private static final String choice2 = "under";
+	private final String choice1 = "over";
+	private final String choice2 = "under";
 	
 	/**
 	 * Eccezione invocata quando non viene trovata l'entità serializzata richiesta

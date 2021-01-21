@@ -139,11 +139,11 @@ public class ForecastApplication {
 	
 	private static void deleteFiles(File f)
 	{
-		File[] files = f.listFiles();
+	    File[] files = f.listFiles();
 	    if(files!=null) 
 	       for(File path: files) 
 	    	   if(!path.getName().toString().equalsIgnoreCase("comuni.txt")) 
-	    		   path.delete();
+	    	       path.delete();
 	}
 	
 	public static void main(String[] args) 

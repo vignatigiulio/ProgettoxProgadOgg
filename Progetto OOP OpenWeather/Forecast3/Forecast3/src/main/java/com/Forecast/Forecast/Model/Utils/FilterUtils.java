@@ -20,7 +20,7 @@ public class FilterUtils {
      * @return double equivalente alla differenza tra le previsioni effettuate da current e forecast
      * @throws FileNotFoundException 
      */
-    public double check(String citta, double filtro) throws FileNotFoundException {
+    private double check(String citta, double filtro) throws FileNotFoundException {
     	
     	CalcErrorThreshold cet = new CalcErrorThreshold();
     	double differenza = cet.Calcolo(citta);
@@ -41,7 +41,7 @@ public class FilterUtils {
      * @return double equivalente alla differenza tra le previsioni effettuate da current e forecast
      * @throws FileNotFoundException 
      */
-    public double check(String citta, double filterMin, double filterMax) throws FileNotFoundException {
+    private double check(String citta, double filterMin, double filterMax) throws FileNotFoundException {
 	
 	CalcErrorThreshold cet = new CalcErrorThreshold();
 	double diff = cet.Calcolo(citta);
@@ -95,12 +95,12 @@ public class FilterUtils {
 
     		String citta = scan.nextLine();	
     		if (choice) {
-    		    if(filtro < cet.tempMin(citta))
-    			Elenco.put(citta, cet.tempMin(citta));
+    		    if(filtro < cet.tempAvg(citta))
+    			Elenco.put(citta, cet.tempAvg(citta));
     		}
     		else {
-    		    if(filtro > cet.tempMin(citta))
-			Elenco.put(citta, cet.tempMin(citta));
+    		    if(filtro > cet.tempAvg(citta))
+			Elenco.put(citta, cet.tempAvg(citta));
     		}    
     	    }
     	} catch(Exception e) {
