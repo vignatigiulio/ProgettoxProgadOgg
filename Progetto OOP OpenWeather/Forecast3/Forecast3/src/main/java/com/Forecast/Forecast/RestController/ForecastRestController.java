@@ -125,7 +125,7 @@ public class ForecastRestController {
 
 	}
 	/**
-	 * Risponde all richiesta GET / Stats
+	 * Risponde all richiesta GET /statsErrorCity
 	 * @param city rappresenta il campo city della classe CityForecast classe che eredita la statistica della relativa città data in ingresso dal client  relativa alle previsioni 
 	 * sulla quale si vuole effettuare la ricerca.
 	 * @throws  ApiRequestException(filter) se vengono generati errori di parametro non valido in ingresso al filtro.
@@ -140,8 +140,12 @@ public class ForecastRestController {
 			return this.forecastService.filterField(city);
 
     }
-	/*
-	 * 
+	/**
+	 * Risponde alla richiesta GET /temp
+	 * @param temp float della temperatura media da prendere come riferimento
+	 * @param stringa che può essere solo "over" o "under"
+	 * @return oggetto CityForecast che contiene le statistiche richieste filtrate
+	 * @throws EntityNotFoundException
 	 */
 	@GetMapping("/temp/{temp}-{choice}")
 	public FilterUtils getTemp(@PathVariable("temp") float temp, @PathVariable("choice") String choice) throws EntityNotFoundException

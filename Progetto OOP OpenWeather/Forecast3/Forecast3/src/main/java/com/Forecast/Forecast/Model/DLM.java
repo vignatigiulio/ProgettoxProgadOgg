@@ -4,9 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
 import javax.swing.DefaultListModel;
-/**classe che verifica se la citta inserita nella gui è presente nel file .txt comuni, situato nella 
- *cartella Resources.
- *I risultati saranno poi salvati nella lista DLM, resa visibite tramite getter.
+/**
+ * Classe che si occupa di eseguire la ricerca di sottostringhe o di comuni ed inserirle nella DLM
+ * 
  *
  */
 public class DLM {
@@ -16,7 +16,7 @@ public class DLM {
   * @param citta nome da cercare. Se la stringa è nulla vengono inseriti tutti i comuni
   * @throws FileNotFoundException
   */
-  public  void elenco(String citta) throws FileNotFoundException
+  public void elenco(String citta) throws FileNotFoundException
   {
 	  this.DLM.clear();
 	  Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\Comuni.txt")));
@@ -46,25 +46,34 @@ public class DLM {
 		  while(scan.hasNextLine()) inserisciM(scan.nextLine());
 	  }
   }
+  
   public String getDLMIndex(int indice) {
 	return DLM.get(indice);
 	
   }
 
-  public void setDLM(DefaultListModel<String> dLM) {
-	DLM = dLM;
-  }
 
   public DefaultListModel<String> getDLM() {
 	return DLM;
   }
+  
+  /**Metodo di verifica dei risultati ottenuti
+   * 
+   * @return true se la lista è vuota
+   *
+   */
+  
   public boolean isEmpty()
   {
-	if(DLM.isEmpty())return true;
+	if(this.DLM.isEmpty()) return true;
 	
 	return false;
   }
-  public void inserisciM(String comune)
+  /**Metodo che inserisce le opportune maiuscole nella lista
+   *
+   * @param comune città da inserire
+   */
+  private void inserisciM(String comune)
   {
 	  char[] charArray = comune.toCharArray();
 	  charArray[0] = Character.toUpperCase(charArray[0]);

@@ -24,14 +24,16 @@ public interface Filter<E,T> {
     /**
      * Metodo astratto la cui implementazione andrà a filtrare la Map di elementi rispettivamente a un filtro deciso dal client
      * @param city campo che deve essere filtrato
-     * @return un oggetto FilterUtils,che contiene una Map, della città con la relativa soglia di errore della previsione effettuata dal server
+     * @return un oggetto CityForecast,che contiene una Map, della città con la relativa soglia di errore della previsione effettuata dal server
      */
     abstract CityForecast filterField(String city) throws FileNotFoundException;
 
-    /*
-     * 
+    /**
+     * Metodo astratto la cui implementazione andrà a filtrare la Map di elementi rispettivamente a un filtro deciso dal client
+     * @param temp campo che deve essere filtrato
+     * @param booleano dal quale deciso se prendere tutti i risultati al di sopra o al di sotto
+     * @return un oggetto FilterUtils,che contiene una Map, della città con la relativa soglia di errore della previsione effettuata dal server
      */
-
     abstract FilterUtils getTemp(float temp, Boolean choice);
 
    

@@ -34,20 +34,23 @@ import com.Forecast.Forecast.Model.Exceptions.ApiRequestException;
 */
 public class ForecastApplication {
 	
-	public static JFrame frame;
-	public static JButton btnInvio;
-	public static JButton btnTuttiComuni;
-	public static JButton btnCancel;
-	public static JButton btnNull;
-	public static JTextField textString;
-	public static JLabel lblAdd1;
-	public static JButton btnGetSelected;
-	public static JScrollPane scrollPane;
-	public static JScrollPane scrollPane_1;
-	public static JList<String> list ;
-	static DLM city = null;
+	private static JFrame frame;
+	private static JButton btnInvio;
+	private static JButton btnTuttiComuni;
+	private static JButton btnCancel;
+	private static JButton btnNull;
+	private static JTextField textString;
+	private static JLabel lblAdd1;
+	private static JButton btnGetSelected;
+	private static JScrollPane scrollPane;
+	private static JScrollPane scrollPane_1;
+	private static JList<String> list ;
+	private static JComponent lblNewLabel_2;
+	private static JLabel lblNewLabel_3;
+	private static JLabel lblNewLabel_5;
+	private static DLM city = null;
 	
-	public static void inizializzazione()
+	private static void inizializzazione()
 	{
 		city = new DLM();
 		frame = new JFrame();
@@ -88,7 +91,7 @@ public class ForecastApplication {
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 		scrollPane.setBounds(454, 10, 2, 666);
 		
-		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1 = new JScrollPane();
 		scrollPane_1.setViewportBorder(null);
 		scrollPane_1.setBounds(350, 74, 150, 250);
 		frame.getContentPane().add(scrollPane_1);
@@ -96,21 +99,21 @@ public class ForecastApplication {
 		list = new JList<>();
 		scrollPane_1.setViewportView(list);
 		
-		JLabel lblNewLabel_1 = new JLabel("Cerca per Previsioni per localit\u00E0");
-		lblNewLabel_1.setBounds(108, 49, 190, 20);
-		frame.getContentPane().add(lblNewLabel_1);
+		lblAdd1 = new JLabel("Cerca per Previsioni per localit\u00E0");
+		lblAdd1.setBounds(108, 49, 190, 20);
+		frame.getContentPane().add(lblAdd1);
 		
-		JComponent lblNewLabel_2 = new JLabel("Localit\u00E0 trovate");
+		lblNewLabel_2 = new JLabel("Localit\u00E0 trovate");
 		lblNewLabel_2.setToolTipText("Localit\u00E0 trovate");
 		lblNewLabel_2.setBounds(350, 61, 150, 14);
 		frame.getContentPane().add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("OPEN WEATHER WEB SERVICE");
+		lblNewLabel_3 = new JLabel("OPEN WEATHER WEB SERVICE");
 		lblNewLabel_3.setFont(new Font("Times New Roman", Font.PLAIN, 11));
 		lblNewLabel_3.setBounds(218, 11, 184, 27);
 		frame.getContentPane().add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5 = new JLabel("");
 		lblNewLabel_5.setIcon(new ImageIcon(".\\Resources\\immagine\\logo_white_croppednew.png"));
 		lblNewLabel_5.setBounds(62, 170, 241, 192);
 		frame.getContentPane().add(lblNewLabel_5);
@@ -121,9 +124,9 @@ public class ForecastApplication {
 		
 		}
 	
-	public static int msg(String testo) { return JOptionPane.showConfirmDialog(frame, testo,"OpenWeather", 0, 1, null); }
+	private static int msg(String testo) { return JOptionPane.showConfirmDialog(frame, testo,"OpenWeather", 0, 1, null); }
 	
-	public static void pulisci()
+	private static void pulisci()
 	{
 		textString.setText("");
 		DefaultListModel<String> model=new DefaultListModel<>();
@@ -132,14 +135,15 @@ public class ForecastApplication {
 		textString.requestFocus();
 	}
 	
-	public static void avviso(String testo) { JOptionPane.showMessageDialog(frame, testo); }
+	private static void avviso(String testo) { JOptionPane.showMessageDialog(frame, testo); }
 	
-	public static void deleteFiles(File f)
+	private static void deleteFiles(File f)
 	{
 		File[] files = f.listFiles();
 	    if(files!=null) 
 	       for(File path: files) 
-	    	   if(!path.getName().toString().equalsIgnoreCase("comuni.txt")) path.delete();
+	    	   if(!path.getName().toString().equalsIgnoreCase("comuni.txt")) 
+	    		   path.delete();
 	}
 	
 	public static void main(String[] args) 

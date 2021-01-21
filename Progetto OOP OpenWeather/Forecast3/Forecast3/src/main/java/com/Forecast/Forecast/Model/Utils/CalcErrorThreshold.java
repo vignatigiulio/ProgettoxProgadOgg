@@ -62,7 +62,7 @@ public class CalcErrorThreshold {
 			    	    
 			    	}
 			    }
-		    	    //scanF.close();
+		    	    scanF.close();
 	    	    }
 	    	    if(trovato) return -1;
 	    	    double differenza, somma = 0;
@@ -111,8 +111,11 @@ public class CalcErrorThreshold {
 	    	    }
 	    	    return sortedMap;
 	    	}
-	/*
-	 * 
+	/**
+	 * Metodo per calcolo temperatura media
+	 * @param citta comune da calcolare
+	 * @return media della temperatura nei 5 giorni precedenti
+	 * @throws FileNotFoundException
 	 */
 	public float tempMin(String citta) throws FileNotFoundException
 	{
@@ -129,7 +132,7 @@ public class CalcErrorThreshold {
 	    	    trovato = false;
 	    	}
 	    }
-    	//scanF.close();
+    	scanF.close();
 	    }
 		float somma = 0;
 		for(int i = 0; i < tempF.size(); i++)

@@ -111,7 +111,12 @@ public class ForecastServiceImp implements ForecastService {
 		
 		return stats;
 	}
-
+	
+	
+	/**Metodo per la ricerca da rotta /weather/{filter}
+	 *@param filter stringa di testo da cercare (data o descrizione del cielo)
+	 *@return lista di weather contenente i risultati trovati o null 
+	 */
 	@Override
 	public List<Weather> getWeather(String filter) {
 		List<Weather> c = new ArrayList<Weather>();
@@ -148,6 +153,10 @@ public class ForecastServiceImp implements ForecastService {
 	    return filterUtils;
 	}
 
+	/** metodo
+	 * @param city città selezionata
+	 * @return
+	 */
 	@Override
 	public CityForecast filterField(String city) throws FileNotFoundException {
 		float c = filterUtils.ricerca(city);

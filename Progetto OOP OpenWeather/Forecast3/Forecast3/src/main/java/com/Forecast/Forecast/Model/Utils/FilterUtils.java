@@ -70,10 +70,12 @@ public class FilterUtils {
 	Previsioni = cet.sortHashMapByValues(Elenco);
 	
     }
-    /*
-     * 
+    
+    /**
+     * Metodo per inserire nella HashMap i dati opportunamente filtrati
+     * @param filtro temperatura di riferimento
+     * @param choice true se cerco le temperature maggiori, false se cerco quelle minori
      */
-
     public void temp(float filtro, Boolean choice) {
 
     	HashMap<String, Float> Elenco = new HashMap<>();
