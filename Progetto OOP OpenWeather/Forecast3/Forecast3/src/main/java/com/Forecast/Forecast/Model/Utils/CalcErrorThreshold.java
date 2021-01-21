@@ -84,7 +84,6 @@ public class CalcErrorThreshold {
 	    	    List<Double> mapValues = new ArrayList<>(passedMap.values());
 	    	    Collections.sort(mapValues);
 	    	    Collections.sort(mapKeys);
-	    	    System.out.println("4");
 	    	    LinkedHashMap<String, Double> sortedMap =
 	    	        new LinkedHashMap<>();
 
@@ -105,7 +104,6 @@ public class CalcErrorThreshold {
 	    	            }
 	    	        }
 	    	    }
-	    	    System.out.println("5");
 	    	    return sortedMap;
 	    	}
 	/**
