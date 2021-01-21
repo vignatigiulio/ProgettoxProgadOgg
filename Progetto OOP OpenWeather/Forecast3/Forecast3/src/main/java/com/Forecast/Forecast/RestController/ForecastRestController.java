@@ -121,7 +121,6 @@ public class ForecastRestController {
 	public FilterUtils getStatsForecast(@PathVariable("error min") double filterMin, @PathVariable("error max") double filterMax)
 			throws EntityNotFoundException
 	{
-		
 		if(filterMin < 0 || filterMax <= 0) throw new ApiRequestException(filterMin, filterMax);
 		if(filterMin > filterMax)
 		{

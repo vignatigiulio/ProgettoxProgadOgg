@@ -20,7 +20,7 @@ public class StatsMethod
 		}
 		/**Metodo che si occupa di calcolare la media aritmetica della temperatura.
 		 *@Param temp è un vettore di Double contenente le temperature da calcolare
-		 *@Return è il valore della media in float approssimato di due cifre dopo la virgola.
+		 *@Return è il valore della media in double approssimato di due cifre dopo la virgola.
 		 */
 	public double methodArithmetic_averageTemperature(Vector<Double> temp) 
 	{

@@ -39,9 +39,8 @@ public class ForecastServiceImp implements ForecastService {
     	weatherHistorical = new  DataHistorical ();
     	list = weatherHistorical.fillList();
     	filterUtils = new FilterUtils();
-    	
-    	 Date date = new Date();
-	 Long epochFormat = (date.getTime())/1000;
+    	Date date = new Date();
+    	Long epochFormat = (date.getTime())/1000;
 	    for(int i = 1; i <= 5;i++)
 	    {
 	    	epochFormat-=86400;
@@ -60,37 +59,29 @@ public class ForecastServiceImp implements ForecastService {
     
     public Stats statsFilter(String filter) 
     {
-    if(weatherHistorical.getCitta()!= null)
-    {
-	filter = filter.toLowerCase();
-    	if(filter.equals("historical"))
-			try {
-				{  	
+    	if(weatherHistorical.getCitta()!= null)
+    	{
+    		filter = filter.toLowerCase();
+    		if(filter.equals("historical"))
+    			try {
 				     stats = new StatsHistorical();
 				     stats.ReadFile(weatherHistorical.getCitta());
 				     stats.methodVariance();
 				     stats.methodMedia();
 				    return stats;
-				      
-				}
 			} catch (FileNotFoundException e) {
-				
 				e.printStackTrace();
 			}
 		else if(filter.equals("forecast"))
       {  	
 	      
 	  	try {
-			{  	
 				 stats = new StatsForecast();
 			     stats.ReadFile(weatherHistorical.getCitta());
 				 stats.methodVariance();
 				 stats.methodMedia();
 				 return stats;
-			      
-			}
 		} catch (FileNotFoundException e) {
-			
 			e.printStackTrace();
 			}
       	}
@@ -98,14 +89,13 @@ public class ForecastServiceImp implements ForecastService {
 	}
     return null;
     }
+    
     /**
      * @return lista di oggetti Weather
      */
     @Override
-    public List<Weather> getWeathers() {
-    	
-    	return list;
-    }
+    public List<Weather> getWeathers() { return list; }
+    
     /**
      * metodo che filtra la lista di oggetti weather in base al filtro passato come parametro
      * @return una lista di oggetti weather filtrati
@@ -117,16 +107,13 @@ public class ForecastServiceImp implements ForecastService {
 		if(list != null)
 		{
 		    for(Weather w:list)
-		    {
-			if(w.getDate().equals(filter) || w.getWeather().equals(filter))
-			{
-				c.add(w);
-			}
-		    }
+		    	if(w.getDate().equals(filter) || w.getWeather().equals(filter))
+		    		c.add(w);
 		    return c;
 		}
 		return null;
 	}
+    
     /**
      * metodo che restituisce una Map di filterUtils dopo essere stata filtrata tramite il metodo select  
      * @param filter
@@ -135,8 +122,7 @@ public class ForecastServiceImp implements ForecastService {
     @Override
 	public FilterUtils filterField(double filter) {
 		if(filterUtils.select(filter)) return null;
-	    else
-	    return filterUtils;
+	    else return filterUtils;
 	}
     /**
      * metodo che restituisce una Map di filterUtils compresa 
@@ -148,8 +134,7 @@ public class ForecastServiceImp implements ForecastService {
 	@Override
 	public FilterUtils filterField(double filterMin, double filterMax) {
 	    if(filterUtils.select(filterMin, filterMax)) return null;
-	    else
-	    return filterUtils;
+	    else return filterUtils;
 	}
 	 /**
      * metodo che restituisce una Map di filterUtils riguardante 
@@ -162,8 +147,7 @@ public class ForecastServiceImp implements ForecastService {
 	@Override
 	public FilterUtils getTemp(double filter, Boolean choice) {
 		if(filterUtils.temp(filter, choice)) return null;
-	    else
-	    return filterUtils;
+	    else return filterUtils;
 	}
 	 /**
      * metodo che restituisce una Map di filterUtils riguardante la stima di errore della citta passata come parametro
@@ -179,8 +163,8 @@ public class ForecastServiceImp implements ForecastService {
 			prev = new CityForecast(city, c);
 			return prev;
 		}
-		else
-			return null;
+		else return null;
+			
 	}
 	/**
 	 * algoritmo che prende in input una data e restituisce un approssimazione consona per l'Api
@@ -189,16 +173,13 @@ public class ForecastServiceImp implements ForecastService {
 	 * l Api usa un formato orario che parte dalla mezzanotte  e aumenta di tre ore,quindi se l'utente inserisce 11:30 
 	 * con questo metodo ritorna una  stringa in formato data avente come ora le 12.
 	 */
-	public String checkOrario(String filter) 
+	private String checkOrario(String filter) 
 	{
-		
         try {
-            Integer.parseInt(filter.substring(0, 1));
+            	Integer.parseInt(filter.substring(0, 1));
             } catch (Exception e) {
-        	return filter;
+            	return filter;
             }
-    
-        
             String orario = filter.substring(11);
             String elemData = filter.substring(0, 10);
             String[] parts = orario.split(":");
@@ -207,18 +188,18 @@ public class ForecastServiceImp implements ForecastService {
             if(minuti >= 30) ora++;
             if(ora % 3 == 1) ora--;
             else if(ora % 3 == 2) ora++;
-            if(ora==24) {
-        	ora=0;
-        	String[] data = elemData.split("-");
-        	int giorni = Integer.parseInt(data[2]);
-        	giorni++;
-        	elemData = "2021-01-"+giorni;
+            if(ora==24) 
+            {
+            	ora=0;
+            	String[] data = elemData.split("-");
+            	int giorni = Integer.parseInt(data[2]);
+            	giorni++;
+            	elemData = "2021-01-"+giorni;
             }
             String nuovo = ora+":00:00";
             if(ora<10) nuovo = "0"+nuovo;
-            filter = elemData+" "+nuovo;
-            
-        return filter;
+            filter = elemData+" "+nuovo;    
+            return filter;
 	}
 
 

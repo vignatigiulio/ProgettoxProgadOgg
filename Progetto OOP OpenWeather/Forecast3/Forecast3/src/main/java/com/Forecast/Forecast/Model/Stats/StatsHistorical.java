@@ -35,7 +35,7 @@ public class StatsHistorical  extends Stats{
 			   	str=scan.nextLine();
 			   	str=scan.nextLine();
 			   	str=scan.nextLine();
-			   	temperature.add(Double.parseDouble(str)); //indice i numeri pari indice dispari feels_like
+			   	temperature.add(Double.parseDouble(str)); 
 			   	str="";
 			   	str=scan.nextLine();
 			   	feels_like.add(Double.parseDouble(str));

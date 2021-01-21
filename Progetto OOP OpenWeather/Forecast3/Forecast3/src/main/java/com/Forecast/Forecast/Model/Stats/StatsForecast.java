@@ -12,7 +12,8 @@ import java.util.Vector;
  *Al fine di una valutazione più esatta, verranno inserite le temperature previste per ogni 24 ore
  */
 public class StatsForecast extends Stats {
-	
+	private final int prevAlGiorno = 8;
+	private final int datiPerOgniPrev = 4;
 	private Vector<Double> temperature = new Vector<>();
 	private Vector<Double> feels_like = new Vector<>();
 	private Vector<Double> temp_min = new Vector<>();
@@ -33,7 +34,7 @@ public class StatsForecast extends Stats {
 			Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\"+ citta+"ForecastStats.txt")));
 				for(int i = 0; scan.hasNextLine(); i++)
 				{
-					if(i == 0 || i%8 == 0)
+					if(i == 0 || i % prevAlGiorno == 0)
 					{
 						temperature.addElement((Double.parseDouble(scan.nextLine())));
 						feels_like.addElement((Double.parseDouble(scan.nextLine())));
@@ -41,7 +42,7 @@ public class StatsForecast extends Stats {
 						temp_max.addElement((Double.parseDouble(scan.nextLine())));
 					}
 					else 
-						for(int j = 0; j < 4; j++) 
+						for(int j = 0; j < datiPerOgniPrev; j++) 
 							scan.nextLine();
 				}
 		}catch(FileNotFoundException e){

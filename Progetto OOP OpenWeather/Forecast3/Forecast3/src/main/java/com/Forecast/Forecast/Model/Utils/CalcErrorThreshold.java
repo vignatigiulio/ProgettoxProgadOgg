@@ -55,19 +55,17 @@ public class CalcErrorThreshold {
 	    	    Vector<Double> tempF = new Vector<>();
 	    	    for (int i = 1; i <= profondita_dati; i++)
 	    	    {
-	    		Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\WeatherCurrent"+i+".txt"))); 
-	    		fileReading(scan, citta, tempC);
+	    	    	Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\WeatherCurrent"+i+".txt")));
+	    	    	Scanner scan2 = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\ForecastGiorno"+i+".txt")));
+	    	    	fileReading(scan, citta, tempC);
+	    	    	fileReading(scan2, citta, tempF);
 	    	    }
-	    	    for (int i = 1; i <= profondita_dati; i++)
-	    	    {
-	    	    	Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\ForecastGiorno"+i+".txt")));
-	    	    	fileReading(scan, citta, tempF);
-	    	    }
-		    if(tempC.isEmpty()) return -1;
+	    	    if(tempC.isEmpty()) return -1;
 	    	    double differenza, somma = 0;
-	    	    for (int i = 0; i < tempC.size(); i++) {
-	    		differenza = tempC.get(i) - tempF.get(i);
-	    		somma += (Math.abs(differenza));
+	    	    for (int i = 0; i < tempC.size(); i++) 
+	    	    {
+	    	    	differenza = tempC.get(i) - tempF.get(i);
+	    	    	somma += (Math.abs(differenza));
 	    	    }
 	    	    double media = (somma/tempC.size());
 	    	    return StatsMethod.approssimazione(media, 2);
