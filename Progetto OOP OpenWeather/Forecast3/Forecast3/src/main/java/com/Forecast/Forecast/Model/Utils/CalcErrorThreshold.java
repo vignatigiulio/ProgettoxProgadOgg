@@ -11,21 +11,21 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.Vector;
 
+import com.Forecast.Forecast.Model.Stats.StatsMethod;
+
 /*Rappresenta la classe che implementa il metodo per la determinazione della soglia di errore delle previsioni effettuate dal server
  * 
  * 
  */
 public class CalcErrorThreshold {
 	private final int profondita_dati = 5;
-
+	
 	/**
 	 * metodo per la lettura delle temperature 
 	 * @param scan file da leggere
 	 * @param citta comune da studiare
 	 * @param vector vettore dove vengono inserite le temperature
 	 */
-
-	
 	private void fileReading(Scanner scan, String citta, Vector<Double> vector) {	    
 	    String comune;
 	    Boolean finelettura = true;
@@ -70,7 +70,7 @@ public class CalcErrorThreshold {
 	    		somma += (Math.abs(differenza));
 	    	    }
 	    	    double media = (somma/tempC.size());
-	    	    return (Math.floor(media*100)/100);
+	    	    return StatsMethod.approssimazione(media, 2);
 	    	}
 
 	
@@ -84,7 +84,7 @@ public class CalcErrorThreshold {
 	    	    List<Double> mapValues = new ArrayList<>(passedMap.values());
 	    	    Collections.sort(mapValues);
 	    	    Collections.sort(mapKeys);
-
+	    	    System.out.println("4");
 	    	    LinkedHashMap<String, Double> sortedMap =
 	    	        new LinkedHashMap<>();
 
@@ -105,6 +105,7 @@ public class CalcErrorThreshold {
 	    	            }
 	    	        }
 	    	    }
+	    	    System.out.println("5");
 	    	    return sortedMap;
 	    	}
 	/**
@@ -136,7 +137,7 @@ public class CalcErrorThreshold {
 		    somma += tempF.elementAt(i);
 		}
 		media = somma / tempF.size();
-		return (Math.floor(media*100)/100);
+		return StatsMethod.approssimazione(media, 2);
 	}
 
 }

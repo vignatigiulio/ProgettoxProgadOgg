@@ -64,8 +64,10 @@ public class FilterUtils {
 	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\Comuni.txt")));
 	    while (scan.hasNextLine()) 
 	    {
+	    	System.out.println("2");
 	    	String citta = scan.nextLine();
 	    	double diff = check(citta, filtro);
+	    	System.out.println("3");
 	    	if(diff != -1)
 	    		Elenco.put(citta, diff);
 		}

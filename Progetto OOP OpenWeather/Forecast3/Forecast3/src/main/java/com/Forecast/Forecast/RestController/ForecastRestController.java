@@ -100,6 +100,7 @@ public class ForecastRestController {
 	@GetMapping("/statsError/{error threshold}")
 	public FilterUtils getStatsForecast(@PathVariable("error threshold") double filter) 
 	{
+		System.out.println("1");
 		if(filter <= 0) throw new ApiRequestException(filter);
 		if(this.forecastService.filterField(filter)==null) throw new FilterIllegalArgumentException("soglia di errore troppo piccola");
 		else
