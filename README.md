@@ -118,7 +118,9 @@ successiva ` GET /weather/{filter}`, il programma potrà restituire risultati pi
 La variabile filter è una variabile di tipo stringa nella quale posso inserire una data specifica della quale
 voglio le previsioni o la descrizione del cielo.
 Inserendo una data del formato “yyyy-MM-dd hh:mm:ss” verrà restituita la previsione riguardante quel
-periodo gia effettuata nella rotta precedente ` GET /weather` . Inserendo invece la descrizione del cielo (es. clear sky) vengono restituite tutte le previsioni di
+periodo gia effettuata nella rotta precedente ` GET /weather` . Se non viene inserito un orario preciso 
+il programma arrotonderà automaticamente l'orario e restituirà quello più vicino possibile.
+Inserendo invece la descrizione del cielo (es. clear sky) vengono restituite tutte le previsioni di
 “clear sky” della città precedentemente selezionata nel massimo lasso di tempo concesso dalla API. In caso
 di un inserimento errato da parte dell’utente, verrà lanciata un’eccezione.
 <img src="https://i.postimg.cc/5y0xLBsL/weather-filter.png" width="1000"/>
@@ -146,8 +148,9 @@ immette un numero troppo basso o negativo.
 
 * **Chiamata <code>GET /statsTwoError/{filterMin}-{filterMax}</code>**
 Contiene le due variabili di tipo float {error min} e {error max}. L’utente dovrà inserire due cifre separate da
-un trattino, ed il programma,come effettuato nella rotta precendente ` GET /statsError/{filter}` , restituirà solamente i comuni i
-quali hanno una soglia di errore compresa tra i due valori.
+un trattino, ed il programma, come effettuato nella rotta precendente ` GET /statsError/{filter}` , restituirà solamente i comuni i
+quali hanno una soglia di errore compresa tra i due valori. Non è importante l'ordine di inserimento degli errori 
+in quanto il programma riconoscerà l'errore minore e quello maggiore.
 `la rotta potrebbe impiegare abbastanza tempo poichè deve effettuare operazioni su oltre 600 comuni italiani,tuttavia eliminando qualche comune il server impiegherà molto meno tempo,ma non sarà completa di tutti i comuni`
 <img src="https://i.postimg.cc/L4B15L8y/stats-Two-Errors.png" width="1000"/>
 
