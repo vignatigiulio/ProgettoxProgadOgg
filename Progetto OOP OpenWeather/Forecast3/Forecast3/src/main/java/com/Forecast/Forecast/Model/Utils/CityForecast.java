@@ -8,9 +8,9 @@ package com.Forecast.Forecast.Model.Utils;
 public class CityForecast {
     
     private String city;
-    private float error_threshold;
+    private double error_threshold;
     
-    public CityForecast(String city, float error_threshold) {
+    public CityForecast(String city, double error_threshold) {
 	super();
 	this.city = city;
 	this.error_threshold = error_threshold;
@@ -24,11 +24,11 @@ public class CityForecast {
         this.city = city;
     }
 
-    public float getError_threshold() {
+    public double getError_threshold() {
         return error_threshold;
     }
 
-    public void setError_threshold(float error_threshold) {
+    public void setError_threshold(double error_threshold) {
         this.error_threshold = error_threshold;
     }
     

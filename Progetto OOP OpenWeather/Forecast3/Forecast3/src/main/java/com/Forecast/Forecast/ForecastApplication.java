@@ -148,7 +148,7 @@ public class ForecastApplication {
 	
 	public static void main(String[] args) 
 	{
-		DataForecast.setapiKey("8a4ee3b7f356511b37b0082bbd8580e2");
+		DataForecast.setapiKey("007a2ae220cae8bdc182ad4aba2ec489");
 		File folder = new File(".\\Resources\\Data");
 		deleteFiles(folder);
 		inizializzazione();

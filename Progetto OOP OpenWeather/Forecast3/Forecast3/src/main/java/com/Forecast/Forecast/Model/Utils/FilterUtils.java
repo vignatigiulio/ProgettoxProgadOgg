@@ -10,7 +10,7 @@ import java.util.Scanner;
  * Rappresenta la classe che genera l'oggetto FilterUtils,contenente una Map,utilizzando i filtri imposti dal Client  
  */
 public class FilterUtils {
-    private HashMap<String, Float> Previsioni = new HashMap<>();
+    private HashMap<String, Double> Previsioni = new HashMap<>();
 
    /**
      * Metodo che determina per ciascun'oggetto della Map, in base al filtro specificato,
@@ -20,13 +20,16 @@ public class FilterUtils {
      * @return Un booleano che determina se l'oggetto deve essere tenuto o meno
      * @throws FileNotFoundException 
      */
-    public boolean check(String citta, float filtro) throws FileNotFoundException {
+    public double check(String citta, double filtro) throws FileNotFoundException {
     	
     	CalcErrorThreshold cet = new CalcErrorThreshold();
-    	if (cet.Calcolo(citta) < filtro)
-    	    return true;
+    	double differenza = cet.Calcolo(citta);
+    	if (differenza < filtro)
+    	{
+    	    return differenza;
+    	}
     	else
-    	    return false;
+    	    return -1;
         }
     
     /**
@@ -38,13 +41,14 @@ public class FilterUtils {
      * @return Un booleano che determina se l'oggetto deve essere tenuto o meno
      * @throws FileNotFoundException 
      */
-    public boolean check(String citta, float filterMin, float filterMax) throws FileNotFoundException {
+    public double check(String citta, double filterMin, double filterMax) throws FileNotFoundException {
 	
 	CalcErrorThreshold cet = new CalcErrorThreshold();
-	if (cet.Calcolo(citta) < filterMax && cet.Calcolo(citta) > filterMin)
-	    return true;
+	double diff = cet.Calcolo(citta);
+	if (diff < filterMax && diff > filterMin)
+	    return diff;
 	else
-	    return false;
+	    return -1;
     }
 
     /**
@@ -52,16 +56,17 @@ public class FilterUtils {
      * oggetti selezionati
      * @param filtro Campo su cui opera il filtro
      */
-    public boolean select(float filtro) {
-	HashMap<String, Float> Elenco = new HashMap<>();
+    public boolean select(double filtro) {
+	HashMap<String, Double> Elenco = new HashMap<>();
 	CalcErrorThreshold cet = new CalcErrorThreshold();
 	try {
 	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\Comuni.txt")));
-	    while (scan.hasNextLine()) {
-		
-		String citta = scan.nextLine();	 
-		if(check(citta, filtro))
-		    Elenco.put(citta, cet.Calcolo(citta));
+	    while (scan.hasNextLine()) 
+	    {
+	    	String citta = scan.nextLine();
+	    	double diff = check(citta, filtro);
+	    	if(diff != -1)
+	    		Elenco.put(citta, diff);
 		}
 	} catch(Exception e) {
 	    System.out.print(e);
@@ -76,9 +81,9 @@ public class FilterUtils {
      * 
      */
 
-    public boolean temp(float filtro, Boolean choice) {
+    public boolean temp(double filtro, Boolean choice) {
 
-    	HashMap<String, Float> Elenco = new HashMap<>();
+    	HashMap<String, Double> Elenco = new HashMap<>();
     	CalcErrorThreshold cet = new CalcErrorThreshold();
     	try {
     	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\Comuni.txt")));
@@ -108,16 +113,16 @@ public class FilterUtils {
      * @param filtroMin Campo su cui opera il filtro
      * @param filtroMax Campo su cui opera il filtro
      */
-    public boolean select(float filtroMin, float filtroMax) {
-	HashMap<String, Float> Elenco = new HashMap<>();
+    public boolean select(double filtroMin, double filtroMax) {
+	HashMap<String, Double> Elenco = new HashMap<>();
 	CalcErrorThreshold cet = new CalcErrorThreshold();
 	try {
 	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\Comuni.txt")));
 	    while (scan.hasNextLine()) {
-		
-		String citta = scan.nextLine();	 
-		if(check(citta, filtroMin, filtroMax)) 
-		    Elenco.put(citta, cet.Calcolo(citta));
+		String citta = scan.nextLine();
+		double diff = check(citta, filtroMin, filtroMax);
+		if(diff != -1) 
+		    Elenco.put(citta, diff);
 		}
 	} catch(Exception e) {
 	    System.out.print(e);
@@ -133,7 +138,7 @@ public class FilterUtils {
      */
     public void select() {
 	
-	HashMap<String, Float> Elenco = new HashMap<>();
+	HashMap<String, Double> Elenco = new HashMap<>();
 	CalcErrorThreshold cet = new CalcErrorThreshold();
 	try {
 	    Scanner scan = new Scanner(new BufferedReader(new FileReader(".\\Resources\\Data\\Comuni.txt")));
@@ -156,17 +161,17 @@ public class FilterUtils {
      * @return un float che andrà a creare l'oggetto FilterUtils filtrato
      */
 
-    public float ricerca(String citta) throws FileNotFoundException
+    public double ricerca(String citta) throws FileNotFoundException
     {
     	CalcErrorThreshold cet = new CalcErrorThreshold();
     	return cet.Calcolo(citta);
     }
 
-    public HashMap<String, Float> getPrevisioni() {
+    public HashMap<String, Double> getPrevisioni() {
         return Previsioni;
     }
 
-    public void setPrevisioni(HashMap<String, Float> previsioni) {
+    public void setPrevisioni(HashMap<String, Double> previsioni) {
         Previsioni = previsioni;
     }
    

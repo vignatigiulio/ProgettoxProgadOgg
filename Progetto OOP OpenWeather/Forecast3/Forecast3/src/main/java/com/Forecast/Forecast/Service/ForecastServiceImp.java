@@ -125,21 +125,21 @@ public class ForecastServiceImp implements ForecastService {
 	}
 
 	@Override
-	public FilterUtils filterField(float filter) {
+	public FilterUtils filterField(double filter) {
 		if(filterUtils.select(filter)) return null;
 	    else
 	    return filterUtils;
 	}
 
 	@Override
-	public FilterUtils filterField(float filterMin, float filterMax) {
+	public FilterUtils filterField(double filterMin, double filterMax) {
 	    if(filterUtils.select(filterMin, filterMax)) return null;
 	    else
 	    return filterUtils;
 	}
 	
 	@Override
-	public FilterUtils getTemp(float filter, Boolean choice) {
+	public FilterUtils getTemp(double filter, Boolean choice) {
 		if(filterUtils.temp(filter, choice)) return null;
 	    else
 	    return filterUtils;
@@ -147,7 +147,7 @@ public class ForecastServiceImp implements ForecastService {
 
 	@Override
 	public CityForecast filterField(String city) throws FileNotFoundException {
-		float c = filterUtils.ricerca(city);
+		double c = filterUtils.ricerca(city);
 		if(c != -1)
 		{
 			prev = new CityForecast(city, c);

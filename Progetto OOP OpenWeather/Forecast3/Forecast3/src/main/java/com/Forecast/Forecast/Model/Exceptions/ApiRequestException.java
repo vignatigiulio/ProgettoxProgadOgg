@@ -10,11 +10,11 @@ public class ApiRequestException  extends RuntimeException{
 
 		super("not conformed, " + message);
 	}
-	public ApiRequestException(float error_threshold) {
+	public ApiRequestException(double error_threshold) {
 		super("this error threshold cannot be negative");
 	}
 	
-	public ApiRequestException(float error_threshold, float error_threshold2) {
+	public ApiRequestException(double error_threshold, double error_threshold2) {
 		super("error threshold cannot be negative");
 	}
 	

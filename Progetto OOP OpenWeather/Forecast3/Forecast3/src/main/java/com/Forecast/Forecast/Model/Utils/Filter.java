@@ -13,14 +13,14 @@ public interface Filter<E,T> {
      * @param filtro campo che deve essere filtrato
      * @return un oggetto FilterUtils,che contiene una Map, degli elementi filtrati mediante i parametri specificati dal client
      */
-    abstract FilterUtils filterField(float filter);
+    abstract FilterUtils filterField(double filter);
     /**
      * Metodo astratto la cui impementazione andrà a filtrare la Map di elementi rispettivamente a un filtro deciso dal client
      * @param filterMin campo che deve essere filtrato
      * @param filterMax campo che deve essere filtrato
      * @return un oggetto FilterUtils,che contiene una Map, degli elementi compresi tra i due filtri,mediante i parametri specificati, 
      */
-    abstract FilterUtils filterField(float filterMin, float filterMax);
+    abstract FilterUtils filterField(double filterMin, double filterMax);
     /**
      * Metodo astratto la cui implementazione andrà a filtrare la Map di elementi rispettivamente a un filtro deciso dal client
      * @param city campo che deve essere filtrato
@@ -34,7 +34,7 @@ public interface Filter<E,T> {
      * @param booleano dal quale deciso se prendere tutti i risultati al di sopra o al di sotto
      * @return un oggetto FilterUtils,che contiene una Map, della città con la relativa soglia di errore della previsione effettuata dal server
      */
-    abstract FilterUtils getTemp(float temp, Boolean choice);
+    abstract FilterUtils getTemp(double temp, Boolean choice);
 
    
     

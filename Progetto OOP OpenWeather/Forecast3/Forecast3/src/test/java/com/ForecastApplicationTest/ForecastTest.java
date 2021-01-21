@@ -14,7 +14,7 @@ import com.Forecast.Forecast.Model.Utils.CalcErrorThreshold;
 
 class ForecastTest {
 
-    private float calcolo;
+    private double calcolo;
     private Vector<Double> temperature = null;
     private CalcErrorThreshold a = new CalcErrorThreshold();
     float  input = 0;
@@ -31,7 +31,7 @@ class ForecastTest {
     @Test
     @DisplayName("Test error threshold")
     void testError_threshold() {
-	assertEquals((float) 3.79, calcolo);
+	assertEquals((double) 3.79, calcolo);
     }
     
     /*@Test

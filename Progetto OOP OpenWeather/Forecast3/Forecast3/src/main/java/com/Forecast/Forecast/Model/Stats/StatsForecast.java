@@ -53,7 +53,7 @@ public class StatsForecast extends Stats {
 	/**Il metodo si occupa di creare la Hashmap contenente i risultati della varianza nei giorni futuri.
 	 *@Return la HashMap che verrà visualizzata.
 	 */
-	public HashMap<String, Float> methodVariance()
+	public HashMap<String, Double> methodVariance()
 	{
 		variance_temperature.put("temperature:",method.methodVarianceTemperature(temperature));
 		variance_temperature.put("feels_like:",method.methodVarianceTemperature(feels_like));
@@ -64,7 +64,7 @@ public class StatsForecast extends Stats {
 	/**Il metodo si occupa di creare la Hashmap contenente i risultati della media nei giorni futuri.
 	 *@Return la HashMap che verrà visualizzata.
 	 */
-	public HashMap<String, Float> methodMedia()
+	public HashMap<String, Double> methodMedia()
 	{
 		
 		arithmetic_average_temperature.put("temperature:",method.methodArithmetic_averageTemperature(temperature));

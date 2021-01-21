@@ -55,7 +55,7 @@ public class StatsHistorical  extends Stats{
 	 *N.B. Siccome l'indirizzo API non contiene i dati delle temperature massime e minime, sarà visualizzato
 	 *"null".
 	 */
-	public HashMap<String, Float> methodVariance()
+	public HashMap<String, Double> methodVariance()
 	{
 		variance_temperature.put("temperature:",method.methodVarianceTemperature(temperature));
 		variance_temperature.put("feels_like:",method.methodVarianceTemperature(feels_like));
@@ -68,7 +68,7 @@ public class StatsHistorical  extends Stats{
 	 *N.B. Siccome l'indirizzo API non contiene i dati delle temperature massime e minime, sarà visualizzato
 	 *"null".
 	 */
-	public HashMap<String, Float> methodMedia()
+	public HashMap<String, Double> methodMedia()
 	{
 		
 		arithmetic_average_temperature.put("temperature:",method.methodArithmetic_averageTemperature(temperature));

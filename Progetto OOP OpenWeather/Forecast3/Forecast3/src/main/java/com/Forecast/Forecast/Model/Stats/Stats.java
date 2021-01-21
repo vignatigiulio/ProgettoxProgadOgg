@@ -16,22 +16,22 @@ public abstract class Stats {
 
 	
 	protected String citta;
-	protected HashMap<String,Float> variance_temperature = new HashMap<String,Float>();
-	protected HashMap<String,Float> arithmetic_average_temperature = new HashMap<String,Float>();
+	protected HashMap<String,Double> variance_temperature = new HashMap<String,Double>();
+	protected HashMap<String,Double> arithmetic_average_temperature = new HashMap<String,Double>();
 	public abstract void ReadFile(String string) throws FileNotFoundException;
-	public abstract HashMap<String, Float> methodVariance();
-	public abstract HashMap<String, Float> methodMedia();
+	public abstract HashMap<String, Double> methodVariance();
+	public abstract HashMap<String, Double> methodMedia();
 	
 	public String getCitta() {
 		this.citta=DataForecast.getCitta();
 		return citta;
 	}
 
-	public HashMap<String, Float> getVariance_temperature() {
+	public HashMap<String, Double> getVariance_temperature() {
 		return variance_temperature;
 	}
 
-	public HashMap<String, Float> getArithmetic_average_temperature() {
+	public HashMap<String, Double> getArithmetic_average_temperature() {
 		return arithmetic_average_temperature;
 	}
 }

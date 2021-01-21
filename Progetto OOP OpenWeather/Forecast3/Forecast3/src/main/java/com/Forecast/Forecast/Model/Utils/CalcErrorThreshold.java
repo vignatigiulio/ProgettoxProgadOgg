@@ -16,7 +16,7 @@ import java.util.Vector;
  * 
  */
 public class CalcErrorThreshold {
-	
+	private final int profondita_dati = 5;
 	/**
 	 * metodo che implementa il calcolo della soglia d'errore,tramite la lettura di file contenenti i valori delle temperature registrate dal server,
 	 * che popolano i vettori su cui viene calcolata la soglia di errore
@@ -25,11 +25,11 @@ public class CalcErrorThreshold {
 	 * @throws FileNotFoundException eccezione che viene lanciata se il file non viene trovato
 	 */
 	
-	public float Calcolo (String citta) throws FileNotFoundException {
+	public double Calcolo (String citta) throws FileNotFoundException {
 	    	    Vector<Double> tempC = new Vector<>();
 	    	    Vector<Double> tempF = new Vector<>();
 	    	    Boolean trovato = true;
-	    	    for (int i = 1; i <= 5; i++)
+	    	    for (int i = 1; i <= profondita_dati; i++)
 	    	    {
 	    	    trovato = true;
     	    	Scanner scanC = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\WeatherCurrent"+i+".txt"))); 
@@ -46,7 +46,7 @@ public class CalcErrorThreshold {
 	    	    }
 	    	    scanC.close();
 	    	    }
-	    	    for (int i = 1; i <= 5; i++)
+	    	    for (int i = 1; i <= profondita_dati; i++)
 	    	    {
 	    	    	Scanner scanF = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\ForecastGiorno"+i+".txt")));
 	    	    	trovato = true;
@@ -70,8 +70,8 @@ public class CalcErrorThreshold {
 	    		differenza = tempC.get(i) - tempF.get(i);
 	    		somma += (Math.abs(differenza));
 	    	    }
-	    	    float media = (float) (somma/tempC.size());
-	    	    return media;
+	    	    double media = (somma/tempC.size());
+	    	    return (Math.floor(media*100)/100);
 	    	}
 
   
@@ -83,24 +83,24 @@ public class CalcErrorThreshold {
 	 * @param HashMap<String, Float> passedMap rappresenta una Map di appoggio su cui viene effettuata l'operazione di ordinamento
 	 * @return LinkedHashMap<String, Float> riordinato secondo il campo Float
 	 */
-	public LinkedHashMap<String, Float> sortHashMapByValues(HashMap<String, Float> passedMap) {
+	public LinkedHashMap<String, Double> sortHashMapByValues(HashMap<String, Double> passedMap) {
 	    	    List<String> mapKeys = new ArrayList<>(passedMap.keySet());
-	    	    List<Float> mapValues = new ArrayList<>(passedMap.values());
+	    	    List<Double> mapValues = new ArrayList<>(passedMap.values());
 	    	    Collections.sort(mapValues);
 	    	    Collections.sort(mapKeys);
 
-	    	    LinkedHashMap<String, Float> sortedMap =
+	    	    LinkedHashMap<String, Double> sortedMap =
 	    	        new LinkedHashMap<>();
 
-	    	    Iterator<Float> valueIt = mapValues.iterator();
+	    	    Iterator<Double> valueIt = mapValues.iterator();
 	    	    while (valueIt.hasNext()) {
-	    	        float val = valueIt.next();
+	    	    	double val = valueIt.next();
 	    	        Iterator<String> keyIt = mapKeys.iterator();
 
 	    	        while (keyIt.hasNext()) {
 	    	            String key = keyIt.next();
-	    	            Float comp1 = passedMap.get(key);
-	    	            Float comp2 = val;
+	    	            Double comp1 = passedMap.get(key);
+	    	            Double comp2 = val;
 
 	    	            if (comp1.equals(comp2)) {
 	    	                keyIt.remove();
@@ -117,10 +117,10 @@ public class CalcErrorThreshold {
 	 * @return media della temperatura nei 5 giorni precedenti
 	 * @throws FileNotFoundException
 	 */
-	public float tempMin(String citta) throws FileNotFoundException
+	public double tempMin(String citta) throws FileNotFoundException
 	{
 		Vector<Double> tempF = new Vector<>();
-		for (int i = 1; i <= 5; i++)
+		for (int i = 1; i <= profondita_dati; i++)
 	    {
 	    	Scanner scanF = new Scanner(new BufferedReader(new FileReader(".\\Resources\\ErrorThreshold\\ForecastGiorno"+i+".txt")));
 	    	Boolean trovato = true;
@@ -134,13 +134,13 @@ public class CalcErrorThreshold {
 	    }
     	scanF.close();
 	    }
-		float somma = 0;
+		double somma = 0, media;
 		for(int i = 0; i < tempF.size(); i++)
 		{
 			somma += tempF.elementAt(i);
 		}
-		float media = somma / tempF.size();
-		return (float) (Math.floor(media*100)/100);
+		media = somma / tempF.size();
+		return (Math.floor(media*100)/100);
 	}
 
 	}

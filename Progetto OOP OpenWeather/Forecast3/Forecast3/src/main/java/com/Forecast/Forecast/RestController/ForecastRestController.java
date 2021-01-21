@@ -98,7 +98,7 @@ public class ForecastRestController {
 	 * @return  oggetto FilterUtils contente un hashMap che contiene le statistiche richieste filtrate
 	 */
 	@GetMapping("/statsError/{error threshold}")
-	public FilterUtils getStatsForecast(@PathVariable("error threshold") float filter) 
+	public FilterUtils getStatsForecast(@PathVariable("error threshold") double filter) 
 	{
 		if(filter <= 0) throw new ApiRequestException(filter);
 		if(this.forecastService.filterField(filter)==null) throw new FilterIllegalArgumentException("soglia di errore troppo piccola");
@@ -118,14 +118,14 @@ public class ForecastRestController {
 	 */
 	
 	@GetMapping("/statsTwoError/{error min}-{error max}") 
-	public FilterUtils getStatsForecast(@PathVariable("error min") float filterMin, @PathVariable("error max") float filterMax)
+	public FilterUtils getStatsForecast(@PathVariable("error min") double filterMin, @PathVariable("error max") double filterMax)
 			throws EntityNotFoundException
 	{
 		
 		if(filterMin < 0 || filterMax <= 0) throw new ApiRequestException(filterMin, filterMax);
 		if(filterMin > filterMax)
 		{
-			float appoggio=filterMax;
+			double appoggio=filterMax;
 			filterMax=filterMin;
 			filterMin=appoggio;
 		}
@@ -159,7 +159,7 @@ public class ForecastRestController {
 	 * @throws EntityNotFoundException
 	 */
 	@GetMapping("/temp/{temp}-{choice}")
-	public FilterUtils getTemp(@PathVariable("temp") float temp, @PathVariable("choice") String choice) throws EntityNotFoundException
+	public FilterUtils getTemp(@PathVariable("temp") double temp, @PathVariable("choice") String choice) throws EntityNotFoundException
 	{
 	    if (choice.equalsIgnoreCase(choice1))
 		 {
