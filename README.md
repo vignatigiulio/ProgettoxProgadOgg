@@ -1,8 +1,7 @@
-# Web Service
+#  Open Weather Web Service
  <div align="center">
- <p align = "center">  OPENWEATHER WEB SERVICE </p>
   <br><br>
-  <img src="https://i.postimg.cc/dV6DkjmQ/Open-Weather-Map.png" alt="Currency_logo" width="260" height=”69” ></img>
+  <img src="https://i.postimg.cc/dV6DkjmQ/Open-Weather-Map.png" alt="Currency_logo" width="260" height=”69”></img>
   <br>
   <h4>Versione attuale: 1.1.3</h4><br>
   <p>
@@ -16,6 +15,16 @@
   </p>
 </div><br><br>
 Un Web Service è un sistema software in grado di mettersi al servizio di un Client (applicazione, sito web, Postman), comunicando tramite il protocollo HTTP. </br> Un Web service consente quindi agli utenti che vi si collegano di usufruire delle funzioni che mette a disposizione. Con Spring Boot, è stato possibile creare questo software che lancia l'intera applicazione web, compreso il web server integrato.
+
+## Consegna progetto esame
+#### Api reference
+-https://openweathermap.org/current </br>
+-https://openweathermap.org/forecast5 </br>
+-https://openweathermap.org/history </br>
+
+#### Obiettivo progetto esame  </br>
+Uno studente vorrebbe scegliere una località marittima italiana per le sue vacanze estive. Implementare un sistema per studiare le temperature di varie città, scelte dall'utente. Occorre basarsi su dati storici, dati attuali e predizioni dei giorni futuri di quelle città. Da questi dati si ricaveranno delle statistiche. Inoltre, occorre salvare i dati attuali per un paio di settimane, in modo tale da verificare se le predizioni siano affidabili. L'utente potrà scegliere le città da studiare, utilizzando anche una sottostringa del nome (Es. ricercare tutte le città che iniziano con "A*").</br> Occorre quindi crearsi una lista predefinita coi nomi delle città marittime italiane
+<STATS E FILTRI>: Statistiche dei mesi estivi dell'anno precedente, riguardanti valori minimi, massimi, media e varianza delle temperature reali e percepite. Filtraggio delle statistiche cambiando la finestra temporale (uno o più anni precedenti). </br>Generare statistiche sulla quantità di previsioni azzeccate, in base ad una soglia di errore, ed in base ai giorni di predizione (da 1 a 5 giorni successivi). Filtraggio modificando la soglia di errore.
 
 ## Introduzione <a name="intro"></a>
 OPen Weather Web Service è un servizio web di REST API che offre informazioni riguardo le previsioni meteo di tutti i comuni italiani marittimi con relative statistiche. 
@@ -43,7 +52,7 @@ Usando l'ide eclipse si possono seguire i seguenti passi:
 - a questo punto potete provare ad eseguire il codice, selezionando "Forecast_3" tasto destro, "Run as" e quindi "Spring boot App".
 - all'avvio del programma apparirà un interfaccia che vi permetterà di scegliere il comune su cui effettuare le previsioni. 
 
-Ora l'aplicazione Web Service sarà attiva e in ascolto alla porta http://localhost:8080.
+Ora l'applicazione Web Service sarà attiva e in ascolto alla porta http://localhost:8080.
 
 ### Eseguire richieste <a name="richieste"></a>
 
@@ -121,7 +130,7 @@ attuale, percepita, minima e massima) dei 5 giorni successivi (tutti alla stessa
 esagerati) della città scelta in precedenza. Scrivendo invece historical, il programma riprodurrà gli stessi dati
 di prima ma lasciando nulli i campi di temperatura minima e massima, in quanto questi dati non sono
 fornidi dall’` API`.
-<img src="https://i.postimg.cc/FRFmXb58/stats-filter.png" width="1000"/>
+<img src="https://i.postimg.cc/QCpkxynS/stats-filter.png" width="1000"/>
 
 * **Chiamata <code>GET /statsError/{filter}</code>**
 Contiene la variabile ` error threshold` di tipo float. Il programma costruirà un’Hashmap contenente i nomi
@@ -131,18 +140,20 @@ totale di dieci file di testo presenti in .\Resources\ErrorThreshold. I dati han
 giorni. Il server restituirà solamente quei comuni, insieme alla rispettiva soglia, i quali hanno una media di
 errore minore del numero immesso dall’utente. Genererà eccezione se non si immette un numero o si
 immette un numero troppo basso o negativo.
-<img src="https://i.postimg.cc/v8NyC6P2/stats-Error.png" width="1000"/>
+`la rotta potrebbe impiegare abbastanza tempo poichè deve effettuare operazioni su oltre 600 comuni italiani`
+<img src="https://i.postimg.cc/6pHV3RYs/stats-Error.png" width="1000"/>
 
 * **Chiamata <code>GET /statsTwoError/{filterMin}-{filterMax}</code>**
 Contiene le due variabili di tipo float {error min} e {error max}. L’utente dovrà inserire due cifre separate da
 un trattino, ed il programma,come effettuato nella rotta precendente ` GET /statsError/{filter}` , restituirà solamente i comuni i
 quali hanno una soglia di errore compresa tra i due valori.
-<img src="https://i.postimg.cc/rFrBbZRz/stats-Two-Error.png" width="1000"/>
+`la rotta potrebbe impiegare abbastanza tempo poichè deve effettuare operazioni su oltre 600 comuni italiani`
+<img src="https://i.postimg.cc/L4B15L8y/stats-Two-Errors.png" width="1000"/>
 
 * **Chiamata <code>GET /statsErrorCity/{city}</code>**
 Contiene la variabile di tipo stringa ` city` con il nome di un comune scelto dall’utente. La rotta restituirà la
 soglia di errore del comune scelto. Se il comune non esiste, verrà generata un’eccezione.
-<img src="https://i.postimg.cc/kXWn8gcj/stats-Error-City.png" width="1000"/>
+<img src="https://i.postimg.cc/g2fJN20X/stats-Error-City.png" width="1000"/>
 
 * **Chiamata <code>GET /temp/{temp}-{choice}</code>**
 Contiene la variabile ` temp` di tipo float e la variabile ` choice` di tipo stringa. L’utente dovrà inserire una
@@ -152,7 +163,8 @@ temperature medie maggiori di ` temp`.
 </br>Il programma calcolerà la media della temperatura dei 5 giorni
 precedenti di tutti i comuni. Successivamente, restituirà comuni e rispettivi valori i quali soddisfano la
 condizione dettata dal cliente.
-<img src="https://i.postimg.cc/3r1pZk6S/temp.png" width="1000"/>
+`la rotta potrebbe impiegare abbastanza tempo poichè deve effettuare operazioni su oltre 600 comuni italiani`
+<img src="https://i.postimg.cc/tgQqFvrF/temp.png" width="1000"/>
 
 ## Softwere utilizzati
 
