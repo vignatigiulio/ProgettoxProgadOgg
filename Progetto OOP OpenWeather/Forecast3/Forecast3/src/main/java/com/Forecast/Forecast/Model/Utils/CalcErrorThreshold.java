@@ -75,29 +75,28 @@ public class CalcErrorThreshold {
 
 	
 	/**
-	 * Metodo che riordina una Map secondo il campo Float, con l'ausilio di un iteratore
-	 * @param HashMap<String, Float> passedMap rappresenta una Map di appoggio su cui viene effettuata l'operazione di ordinamento
-	 * @return LinkedHashMap<String, Float> riordinato secondo il campo Float
+	 * Metodo che riordina una Map secondo il campo Double, con l'ausilio di un iteratore
+	 * @param HashMap<String, Double> passedMap rappresenta una Map di appoggio su cui viene effettuata l'operazione di ordinamento
+	 * @return LinkedHashMap<String, Double> riordinato secondo il campo Double
 	 */
 	public LinkedHashMap<String, Double> sortHashMapByValues(HashMap<String, Double> passedMap) {
 	    	    List<String> mapKeys = new ArrayList<>(passedMap.keySet());
 	    	    List<Double> mapValues = new ArrayList<>(passedMap.values());
 	    	    Collections.sort(mapValues);
 	    	    Collections.sort(mapKeys);
-	    	    LinkedHashMap<String, Double> sortedMap =
-	    	        new LinkedHashMap<>();
-
+	    	    LinkedHashMap<String, Double> sortedMap = new LinkedHashMap<>();
 	    	    Iterator<Double> valueIt = mapValues.iterator();
-	    	    while (valueIt.hasNext()) {
+	    	    while (valueIt.hasNext()) 
+	    	    {
 	    	    	double val = valueIt.next();
 	    	        Iterator<String> keyIt = mapKeys.iterator();
-
-	    	        while (keyIt.hasNext()) {
+	    	        while (keyIt.hasNext()) 
+	    	        {
 	    	            String key = keyIt.next();
 	    	            Double comp1 = passedMap.get(key);
 	    	            Double comp2 = val;
-
-	    	            if (comp1.equals(comp2)) {
+	    	            if (comp1.equals(comp2)) 
+	    	            {
 	    	                keyIt.remove();
 	    	                sortedMap.put(key, val);
 	    	                break;
