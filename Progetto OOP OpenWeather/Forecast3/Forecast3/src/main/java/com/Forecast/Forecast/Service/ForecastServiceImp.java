@@ -2,7 +2,6 @@ package com.Forecast.Forecast.Service;
 
 
 import com.Forecast.Forecast.Model.Stats.Stats;
-
 import com.Forecast.Forecast.Model.Stats.StatsForecast;
 import com.Forecast.Forecast.Model.Stats.StatsHistorical;
 import com.Forecast.Forecast.Model.Utils.CityForecast;
@@ -99,38 +98,21 @@ public class ForecastServiceImp implements ForecastService {
 	}
     return null;
     }
-    
+    /**
+     * @return lista di oggetti Weather
+     */
     @Override
     public List<Weather> getWeathers() {
     	
     	return list;
     }
-
-
-	@Override
+    /**
+     * metodo che filtra la lista di oggetti weather in base al filtro passato come parametro
+     * @return una lista di oggetti weather filtrati
+     */
+    @Override
 	public List<Weather> getWeather(String filter) {
-		boolean data = true;
-		try {
-			Integer.parseInt(filter.substring(0, 1));
-			} catch (Exception e) {
-
-			data = false;
-			}
-		if(data)
-		{
-		String orario = filter.substring(11);
-		String elemData = filter.substring(0, 10);
-		System.out.println(data);
-		String[] parts = orario.split(":");
-		int ora = Integer.parseInt(parts[0]);
-		int minuti = Integer.parseInt(parts[1]);
-		if(minuti >= 30) ora++;
-		if(ora % 3 == 1) ora--;
-		else if(ora % 3 == 2) ora++;
-		String nuovo = ora+":00:00";
-		if(ora<10) nuovo = "0"+nuovo;
-		filter = elemData+" "+nuovo;
-		}
+    	filter=checkOrario(filter);
 		List<Weather> c = new ArrayList<Weather>();
 		if(list != null)
 		{
@@ -145,20 +127,37 @@ public class ForecastServiceImp implements ForecastService {
 		}
 		return null;
 	}
-
-	@Override
+    /**
+     * metodo che restituisce una Map di filterUtils dopo essere stata filtrata tramite il metodo select  
+     * @param filter
+     * @return un oggetto FilterUtils opportunamente filtrato
+     */
+    @Override
 	public FilterUtils filterField(double filter) {
 		if(filterUtils.select(filter)) return null;
 	    else
 	    return filterUtils;
 	}
-
+    /**
+     * metodo che restituisce una Map di filterUtils compresa 
+     * tra i due filtri passati come parametri utilizzando il metodo select  
+     * @param filterMin
+     * @param filterMax
+     * @return un oggetto FilterUtils opportunamente filtrato
+     */
 	@Override
 	public FilterUtils filterField(double filterMin, double filterMax) {
 	    if(filterUtils.select(filterMin, filterMax)) return null;
 	    else
 	    return filterUtils;
 	}
+	 /**
+     * metodo che restituisce una Map di filterUtils riguardante 
+	 * le temperature dei comuni italiani filtrate dal filtro passato come parametro formale e dal booleano choice
+     * @param filterMin
+     * @param boolean choice
+     * @return un oggetto FilterUtils opportunamente filtrato
+     */
 	
 	@Override
 	public FilterUtils getTemp(double filter, Boolean choice) {
@@ -166,6 +165,11 @@ public class ForecastServiceImp implements ForecastService {
 	    else
 	    return filterUtils;
 	}
+	 /**
+     * metodo che restituisce una Map di filterUtils riguardante la stima di errore della citta passata come parametro
+     * @param string city
+     * @return un oggetto CityForecast contentente la città e la stima di errore
+     */
 
 	@Override
 	public CityForecast filterField(String city) throws FileNotFoundException {
@@ -177,6 +181,44 @@ public class ForecastServiceImp implements ForecastService {
 		}
 		else
 			return null;
+	}
+	/**
+	 * algoritmo che prende in input una data e restituisce un approssimazione consona per l'Api
+	 * @param filter data passata come parametro formale dall'utente
+	 * @return data approssimata all'ora consona per l'Api
+	 * l Api usa un formato orario che parte dalla mezzanotte  e aumenta di tre ore,quindi se l'utente inserisce 11:30 
+	 * con questo metodo ritorna una  stringa in formato data avente come ora le 12.
+	 */
+	public String checkOrario(String filter) 
+	{
+		
+        try {
+            Integer.parseInt(filter.substring(0, 1));
+            } catch (Exception e) {
+           return filter;
+            }
+    
+        
+            String orario = filter.substring(11);
+            String elemData = filter.substring(0, 10);
+            String[] parts = orario.split(":");
+            int ora = Integer.parseInt(parts[0]);
+            int minuti = Integer.parseInt(parts[1]);
+            if(minuti >= 30) ora++;
+            if(ora % 3 == 1) ora--;
+            else if(ora % 3 == 2) ora++;
+            if(ora==24) {
+        	ora=0;
+        	String[] data = elemData.split("-");
+        	int giorni = Integer.parseInt(data[2]);
+        	giorni++;
+        	elemData = "2021-01-"+giorni;
+            }
+            String nuovo = ora+":00:00";
+            if(ora<10) nuovo = "0"+nuovo;
+            filter = elemData+" "+nuovo;
+            
+        return filter;
 	}
 
 

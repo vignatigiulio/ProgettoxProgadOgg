@@ -28,7 +28,7 @@ import com.Forecast.Forecast.Model.Exceptions.ApiRequestException;
 @RestController
 @SpringBootApplication
 /**Main del programma
- *Viene richiamata la Gui situata nel package Model, che permette di inserire una citta e trasmetterla tramite setter
+ *Viene creata una GUI che permette di inserire una citta e trasmetterla tramite setter
  *Viene assegnata la chiave API tramite setter presente nella classe DataForecast
  *Viene avviata la SpringApplication.
 */
@@ -148,7 +148,7 @@ public class ForecastApplication {
 	
 	public static void main(String[] args) 
 	{
-		DataForecast.setapiKey("007a2ae220cae8bdc182ad4aba2ec489");
+		DataForecast.setapiKey("8a6a917d48b1adcdbafdcd6b825aeb9f");
 		File folder = new File(".\\Resources\\Data");
 		deleteFiles(folder);
 		inizializzazione();

@@ -19,7 +19,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
 
-import com.Forecast.Forecast.Model.Exceptions.ApiRequestException;
 
 /** Classe che include i metodi necessari per la lettura e il parsing
  *  dei dati prelevati dalla API con relativi getters e setters 

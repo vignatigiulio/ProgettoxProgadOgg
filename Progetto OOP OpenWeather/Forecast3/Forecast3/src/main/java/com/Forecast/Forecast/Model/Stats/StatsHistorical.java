@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.Vector;
 
-import com.Forecast.Forecast.Model.Exceptions.ApiRequestException;
+
 
 
 public class StatsHistorical  extends Stats{

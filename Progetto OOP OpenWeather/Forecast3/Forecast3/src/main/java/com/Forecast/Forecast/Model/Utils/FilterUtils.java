@@ -17,7 +17,7 @@ public class FilterUtils {
      * se deve essere incluso nella risposta
      * @param String citta che viene considerato nel test
      * @param filtro Condizione del filtro
-     * @return Un booleano che determina se l'oggetto deve essere tenuto o meno
+     * @return double equivalente alla differenza tra le previsioni effettuate da current e forecast
      * @throws FileNotFoundException 
      */
     public double check(String citta, double filtro) throws FileNotFoundException {
@@ -38,7 +38,7 @@ public class FilterUtils {
      * @param String citta che viene considerato nel test
      * @param filterMin Condizione del filtro
      * @param filterMax Condizione del filtro
-     * @return Un booleano che determina se l'oggetto deve essere tenuto o meno
+     * @return double equivalente alla differenza tra le previsioni effettuate da current e forecast
      * @throws FileNotFoundException 
      */
     public double check(String citta, double filterMin, double filterMax) throws FileNotFoundException {
@@ -55,6 +55,7 @@ public class FilterUtils {
      * Metodo che riceve il filtro e crea una Map parziale con gli
      * oggetti selezionati
      * @param filtro Campo su cui opera il filtro
+     * @return un booleano se la Map è vuota 
      */
     public boolean select(double filtro) {
 	HashMap<String, Double> Elenco = new HashMap<>();
@@ -77,10 +78,13 @@ public class FilterUtils {
 	return false;
 	
     }
-    /*
-     * 
+    /**
+     * Metodo che riceve il filtro e crea una Map parziale con gli
+     * oggetti selezionati
+     * @param filtro condizione del filtro
+     * @param choice se deve prendere la condizione di maggiore o minore
+     * @return un booleano se la Map è vuota 
      */
-
     public boolean temp(double filtro, Boolean choice) {
 
     	HashMap<String, Double> Elenco = new HashMap<>();
@@ -112,6 +116,7 @@ public class FilterUtils {
      * oggetti selezionati
      * @param filtroMin Campo su cui opera il filtro
      * @param filtroMax Campo su cui opera il filtro
+     * @return un booleano se la Map è vuota 
      */
     public boolean select(double filtroMin, double filtroMax) {
 	HashMap<String, Double> Elenco = new HashMap<>();
@@ -158,7 +163,7 @@ public class FilterUtils {
      * Metodo che crea una Map parziale con gli
      * oggetti selezionati
      * @param city Campo su cui opera il filtro
-     * @return un float che andrà a creare l'oggetto FilterUtils filtrato
+     * @return un double che andrà a creare l'oggetto FilterUtils filtrato
      */
 
     public double ricerca(String citta) throws FileNotFoundException
@@ -176,4 +181,3 @@ public class FilterUtils {
     }
    
 }
-

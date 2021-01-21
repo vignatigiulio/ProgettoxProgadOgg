@@ -2,7 +2,6 @@ package com.Forecast.Forecast.Model.Stats;
 
 import java.util.Vector;
 
-import com.Forecast.Forecast.Model.Exceptions.ApiRequestException;
 
 public class StatsMethod 
 	{
