@@ -54,7 +54,15 @@ Usando l'ide eclipse si possono seguire i seguenti passi:
 - all'avvio del programma apparirà un interfaccia  
 ### Graphical user interface
 <img src="https://i.postimg.cc/0QcPMHY8/gui.png" width="400"/>
-
+Il form presenta una textBox per l'inserimento del comune (o di eventuali sottostringhe) da cercare. I risultati saranno poi mostrati nella lista a fianco.
+I bottoni sono 5:
+1. La lente di ingrandimento per la ricerca affianco alla textBox (attivabile anche premendo il tasto invio) </br>
+2. Il tasto "Seleziona". Dopo aver cercato la città ed aver selezionato il comune desiderato dalla lista, il programma visualizzerà una finestra di conferma.
+   Premendo "Sì", il form verrà chiuso ed il server caricato con la città selezionata, altrimenti si avvierà da capo.
+3. Il pulsante "Cancella". Questo si occupa di ripulire la lista, ripulire la textBox ed evidenzia immediatamente la casella di ricerca.
+4. Il pulsante "Tutti i comuni" scrive sulla lista l'intero database di comuni disponibili. Spetterà poi all'utente di selezionare un comune e confermare.
+5. Il pulsante "Avvia il server senza comune" serve a, come detto dal testo, eseguire il server senza specificare alcun comune. Ciò è consigliato se si
+   vuole visualizzare statistiche generali.
 
 
 Ora l'applicazione Web Service sarà attiva e in ascolto alla porta http://localhost:8080.
