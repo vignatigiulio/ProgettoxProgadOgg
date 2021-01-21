@@ -89,28 +89,28 @@ Per eseguire le richieste GET o POST si può installare un API testing, (ad esem
 
 ### Classi
 * **Package com.Forecast.Forecast.RestController**
-<img src="https://i.postimg.cc/j5fNXCz2/restc.png" width="200"/>
+<img src="https://i.postimg.cc/J46nst1f/restcontroller.png" width="200"/>
 
 * **Package com.Forecast.Forecast.Service**
-<img src="https://i.postimg.cc/MZyVfM6r/service.png" width="200"/>
+<img src="https://i.postimg.cc/pVkVSynm/service.png" width="200"/>
 
 * **Package com.Forecast.Forecast.Model**
-<img src="https://i.postimg.cc/50pHpvXx/model.png" width="400"/>
+<img src="https://i.postimg.cc/9MCV8jmP/model.png" width="400"/>
 
 * **Package com.Forecast.Forecast.Model.Stats**
-<img src="https://i.postimg.cc/mDZkcD8K/stats.png" width="700"/>
+<img src="https://i.postimg.cc/CMvYNtWD/stats.png" width="700"/>
 
 * **Package com.Forecast.Forecast.Model.Utils**
-<img src="https://i.postimg.cc/qB5qRpnZ/utils.png" width="600"/>
+<img src="https://i.postimg.cc/1tvxvnYP/utils.png" width="600"/>
 
 * **Package com.Forecast.Forecast.Model.Exception**
-<img src="https://i.postimg.cc/mgxrYVmY/exception.png" width="400"/>
+<img src="https://i.postimg.cc/NFF3SsWX/exception.png" width="400"/>
 
 * **Package com.Forecast.Forecast.Model.Data**
-<img src="https://i.postimg.cc/prh28n8c/data.png" width="400"/>
+<img src="https://i.postimg.cc/NfW3Cwby/data.png" width="400"/>
 
 * **Package com.Forecast.Forecast**
-<img src="https://i.postimg.cc/RVwWbj6s/main.png" width="150"/>
+<img src="https://i.postimg.cc/jSxFFdPS/main.gif" width="150"/>
 
 ### Chiamate <a name="chiamate"></a>
 * **Chiamata <code>GET /weather</code>**
